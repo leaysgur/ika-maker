@@ -1,0 +1,19 @@
+{
+  "name": "ika-maker",
+  "version": "1.0.0",
+  "description": "IKA-kawaii",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/leader22/ika-maker.git"
+  },
+  "keywords": [],
+  "author": "leader22",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/leader22/ika-maker/issues"
+  },
+  "homepage": "https://github.com/leader22/ika-maker#readme"
+}

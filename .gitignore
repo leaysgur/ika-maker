@@ -1,3 +1,7 @@
+# App
+dist
+.DS_Store
+
 # Logs
 logs
 *.log
