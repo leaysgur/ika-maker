@@ -1,9 +1,11 @@
 {
   "name": "ika-maker",
   "version": "1.0.0",
+  "private": true,
   "description": "IKA-kawaii",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev-js": "watchify ./src/script/main.js -t babelify -o ./dist/script2.js -v",
+    "build-js": "browserify ./src/script/main.js -t babelify -t uglifyify -o ./dist/script2.js"
   },
   "repository": {
     "type": "git",
@@ -15,5 +17,18 @@
   "bugs": {
     "url": "https://github.com/leader22/ika-maker/issues"
   },
-  "homepage": "https://github.com/leader22/ika-maker#readme"
+  "homepage": "https://github.com/leader22/ika-maker#readme",
+  "dependencies": {
+    "flumpt": "^0.1.4",
+    "react": "^0.14.6",
+    "react-dom": "^0.14.6"
+  },
+  "devDependencies": {
+    "babel-preset-es2015": "^6.3.13",
+    "babel-preset-react": "^6.3.13",
+    "babelify": "^7.2.0",
+    "browserify": "^13.0.0",
+    "uglifyify": "^3.0.1",
+    "watchify": "^3.7.0"
+  }
 }
