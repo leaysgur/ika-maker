@@ -1,11 +1,9 @@
-@import
-  "./utils/default",
-  "./utils/util";
+@import "./utils/default";
+@import "./utils/util";
 
-@import
-  "./components/title",
-  "./components/button",
-  "./components/header",
-  "./components/ika",
-  "./components/tool-panel",
-  "./components/tab";
+@import "./components/title";
+@import "./components/button";
+@import "./components/header";
+@import "./components/ika";
+@import "./components/tool-panel";
+@import "./components/tab";
