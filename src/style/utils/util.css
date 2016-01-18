@@ -8,6 +8,10 @@
   vertical-align: text-bottom;
 }
 
+.is-selected {
+  pointer-events: none;
+}
+
 .is-hidden {
   display: none;
 }

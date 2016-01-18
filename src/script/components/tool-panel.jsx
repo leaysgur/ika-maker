@@ -28,8 +28,17 @@ export default class extends Component {
       <div className="tool-panel">
         <ul className="tab-header ft-ika">
           {tabItems.map((item, idx) => {
+            let isSelected = idx === selectedTabIdx;
             return (
-              <li className={`tab-header__item tab-header__item--type-${item.group}`} onClick={() => { this.onClickTab(idx); }} key={item.order}>
+              <li
+                className={`
+                  tab-header__item
+                  tab-header__item--type-${item.group}
+                  ${isSelected ? 'is-selected' : ''}
+                `}
+                onClick={() => { this.onClickTab(idx); }}
+                key={item.order}
+              >
                 {item.name}
               </li>
             );
@@ -37,9 +46,12 @@ export default class extends Component {
         </ul>
         <ul className="tab-body">
           {tabItems.map((item, idx) => {
-            let isHidden = idx !== selectedTabIdx;
+            let isSelected = idx === selectedTabIdx;
             return (
-              <li className={`tab-body__item--type-${item.group} ${isHidden ? 'is-hidden' : ''}`} key={item.order}>
+              <li
+                className={`tab-body__item--type-${item.group} ${isSelected ? '' :  'is-hidden'}`}
+                key={item.order}
+              >
                 {item.id}コンポーネント
                 <button onClick={() => this.dispatch('increment')}>increment</button>
               </li>

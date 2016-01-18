@@ -6,6 +6,7 @@
   text-align: center;
   color: inherit;
   background-color: #FF6E00;
+  cursor: pointer;
 }
 
 .button--negative {

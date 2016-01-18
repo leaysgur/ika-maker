@@ -6,7 +6,7 @@
   "scripts": {
     "dev-css": "postcss -c ./.postcssrc.json -w",
     "build-css": "postcss -c ./.postcssrc.json",
-    "dev-js": "watchify ./src/script/main.js -t babelify -o ./dist/script.js -v",
+    "dev-js": "watchify ./src/script/main.js -t babelify -t uglifyify -o ./dist/script.js -v",
     "build-js": "browserify ./src/script/main.js -t babelify -t uglifyify -o ./dist/script.js"
   },
   "repository": {
@@ -34,6 +34,7 @@
     "cssnano": "^3.4.0",
     "postcss-cli": "^2.4.0",
     "postcss-import": "^7.1.3",
+    "postcss-nested": "^1.0.0",
     "uglifyify": "^3.0.1",
     "watchify": "^3.7.0"
   }
