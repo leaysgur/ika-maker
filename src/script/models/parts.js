@@ -28,6 +28,22 @@ export default {
     return path;
   },
 
+  getTabItems() {
+    let tabItems = Object.keys(PartsScheme).map((partsName) => {
+      let parts = PartsScheme[partsName];
+      return {
+        id:    partsName,
+        order: parts.tabOrder,
+        group: parts.tabGroup,
+        name:  parts.tabName
+      };
+    }).sort((a, b) => {
+      return a.order > b.order ? 1 : -1;
+    });
+
+    return tabItems;
+  },
+
   getAllImgPath() {
     let imgPathArr = [];
     Object.keys(PartsScheme).forEach((parts) => {

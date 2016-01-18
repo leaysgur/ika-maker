@@ -1,5 +1,8 @@
 export default {
   "body": {
+    "tabName": "カラダ",
+    "tabOrder": 1,
+    "tabGroup": "BASE",
     "selectType": "COLOR",
     "items": [
       {
@@ -42,6 +45,9 @@ export default {
     }
   },
   "hair": {
+    "tabName": "カミ",
+    "tabOrder": 2,
+    "tabGroup": "BASE",
     "selectType": "COLOR",
     "items": [
       {
@@ -129,6 +135,9 @@ export default {
     }
   },
   "brows": {
+    "tabName": "マユ",
+    "tabOrder": 3,
+    "tabGroup": "FACE",
     "selectType": "TYPE_COLOR",
     "items": [
       {
@@ -294,6 +303,9 @@ export default {
     }
   },
   "eyes": {
+    "tabName": "メ",
+    "tabOrder": 5,
+    "tabGroup": "FACE",
     "selectType": "TYPE_COLOR",
     "items": [
       {
@@ -542,6 +554,9 @@ export default {
     }
   },
   "mouth": {
+    "tabName": "クチ",
+    "tabOrder": 6,
+    "tabGroup": "FACE",
     "selectType": "TYPE",
     "items": [
       {
@@ -589,6 +604,9 @@ export default {
     }
   },
   "hat": {
+    "tabName": "アタマ",
+    "tabOrder": 7,
+    "tabGroup": "GEAR",
     "selectType": "TYPE",
     "items": [
       {
@@ -702,6 +720,9 @@ export default {
     ]
   },
   "clothes": {
+    "tabName": "フク",
+    "tabOrder": 8,
+    "tabGroup": "GEAR",
     "selectType": "TYPE",
     "items": [
       {
@@ -783,6 +804,9 @@ export default {
     ]
   },
   "bg": {
+    "tabName": "ハイケイ",
+    "tabOrder": 9,
+    "tabGroup": "OTHRES",
     "selectType": "TYPE_COLOR",
     "items": [
       {

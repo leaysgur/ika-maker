@@ -10,6 +10,9 @@ const TRANSPARENT = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAA
  */
 module.exports = {
   body: {
+    tabName: 'カラダ',
+    tabOrder: 1,
+    tabGroup: 'BASE',
     selectType: 'COLOR',
     items: [/* { id: 1, path: './path' } */],
     COLORS: {
@@ -24,6 +27,9 @@ module.exports = {
   },
 
   hair: {
+    tabName: 'カミ',
+    tabOrder: 2,
+    tabGroup: 'BASE',
     selectType: 'COLOR',
     items: [],
     COLORS: {
@@ -47,6 +53,9 @@ module.exports = {
   },
 
   brows: {
+    tabName: 'マユ',
+    tabOrder: 3,
+    tabGroup: 'FACE',
     selectType: 'TYPE_COLOR',
     items: [/* { id: 1, items: [ { id: 1, path: './path' } ] } */],
     TYPES: {
@@ -74,6 +83,9 @@ module.exports = {
   },
 
   eyes: {
+    tabName: 'メ',
+    tabOrder: 5,
+    tabGroup: 'FACE',
     selectType: 'TYPE_COLOR',
     items: [],
     TYPES: {
@@ -98,6 +110,9 @@ module.exports = {
   },
 
   mouth: {
+    tabName: 'クチ',
+    tabOrder: 6,
+    tabGroup: 'FACE',
     selectType: 'TYPE',
     items: [],
     TYPES: {
@@ -113,16 +128,25 @@ module.exports = {
   },
 
   hat: {
+    tabName: 'アタマ',
+    tabOrder: 7,
+    tabGroup: 'GEAR',
     selectType: 'TYPE',
     items: [ { id: 0, path: TRANSPARENT } ]
   },
 
   clothes: {
+    tabName: 'フク',
+    tabOrder: 8,
+    tabGroup: 'GEAR',
     selectType: 'TYPE',
     items: [ { id: 0, path: TRANSPARENT } ]
   },
 
   bg: {
+    tabName: 'ハイケイ',
+    tabOrder: 9,
+    tabGroup: 'OTHRES',
     selectType: 'TYPE_COLOR',
     items: [],
     TYPES: {
