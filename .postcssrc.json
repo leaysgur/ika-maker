@@ -1,0 +1,8 @@
+{
+  "use": ["postcss-import", "autoprefixer", "cssnano"],
+  "input": "./src/style/style.css",
+  "output": "./dist/style.css",
+  "autoprefixer": {
+    "browsers": "last 2 versions"
+  }
+}

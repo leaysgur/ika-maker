@@ -1,0 +1,91 @@
+@import "./default";
+
+@font-face {
+  font-family: 'ikamodoki';
+  src: url('../font/ikamodoki1_0.ttf') format('truetype');
+}
+
+.ft-ika {
+  font-family: 'ikamodoki';
+  vertical-align: text-bottom;
+}
+
+.is-hidden {
+  display: none;
+}
+
+.title {
+  text-align: center;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 48px;
+  padding: 8px;
+}
+
+.header__title {
+  font-size: 1.2rem;
+}
+
+.button {
+  display: inline;
+  padding: 4px 8px;
+  min-width: 64px;
+  text-decoration: none;
+  text-align: center;
+  color: inherit;
+  background-color: #FF6E00;
+}
+
+.button--negative {
+  background-color: rgba(0,0,0,0);
+  border: 1px solid #FF6E00;
+}
+
+.ika {
+  position: relative;
+  text-align: center;
+  pointer-events: none;
+  user-select: none;
+}
+
+.ika img {
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: auto;
+  max-width: 600px;
+}
+
+.ika img:first-child {
+  position: static;
+}
+
+.tool-panel {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 160px;
+  background-color: rgba(255,255,255,.5);
+}
+
+.tab-header {
+  overflow: scroll;
+  -webkit-overflow-scrolling: touch;
+  display: flex;
+  align-items: center;
+  text-align: center;
+}
+
+.tab-header__item {
+  height: 40px;
+  min-width: 70px;
+  padding: 4px 8px;
+}
+
+.tab-body__item {
+}
