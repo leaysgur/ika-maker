@@ -26,7 +26,7 @@ export default class extends Component {
     return (
       <div className="ika">
         {imgPathArr.map((src, idx) => {
-          return (<img width="95%" height="auto" src={src} key={idx} />);
+          return (<img width="95%" height="auto" className="jsIkaImg" src={src} key={idx} />);
         })}
       </div>
     );

@@ -8,7 +8,7 @@ export default class extends Component {
     let ctx = canvas.getContext('2d');
     canvas.width = canvas.height = 600;
 
-    let imgs = document.getElementsByTagName('img');
+    let imgs = document.getElementsByClassName('jsIkaImg');
     [].forEach.call(imgs, function(img) {
       ctx.drawImage(img, 0, 0, 600, 600);
     });
