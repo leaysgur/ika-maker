@@ -51,7 +51,7 @@ Object.keys(partsScheme).forEach((parts) => {
   }
 });
 
-let data = `module.exports = ${JSON.stringify(partsScheme, null, 2)};`;
+let data = `export default ${JSON.stringify(partsScheme, null, 2)};`;
 
 fs.writeFileSync(`${path.resolve(BASE_DIR, SCHEME_DIST_DIR)}.js`, data);
 console.log('Done!');

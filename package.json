@@ -4,14 +4,13 @@
   "private": true,
   "description": "IKA-kawaii",
   "scripts": {
-    "dev-js": "watchify ./src/script/main.js -t babelify -o ./dist/script2.js -v",
-    "build-js": "browserify ./src/script/main.js -t babelify -t uglifyify -o ./dist/script2.js"
+    "dev-js": "watchify ./src/script/main.js -t babelify -o ./dist/script.js -v",
+    "build-js": "browserify ./src/script/main.js -t babelify -t uglifyify -o ./dist/script.js"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/leader22/ika-maker.git"
   },
-  "keywords": [],
   "author": "leader22",
   "license": "MIT",
   "bugs": {
