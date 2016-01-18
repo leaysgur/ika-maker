@@ -1,7 +1,13 @@
 'use strict';
 import PartsScheme from '../data/parts';
+import DefaultPartsSettings from '../data/default-parts';
+import {Promise} from 'es6-promise';
 
 export default new class {
+  getDefaultSettings() {
+    return DefaultPartsSettings;
+  }
+
   getAllImgPath() {
     let imgPathArr = [];
     Object.keys(PartsScheme).forEach((parts) => {

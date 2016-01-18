@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/leader22/ika-maker#readme",
   "dependencies": {
+    "es6-promise": "^3.0.2",
     "flumpt": "^0.1.4",
     "react": "^0.14.6",
     "react-dom": "^0.14.6"
