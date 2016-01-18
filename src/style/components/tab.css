@@ -1,0 +1,16 @@
+.tab-header {
+  overflow: scroll;
+  -webkit-overflow-scrolling: touch;
+  display: flex;
+  align-items: center;
+  text-align: center;
+}
+
+.tab-header__item {
+  height: 40px;
+  min-width: 70px;
+  padding: 4px 8px;
+}
+
+.tab-body__item {
+}

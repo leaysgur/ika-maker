@@ -1,0 +1,13 @@
+@font-face {
+  font-family: 'ikamodoki';
+  src: url('../font/ikamodoki1_0.ttf') format('truetype');
+}
+
+.ft-ika {
+  font-family: 'ikamodoki';
+  vertical-align: text-bottom;
+}
+
+.is-hidden {
+  display: none;
+}

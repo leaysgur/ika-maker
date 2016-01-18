@@ -1,0 +1,14 @@
+.button {
+  display: inline;
+  padding: 4px 8px;
+  min-width: 64px;
+  text-decoration: none;
+  text-align: center;
+  color: inherit;
+  background-color: #FF6E00;
+}
+
+.button--negative {
+  background-color: rgba(0,0,0,0);
+  border: 1px solid #FF6E00;
+}

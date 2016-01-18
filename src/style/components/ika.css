@@ -1,0 +1,18 @@
+.ika {
+  position: relative;
+  text-align: center;
+  pointer-events: none;
+  user-select: none;
+}
+
+.ika img {
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: auto;
+  max-width: 600px;
+}
+
+.ika img:first-child {
+  position: static;
+}
