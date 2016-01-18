@@ -806,7 +806,7 @@ export default {
   "bg": {
     "tabName": "ハイケイ",
     "tabOrder": 9,
-    "tabGroup": "OTHRES",
+    "tabGroup": "OTHERS",
     "selectType": "TYPE_COLOR",
     "items": [
       {

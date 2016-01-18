@@ -20,7 +20,8 @@ export default class extends Component {
   }
 
   render() {
-    const tabItems = PartsModel.getTabItems();
+    let tabItems = PartsModel.getTabItems();
+    console.log(tabItems);
     let {selectedTabIdx} = this.state;
 
     return (

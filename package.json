@@ -7,8 +7,7 @@
     "dev-css": "postcss -c ./.postcssrc.json -w",
     "build-css": "postcss -c ./.postcssrc.json",
     "dev-js": "watchify ./src/script/main.js -t babelify -o ./dist/script.js -v",
-    "build-js": "browserify ./src/script/main.js -t babelify -t uglifyify -o ./dist/script.js",
-    "dev": "npm run dev-js && npm run dev-css"
+    "build-js": "browserify ./src/script/main.js -t babelify -t uglifyify -o ./dist/script.js"
   },
   "repository": {
     "type": "git",

@@ -10,6 +10,20 @@
   height: 40px;
   min-width: 70px;
   padding: 4px 8px;
+  flex: 1 1 auto;
+}
+
+.tab-header__item--type-BASE {
+  color: red;
+}
+.tab-header__item--type-FACE {
+  color: yellow;
+}
+.tab-header__item--type-GEAR {
+  color: orange;
+}
+.tab-header__item--type-OTHERS {
+  color: green;
 }
 
 .tab-body__item {
