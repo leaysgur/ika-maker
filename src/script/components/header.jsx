@@ -2,7 +2,7 @@
 import * as React from 'react'; // eslint-disable-line no-unused-vars
 import {Component} from 'flumpt';
 
-export default class HeaderComponent extends Component {
+export default class extends Component {
   onClickSave() {
     let canvas = document.createElement('canvas');
     let ctx = canvas.getContext('2d');

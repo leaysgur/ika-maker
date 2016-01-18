@@ -1,9 +1,9 @@
 'use strict';
 import * as React from 'react'; // eslint-disable-line no-unused-vars
 import {Flux} from 'flumpt';
-import MyComponent from './my.jsx';
 import Header from './header.jsx';
 import Preview from './preview.jsx';
+import ToolPanel from './tool-panel.jsx';
 
 export default class extends Flux {
   subscribe() {
@@ -20,7 +20,7 @@ export default class extends Flux {
       <div>
         <Header />
         <Preview {...state}/>
-        <MyComponent {...state}/>
+        <ToolPanel {...state}/>
       </div>
     );
   }

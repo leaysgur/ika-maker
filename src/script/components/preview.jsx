@@ -3,25 +3,31 @@ import * as React from 'react'; // eslint-disable-line no-unused-vars
 import {Component} from 'flumpt';
 import PartsModel from '../models/parts';
 
-export default class PreviewComponent extends Component {
+export default class extends Component {
   render() {
     let settings = this.props.settings;
+    // この重なり順が重要
+    let imgPathArr = [
+      PartsModel.getImgPath('bg', settings.bgType, settings.bgColor),
+
+      PartsModel.getImgPath('body', settings.bodyColor),
+
+      PartsModel.getImgPath('mouth', settings.mouthType),
+      PartsModel.getImgPath('brows', settings.browsType, settings.browsColor),
+      PartsModel.getImgPath('eyes', settings.eyesType, settings.eyesColor),
+
+      PartsModel.getImgPath('clothes', settings.clothesType),
+
+      PartsModel.getImgPath('hair', settings.hairColor),
+
+      PartsModel.getImgPath('hat', settings.hatType),
+    ];
 
     return (
       <div className="ika">
-        <img src={PartsModel.getImgPath('bg', settings.bgType, settings.bgColor)} width="95%" height="auto" />
-
-        <img src={PartsModel.getImgPath('body', settings.bodyColor)} width="95%" height="auto" />
-
-        <img src={PartsModel.getImgPath('mouth', settings.mouthType)} width="95%" height="auto" />
-        <img src={PartsModel.getImgPath('brows', settings.browsType, settings.browsColor)} width="95%" height="auto" />
-        <img src={PartsModel.getImgPath('eyes', settings.eyesType, settings.eyesColor)} width="95%" height="auto" />
-
-        <img src={PartsModel.getImgPath('clothes', settings.clothesType)}  width="95%" height="auto" />
-
-        <img src={PartsModel.getImgPath('hair', settings.hairColor)} width="95%" height="auto" />
-
-        <img src={PartsModel.getImgPath('hat', settings.hatType)} width="95%" height="auto" />
+        {imgPathArr.map((src, idx) => {
+          return (<img width="95%" height="auto" src={src} key={idx} />);
+        })}
       </div>
     );
   }
