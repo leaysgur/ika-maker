@@ -19,7 +19,7 @@ export default class App extends Flux {
     return (
       <div>
         <Header />
-        <Preview />
+        <Preview {...state}/>
         <MyComponent {...state}/>
       </div>
     );

@@ -6,10 +6,10 @@ export default {
   bodyColor:   1,
   mouthType:   4,
   browsType:   2,
-  browsColor:  7,
-  eyesType:    5,
+  browsColor:  10,
+  eyesType:    3,
   eyesColor:   3,
-  clothesType: 4,
-  hairColor:   7,
-  hatType:     7
+  clothesType: 6,
+  hairColor:   10,
+  hatType:     21
 };

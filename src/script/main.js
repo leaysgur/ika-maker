@@ -1,7 +1,7 @@
 'use strict';
 import * as ReactDOM from 'react-dom';
 import App from './components/app.jsx';
-import Parts from './models/parts';
+import PartsModel from './models/parts';
 
 const app = new App({
   renderer: (el) => {
@@ -16,9 +16,9 @@ const app = new App({
   ]
 });
 
-Parts.fetchAll().then(() => {
+PartsModel.fetchAll().then(() => {
   app.update((state) => {
-    state.settings = Parts.getDefaultSettings();
+    state.settings = PartsModel.getDefaultSettings();
     return state;
   });
 });
