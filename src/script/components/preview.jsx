@@ -1,3 +1,4 @@
+'use strict';
 import * as React from 'react'; // eslint-disable-line no-unused-vars
 import {Component} from 'flumpt';
 

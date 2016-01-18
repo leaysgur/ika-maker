@@ -1,4 +1,5 @@
 'use strict';
+const TRANSPARENT = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNgYAAAAAMAASsJTYQAAAAASUVORK5CYII=';
 
 /**
  * node sh/make-parts-list.js すると、
@@ -10,7 +11,7 @@
 module.exports = {
   body: {
     selectType: 'COLOR',
-    items: [/* { id: 1 } */],
+    items: [/* { id: 1, path: './path' } */],
     COLORS: {
       1: 'FEECE4',
       2: 'FED8C1',
@@ -47,7 +48,7 @@ module.exports = {
 
   brows: {
     selectType: 'TYPE_COLOR',
-    items: [/* { id: 1, items: [ { id: 1 } ] } */],
+    items: [/* { id: 1, items: [ { id: 1, path: './path' } ] } */],
     TYPES: {
       1: 'ふつう',
       2: 'よわき'
@@ -98,7 +99,7 @@ module.exports = {
 
   mouth: {
     selectType: 'TYPE',
-    items: [/* { id: 1 } */],
+    items: [],
     TYPES: {
       1: 'いち',
       2: 'に',
@@ -113,12 +114,12 @@ module.exports = {
 
   hat: {
     selectType: 'TYPE',
-    items: [ { id: 0 } ]
+    items: [ { id: 0, path: TRANSPARENT } ]
   },
 
   clothes: {
     selectType: 'TYPE',
-    items: [ { id: 0 } ]
+    items: [ { id: 0, path: TRANSPARENT } ]
   },
 
   bg: {

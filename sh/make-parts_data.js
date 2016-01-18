@@ -4,9 +4,9 @@ const fs   = require('fs');
 const path = require('path');
 
 const BASE_DIR  = process.cwd();
-const PARTS_DIR = './img/ika/';
-const SCHEME_SRC_DIR  = './src/script/models/_parts';
-const SCHEME_DIST_DIR = './src/script/models/parts';
+const PARTS_DIR = './img/ika';
+const SCHEME_SRC_DIR  = './src/script/data/_parts';
+const SCHEME_DIST_DIR = './src/script/data/parts';
 
 if (path.basename(BASE_DIR) !== 'ika-maker') {
   console.log('Execute from project root!');
@@ -21,7 +21,6 @@ console.log(`Generate ${SCHEME_DIST_DIR}.js`);
  */
 const partsScheme = require(path.resolve(BASE_DIR, SCHEME_SRC_DIR));
 
-
 Object.keys(partsScheme).forEach((parts) => {
   let partsList = fs.readdirSync(path.resolve(PARTS_DIR, parts));
   let selectType = partsScheme[parts].selectType;
@@ -30,7 +29,7 @@ Object.keys(partsScheme).forEach((parts) => {
     partsList
       .sort(_sortByFileNo)
       .forEach((file) => {
-        partsScheme[parts].items.push(_getElementByFileName(file));
+        partsScheme[parts].items.push(_getElementByFileName(file, `${PARTS_DIR}/${parts}`));
       });
   }
 
@@ -40,7 +39,7 @@ Object.keys(partsScheme).forEach((parts) => {
       let colorItems = colorsList
         .sort(_sortByFileNo)
         .map((file) => {
-          return _getElementByFileName(file);
+          return _getElementByFileName(file, `${PARTS_DIR}/${parts}/${type}`);
         });
 
       partsScheme[parts].items.push({
@@ -56,9 +55,10 @@ let data = `export default ${JSON.stringify(partsScheme, null, 2)};`;
 fs.writeFileSync(`${path.resolve(BASE_DIR, SCHEME_DIST_DIR)}.js`, data);
 console.log('Done!');
 
-function _getElementByFileName(file) {
+function _getElementByFileName(file, path) {
   return {
-    id: file.split('.')[0]|0
+    id:   file.split('.')[0]|0,
+    path: `${path}/${file}`
   };
 }
 

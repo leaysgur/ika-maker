@@ -9,12 +9,9 @@ const app = new App({
     ReactDOM.render(el, document.getElementById('jsApp'));
   },
   initialState: {
-    Parts,
     count: 0
   },
   middlewares: [
-    // logger
-    //   it may get state before unwrap promise
     (state) => {
       console.info(state);
       return state
@@ -22,6 +19,8 @@ const app = new App({
   ]
 });
 
-app.update((state) => {
-  return state;
+Parts.fetchAll().then(() => {
+  app.update((state) => {
+    return state;
+  });
 });
