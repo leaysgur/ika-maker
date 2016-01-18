@@ -7,9 +7,10 @@
   color: inherit;
   background-color: #FF6E00;
   cursor: pointer;
+
+  &--negative {
+    background-color: rgba(0,0,0,0);
+    border: 1px solid #FF6E00;
+  }
 }
 
-.button--negative {
-  background-color: rgba(0,0,0,0);
-  border: 1px solid #FF6E00;
-}

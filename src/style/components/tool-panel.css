@@ -3,6 +3,57 @@
   left: 0;
   right: 0;
   bottom: 0;
-  height: 120px;
+  padding-bottom: 16px;
   background-color: rgba(0, 0, 0, .75);
+}
+
+.parts-selector-header {
+  text-align: center;
+  padding-bottom: 8px;
+  border-bottom: 1px dashed #fff;
+  margin-bottom: 12px;
+}
+
+.parts-selector {
+  overflow: scroll;
+  -webkit-overflow-scrolling: touch;
+  display: flex;
+  align-items: center;
+}
+
+.parts-selector--item {
+  min-width: 56px;
+}
+
+.type-selector,
+.color-selector {
+  height: 40px;
+  margin: auto;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.type-selector {
+  width: 80px;
+  text-align: center;
+  overflow: hidden;
+
+  &--type-mouth > img {
+    transform: scale(8);
+    transform-origin: center;
+  }
+
+  &--type-hat > img {
+    transform: scale(1.5);
+    transform-origin: top;
+  }
+
+  &--type-clothes > img {
+    transform: scale(2);
+    transform-origin: bottom;
+  }
+}
+
+.color-selector {
+  width: 40px;
 }
