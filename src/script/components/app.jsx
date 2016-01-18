@@ -5,11 +5,11 @@ import MyComponent from './my.jsx';
 import Header from './header.jsx';
 import Preview from './preview.jsx';
 
-export default class App extends Flux {
+export default class extends Flux {
   subscribe() {
     this.on('increment', () => {
       this.update((state) => {
-        state.count++;
+        state.settings.hatType = Math.random()*20|0;
         return state;
       });
     });
