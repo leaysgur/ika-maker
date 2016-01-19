@@ -2,9 +2,10 @@
   position: fixed;
   left: 0;
   right: 0;
-  bottom: 0;
+  bottom: 8px;
+  padding-top: 8px;
   padding-bottom: 16px;
-  background-color: rgba(0, 0, 0, .75);
+  background-color: rgba(0, 0, 0, .5);
 }
 
 .parts-selector-header {
@@ -19,6 +20,7 @@
   -webkit-overflow-scrolling: touch;
   display: flex;
   align-items: center;
+  margin-bottom: 8px;
 }
 
 .parts-selector--item {
@@ -29,7 +31,6 @@
 .color-selector {
   height: 40px;
   margin: auto;
-  border-radius: 50%;
   cursor: pointer;
 }
 
@@ -37,6 +38,16 @@
   width: 80px;
   text-align: center;
   overflow: hidden;
+
+  &--type-brows > img {
+    transform: scale(5);
+    transform-origin: 16px 10px;
+  }
+
+  &--type-eyes > img {
+    transform: scale(3);
+    transform-origin: center 15px;
+  }
 
   &--type-mouth > img {
     transform: scale(8);
@@ -56,4 +67,5 @@
 
 .color-selector {
   width: 40px;
+  border-radius: 50%;
 }

@@ -23,6 +23,24 @@ export default class extends Component {
 
     return (
       <div className="tool-panel">
+        <ul className="tab-body">
+          {tabItems.map((item, idx) => {
+            let isSelected = idx === selectedTabIdx;
+            return (
+              <li
+                className={`
+                  tab-body__item
+                  tab-body__item--type-${item.group}
+                  ${isSelected ? '' :  'is-hidden'}
+                `}
+                key={item.order}
+              >
+                <PartsSelector partsName={item.id} />
+              </li>
+            );
+          })}
+        </ul>
+
         <ul className="tab-header">
           {tabItems.map((item, idx) => {
             let isSelected = idx === selectedTabIdx;
@@ -42,24 +60,6 @@ export default class extends Component {
             );
           })}
         </ul>
-        <ul className="tab-body">
-          {tabItems.map((item, idx) => {
-            let isSelected = idx === selectedTabIdx;
-            return (
-              <li
-                className={`
-                  tab-body__item
-                  tab-body__item--type-${item.group}
-                  ${isSelected ? '' :  'is-hidden'}
-                `}
-                key={item.order}
-              >
-                <PartsSelector partsName={item.id} />
-              </li>
-            );
-          })}
-        </ul>
-
       </div>
     );
   }
