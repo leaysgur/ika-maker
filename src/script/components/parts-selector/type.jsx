@@ -12,6 +12,8 @@ export default class extends Component {
         <ul className="parts-selector">
         {items.map((item, idx) => {
           let typeId = item.id;
+          // TypeColorの場合、Typeの階層ではパスがない
+          let imgSrc = item.path || item.items[0].path;
 
           return (
             <li className="parts-selector--item" key={idx}>
@@ -22,7 +24,7 @@ export default class extends Component {
                   type-selector--type-${target}
                 `}
               >
-                <img width="40" height="40" src={item.path || item.items[0].path} />
+                <img width="40" height="40" src={imgSrc} />
               </div>
             </li>
           );
