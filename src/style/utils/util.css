@@ -8,6 +8,17 @@
   vertical-align: text-bottom;
 }
 
+
+@keyframes color-selected {
+  from { transform: scale(.5); }
+  to   { transform: scale(1); }
+}
+
+@keyframes type-selected {
+  from { transform: rotateZ(15deg); }
+  to   { transform: rotateZ(0deg); }
+}
+
 .is-selected {
   pointer-events: none;
 }

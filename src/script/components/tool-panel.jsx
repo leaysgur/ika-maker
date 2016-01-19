@@ -35,7 +35,7 @@ export default class extends Component {
                 `}
                 key={item.order}
               >
-                <PartsSelector partsName={item.id} />
+                <PartsSelector {...this.props} partsName={item.id} />
               </li>
             );
           })}

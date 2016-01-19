@@ -4,7 +4,7 @@ import {Component} from 'flumpt';
 
 export default class extends Component {
   render() {
-    let {target, items, onSelect} = this.props;
+    let {target, items, onSelect, selectedTypeId} = this.props;
 
     return (
       <div>
@@ -14,6 +14,7 @@ export default class extends Component {
           let typeId = item.id;
           // TypeColorの場合、Typeの階層ではパスがない
           let imgSrc = item.path || item.items[0].path;
+          let isSelected = typeId === selectedTypeId;
 
           return (
             <li className="parts-selector--item" key={idx}>
@@ -22,6 +23,7 @@ export default class extends Component {
                 className={`
                   type-selector
                   type-selector--type-${target}
+                  ${isSelected ? 'is-selected' : ''}
                 `}
               >
                 <img width="40" height="40" src={imgSrc} />

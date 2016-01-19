@@ -32,7 +32,7 @@ export default class extends Component {
   }
 
   render() {
-    let {target, parts, _setPartsColor} = this.props;
+    let {target, parts, _setPartsColor, selectedTypeId, selectedColorId} = this.props;
     let colorItems = this.getColorItemsBySelectedTypeId(this.state.selectedTypeId);
 
     return (
@@ -41,12 +41,14 @@ export default class extends Component {
           onSelect={this.setPartsType.bind(this)}
           target={target}
           items={parts.items}
+          selectedTypeId={selectedTypeId}
         />
         <ColorSelector
           onSelect={_setPartsColor}
           target={target}
           COLORS={parts.COLORS}
           items={colorItems}
+          selectedColorId={selectedColorId}
         />
       </div>
     );

@@ -4,7 +4,7 @@ import {Component} from 'flumpt';
 
 export default class extends Component {
   render() {
-    let {target, COLORS, items, onSelect} = this.props;
+    let {target, COLORS, items, onSelect, selectedColorId} = this.props;
 
     return (
       <div>
@@ -13,11 +13,16 @@ export default class extends Component {
         {items.map((item, idx) => {
           let style = { backgroundColor: `#${COLORS[item.id]}`};
           let colorId = item.id;
+          let isSelected = colorId === selectedColorId;
           return (
             <li className="parts-selector--item" key={idx}>
               <div
                 onClick={() => { onSelect({target, colorId}); }}
-                className="color-selector" style={style}
+                className={`
+                  color-selector
+                  ${isSelected ? 'is-selected' : ''}
+                `}
+                style={style}
               ></div>
             </li>
           );

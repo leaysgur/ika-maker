@@ -24,7 +24,7 @@
 }
 
 .parts-selector--item {
-  min-width: 56px;
+  min-width: 64px;
 }
 
 .type-selector,
@@ -38,6 +38,10 @@
   width: 80px;
   text-align: center;
   overflow: hidden;
+
+  &.is-selected {
+    animation: type-selected .25s 1 alternate;
+  }
 
   &--type-brows > img {
     transform: scale(5);
@@ -68,4 +72,8 @@
 .color-selector {
   width: 40px;
   border-radius: 50%;
+
+  &.is-selected {
+    animation: color-selected .25s 1 alternate;
+  }
 }

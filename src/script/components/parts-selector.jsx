@@ -16,8 +16,10 @@ export default class extends Component {
   }
 
   render() {
-    let partsName = this.props.partsName;
+    let {partsName, settings} = this.props;
     let parts = PartsScheme[partsName];
+    let selectedTypeId  = settings[`${partsName}Type`]  || null;
+    let selectedColorId = settings[`${partsName}Color`] || null;
 
     return (
       <div>
@@ -25,16 +27,20 @@ export default class extends Component {
                                                onSelect={this.setPartsType.bind(this)}
                                                target={partsName}
                                                items={parts.items}
+                                               selectedTypeId={selectedTypeId}
                                              /> : null}
         {parts.selectType === 'COLOR'      ? <ColorSelector
                                                onSelect={this.setPartsColor.bind(this)}
                                                target={partsName}
                                                COLORS={parts.COLORS}
                                                items={parts.items}
+                                               selectedColorId={selectedColorId}
                                              /> : null}
         {parts.selectType === 'TYPE_COLOR' ? <TypeColorSelector
                                                target={partsName}
                                                parts={parts}
+                                               selectedTypeId={selectedTypeId}
+                                               selectedColorId={selectedColorId}
                                                _setPartsType={this.setPartsType.bind(this)}
                                                _setPartsColor={this.setPartsColor.bind(this)}
                                              /> : null}
