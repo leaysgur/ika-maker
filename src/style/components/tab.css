@@ -11,10 +11,12 @@
   min-width: 92px;
   padding: 4px 8px;
   flex: 1 1 auto;
-  opacity: .4;
   cursor: pointer;
+  opacity: .5;
 
   &.is-selected {
+    border-width: 1px;
+    border-style: solid;
     opacity: 1;
   }
 }
@@ -32,5 +34,6 @@
   color: green;
 }
 
-.tab-body__item {
+.tab-body {
+  margin-bottom: 16px;
 }
