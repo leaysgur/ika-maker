@@ -9,22 +9,6 @@ export default class extends Component {
   }
 
   onClickSave() {
-    let canvas = document.createElement('canvas');
-    let ctx = canvas.getContext('2d');
-    canvas.width = canvas.height = 600;
-
-    let imgs = document.getElementsByClassName('jsIkaImg');
-    [].forEach.call(imgs, function(img) {
-      ctx.drawImage(img, 0, 0, 600, 600);
-    });
-
-    let img = document.createElement('img');
-    img.src = canvas.toDataURL();
-    img.width = img.height = 300;
-
-    let dist = document.getElementById('fix-img');
-    dist.innerHTML = '';
-    dist.appendChild(img);
     this.dispatch('show:fixModal');
   }
 

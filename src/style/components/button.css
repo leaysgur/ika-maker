@@ -1,7 +1,21 @@
+.button-wrap {
+  margin: 8px;
+
+  .button {
+    display: block;
+    margin: 0 auto;
+  }
+
+  .button + .button {
+    margin-top: 8px;
+  }
+}
+
 .button {
   display: inline;
   padding: 4px 8px;
   min-width: 64px;
+  max-width: 200px;
   text-decoration: none;
   text-align: center;
   color: inherit;
@@ -12,5 +26,8 @@
     background-color: rgba(0,0,0,0);
     border: 1px solid #FF6E00;
   }
-}
 
+  &--tweet {
+    background-color: #50ABF1;
+  }
+}

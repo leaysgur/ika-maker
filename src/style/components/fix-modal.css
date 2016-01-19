@@ -5,10 +5,12 @@
   right: 0;
   bottom: 0;
   margin: auto;
+  padding-top: 8px;
   z-index: 1;
   transform: translate3d(0, -1000px, 0);
   transition: transform .5s ease-in-out;
   background-color: rgba(0, 0, 0, .75);
+  text-align: center;
 
   &.is-show {
     transform: translate3d(0, 0, 0);
