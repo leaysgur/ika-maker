@@ -8,6 +8,11 @@ const app = new App({
     ReactDOM.render(el, document.getElementById('jsApp'));
   },
 
+  initialState: {
+    settings: {},
+    showFixModal: false
+  },
+
   middlewares: [
     (state) => {
       console.info(state);

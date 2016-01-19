@@ -4,6 +4,7 @@ import {Flux} from 'flumpt';
 import Header from './header.jsx';
 import Preview from './preview.jsx';
 import ToolPanel from './tool-panel.jsx';
+import FixModal from './fix-modal.jsx';
 
 export default class extends Flux {
   subscribe() {
@@ -21,22 +22,28 @@ export default class extends Flux {
       });
     });
 
-    this.on('set:type_color', ({target, typeId, colorId}) => {
+    this.on('show:fixModal', () => {
       this.update((state) => {
-        state.settings[`${target}Type`] = typeId;
-        state.settings[`${target}Color`] = colorId;
+        state.showFixModal = true;
         return state;
       });
     });
 
+    this.on('hide:fixModal', () => {
+      this.update((state) => {
+        state.showFixModal = false;
+        return state;
+      });
+    });
   }
 
   render(state) {
     return (
       <div>
         <Header />
-        <Preview {...state}/>
-        <ToolPanel {...state}/>
+        <Preview settings={state.settings} />
+        <ToolPanel {...state} />
+        <FixModal isShow={state.showFixModal} />
       </div>
     );
   }
