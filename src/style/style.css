@@ -3,6 +3,7 @@
 
 @import "./components/title";
 @import "./components/button";
+@import "./components/memo";
 @import "./components/header";
 @import "./components/ika";
 @import "./components/tool-panel";
