@@ -1,11 +1,10 @@
 .ika {
   position: relative;
   text-align: center;
-  pointer-events: none;
   user-select: none;
 }
 
-.ika img {
+.ika--parts {
   position: absolute;
   left: 0;
   right: 0;
@@ -13,6 +12,6 @@
   max-width: 600px;
 }
 
-.ika img:first-child {
+.ika--parts:first-child {
   position: static;
 }

@@ -4,6 +4,10 @@ import {Component} from 'flumpt';
 import PartsModel from '../models/parts';
 
 export default class extends Component {
+  handleTouchMove(ev) {
+    ev.preventDefault();
+  }
+
   render() {
     let settings = this.props.settings;
     // この重なり順が重要
@@ -24,9 +28,9 @@ export default class extends Component {
     ];
 
     return (
-      <div className="ika">
+      <div className="ika" onTouchMove={this.handleTouchMove}>
         {imgPathArr.map((src, idx) => {
-          return (<img width="95%" height="auto" className="jsIkaImg" src={src} key={idx} />);
+          return (<img width="95%" height="auto" className="ika--parts jsIkaImg" src={src} key={idx} />);
         })}
       </div>
     );

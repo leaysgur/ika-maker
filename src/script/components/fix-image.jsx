@@ -3,6 +3,10 @@ import * as React from 'react'; // eslint-disable-line no-unused-vars
 import {Component} from 'flumpt';
 
 export default class extends Component {
+  handleTouchMove(ev) {
+    ev.preventDefault();
+  }
+
   getImgSrc() {
     let canvas = document.createElement('canvas');
     let ctx = canvas.getContext('2d');
@@ -26,7 +30,7 @@ export default class extends Component {
 
   render() {
     return (
-      <img width="300" height="300" src={this.getImgSrc()} />
+      <img width="300" height="300" src={this.getImgSrc()} onTouchMove={this.handleTouchMove} />
     );
   }
 };
