@@ -10,6 +10,7 @@ class TypeColorSelector extends Component {
     this.state = {
       selectedTypeId: 1
     };
+    this.setPartsType = this.setPartsType.bind(this);
   }
 
   getColorItemsBySelectedTypeId(typeId) {
@@ -38,7 +39,7 @@ class TypeColorSelector extends Component {
     return (
       <div>
         <TypeSelector
-          onSelect={this.setPartsType.bind(this)}
+          onSelect={this.setPartsType}
           target={target}
           items={parts.items}
           selectedTypeId={selectedTypeId}
@@ -58,6 +59,7 @@ class TypeColorSelector extends Component {
 TypeColorSelector.propTypes = {
   target:          React.PropTypes.string.isRequired,
   parts:           React.PropTypes.object.isRequired,
+  _setPartsType:   React.PropTypes.func.isRequired,
   _setPartsColor:  React.PropTypes.func.isRequired,
   selectedTypeId:  React.PropTypes.number.isRequired,
   selectedColorId: React.PropTypes.number.isRequired

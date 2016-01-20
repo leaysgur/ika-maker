@@ -7,6 +7,12 @@ import ColorSelector from './parts-selector/color.jsx';
 import TypeColorSelector from './parts-selector/type_color.jsx';
 
 class PartsSelector extends Component {
+  constructor() {
+    super();
+    this.setPartsType  = this.setPartsType.bind(this);
+    this.setPartsColor = this.setPartsColor.bind(this);
+  }
+
   setPartsType({ target, typeId }) {
     this.dispatch('set:type', {target, typeId});
   }
@@ -24,13 +30,13 @@ class PartsSelector extends Component {
     return (
       <div>
         {parts.selectType === 'TYPE'       ? <TypeSelector
-                                               onSelect={this.setPartsType.bind(this)}
+                                               onSelect={this.setPartsType}
                                                target={partsName}
                                                items={parts.items}
                                                selectedTypeId={selectedTypeId}
                                              /> : null}
         {parts.selectType === 'COLOR'      ? <ColorSelector
-                                               onSelect={this.setPartsColor.bind(this)}
+                                               onSelect={this.setPartsColor}
                                                target={partsName}
                                                COLORS={parts.COLORS}
                                                items={parts.items}
@@ -41,8 +47,8 @@ class PartsSelector extends Component {
                                                parts={parts}
                                                selectedTypeId={selectedTypeId}
                                                selectedColorId={selectedColorId}
-                                               _setPartsType={this.setPartsType.bind(this)}
-                                               _setPartsColor={this.setPartsColor.bind(this)}
+                                               _setPartsType={this.setPartsType}
+                                               _setPartsColor={this.setPartsColor}
                                              /> : null}
       </div>
     );
