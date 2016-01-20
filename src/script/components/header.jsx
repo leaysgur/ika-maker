@@ -2,7 +2,7 @@
 import * as React from 'react'; // eslint-disable-line no-unused-vars
 import {Component} from 'flumpt';
 
-export default class extends Component {
+class Header extends Component {
   constructor() {
     super();
     this.onClickSave = this.onClickSave.bind(this);
@@ -22,3 +22,5 @@ export default class extends Component {
     );
   }
 };
+
+export default Header;

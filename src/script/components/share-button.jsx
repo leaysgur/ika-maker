@@ -2,8 +2,9 @@
 import * as React from 'react'; // eslint-disable-line no-unused-vars
 import {Component} from 'flumpt';
 
-export default class extends Component {
+class ShareButton extends Component {
   render() {
+    // XXX: locationってココでさわっていいのか
     let shareText = 'うちのコかわいいでしょ？\n\n' + location.origin + ' #スーパーイカメーカー';
     let shareUrl = 'https://twitter.com/intent/tweet?text=' + encodeURIComponent(shareText);
 
@@ -12,3 +13,5 @@ export default class extends Component {
     );
   }
 };
+
+export default ShareButton;

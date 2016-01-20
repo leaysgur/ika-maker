@@ -3,13 +3,13 @@ import * as React from 'react'; // eslint-disable-line no-unused-vars
 import {Component} from 'flumpt';
 import PartsModel from '../models/parts';
 
-export default class extends Component {
+class Preview extends Component {
   handleTouchMove(ev) {
     ev.preventDefault();
   }
 
   render() {
-    let settings = this.props.settings;
+    let {settings} = this.props;
     // この重なり順が重要
     let imgPathArr = [
       PartsModel.getImgPath('bg', settings.bgType, settings.bgColor),
@@ -36,3 +36,9 @@ export default class extends Component {
     );
   }
 };
+
+Preview.propTypes = {
+  settings: React.PropTypes.object.isRequired
+};
+
+export default Preview;

@@ -2,7 +2,7 @@
 import * as React from 'react'; // eslint-disable-line no-unused-vars
 import {Component} from 'flumpt';
 
-export default class extends Component {
+class FixImage extends Component {
   handleTouchMove(ev) {
     ev.preventDefault();
   }
@@ -34,3 +34,9 @@ export default class extends Component {
     );
   }
 };
+
+FixImage.propTypes = {
+  isShow: React.PropTypes.bool.isRequired
+};
+
+export default FixImage;

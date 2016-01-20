@@ -43,7 +43,7 @@ export default class extends Flux {
       <div>
         <Header />
         <Preview settings={state.settings} />
-        <ToolPanel {...state} />
+        <ToolPanel settings={state.settings} />
         <FixModal isShow={state.showFixModal} />
       </div>
     );

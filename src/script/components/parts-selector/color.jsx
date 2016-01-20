@@ -2,7 +2,7 @@
 import * as React from 'react'; // eslint-disable-line no-unused-vars
 import {Component} from 'flumpt';
 
-export default class extends Component {
+class ColorSelector extends Component {
   render() {
     let {target, COLORS, items, onSelect, selectedColorId} = this.props;
 
@@ -32,3 +32,13 @@ export default class extends Component {
     );
   }
 };
+
+ColorSelector.propTypes = {
+  target:          React.PropTypes.string.isRequired,
+  COLORS:          React.PropTypes.object.isRequired,
+  items:           React.PropTypes.array.isRequired,
+  onSelect:        React.PropTypes.func.isRequired,
+  selectedColorId: React.PropTypes.number.isRequired
+};
+
+export default ColorSelector;

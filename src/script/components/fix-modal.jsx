@@ -4,7 +4,7 @@ import {Component} from 'flumpt';
 import FixImage from './fix-image.jsx';
 import ShareButton from './share-button.jsx';
 
-export default class extends Component {
+class FixModal extends Component {
   constructor() {
     super();
     this.onClickCancel = this.onClickCancel.bind(this);
@@ -35,3 +35,9 @@ export default class extends Component {
     );
   }
 };
+
+FixModal.propTypes = {
+  isShow: React.PropTypes.bool.isRequired
+};
+
+export default FixModal;

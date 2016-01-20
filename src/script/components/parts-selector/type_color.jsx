@@ -4,7 +4,7 @@ import {Component} from 'flumpt';
 import TypeSelector from './type.jsx';
 import ColorSelector from './color.jsx';
 
-export default class extends Component {
+class TypeColorSelector extends Component {
   constructor() {
     super();
     this.state = {
@@ -54,3 +54,13 @@ export default class extends Component {
     );
   }
 };
+
+TypeColorSelector.propTypes = {
+  target:          React.PropTypes.string.isRequired,
+  parts:           React.PropTypes.object.isRequired,
+  _setPartsColor:  React.PropTypes.func.isRequired,
+  selectedTypeId:  React.PropTypes.number.isRequired,
+  selectedColorId: React.PropTypes.number.isRequired
+};
+
+export default TypeColorSelector;

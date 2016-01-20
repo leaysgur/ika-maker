@@ -4,7 +4,7 @@ import {Component} from 'flumpt';
 import PartsModel from '../models/parts';
 import PartsSelector from './parts-selector.jsx';
 
-export default class extends Component {
+class ToolPanel extends Component {
   constructor() {
     super();
 
@@ -19,6 +19,7 @@ export default class extends Component {
 
   render() {
     let tabItems = PartsModel.getTabItems();
+    let {settings} = this.props;
     let {selectedTabIdx} = this.state;
 
     return (
@@ -35,7 +36,7 @@ export default class extends Component {
                 `}
                 key={item.order}
               >
-                <PartsSelector {...this.props} partsName={item.id} />
+                <PartsSelector settings={settings} partsName={item.id} />
               </li>
             );
           })}
@@ -64,3 +65,9 @@ export default class extends Component {
     );
   }
 };
+
+ToolPanel.propTypes = {
+  settings: React.PropTypes.object.isRequired
+};
+
+export default ToolPanel;

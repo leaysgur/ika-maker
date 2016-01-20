@@ -2,7 +2,7 @@
 import * as React from 'react'; // eslint-disable-line no-unused-vars
 import {Component} from 'flumpt';
 
-export default class extends Component {
+class TypeSelector extends Component {
   render() {
     let {target, items, onSelect, selectedTypeId} = this.props;
 
@@ -36,3 +36,12 @@ export default class extends Component {
     );
   }
 };
+
+TypeSelector.propTypes = {
+  target:         React.PropTypes.string.isRequired,
+  items:          React.PropTypes.array.isRequired,
+  onSelect:       React.PropTypes.func.isRequired,
+  selectedTypeId: React.PropTypes.number.isRequired
+};
+
+export default TypeSelector;

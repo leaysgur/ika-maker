@@ -6,7 +6,7 @@ import TypeSelector from './parts-selector/type.jsx';
 import ColorSelector from './parts-selector/color.jsx';
 import TypeColorSelector from './parts-selector/type_color.jsx';
 
-export default class extends Component {
+class PartsSelector extends Component {
   setPartsType({ target, typeId }) {
     this.dispatch('set:type', {target, typeId});
   }
@@ -48,3 +48,10 @@ export default class extends Component {
     );
   }
 };
+
+PartsSelector.propTypes = {
+  partsName: React.PropTypes.string.isRequired,
+  settings:  React.PropTypes.object.isRequired
+};
+
+export default PartsSelector;
