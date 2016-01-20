@@ -3,6 +3,8 @@ import PartsScheme from '../data/parts';
 import DefaultPartsSettings from '../data/default-parts';
 import {Promise} from 'es6-promise';
 
+const TRANSPARENT = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNgYAAAAAMAASsJTYQAAAAASUVORK5CYII=';
+
 export default {
   getDefaultSettings() {
     return DefaultPartsSettings;
@@ -23,6 +25,10 @@ export default {
       path = parts.items.filter((item) => {
         return item.id === type;
       })[0].path;
+    }
+
+    if (partsName === 'hat' && type === 0) {
+      path = TRANSPARENT;
     }
 
     return path;

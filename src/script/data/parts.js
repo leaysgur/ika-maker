@@ -587,7 +587,7 @@ export default {
     "items": [
       {
         "id": 0,
-        "path": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNgYAAAAAMAASsJTYQAAAAASUVORK5CYII="
+        "path": "./img/ika/hat/0.png"
       },
       {
         "id": 1,
@@ -701,10 +701,6 @@ export default {
     "tabGroup": "GEAR",
     "selectType": "TYPE",
     "items": [
-      {
-        "id": 0,
-        "path": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNgYAAAAAMAASsJTYQAAAAASUVORK5CYII="
-      },
       {
         "id": 1,
         "path": "./img/ika/clothes/1.png"

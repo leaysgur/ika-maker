@@ -24,8 +24,8 @@ class PartsSelector extends Component {
   render() {
     let {partsName, settings} = this.props;
     let parts = PartsScheme[partsName];
-    let selectedTypeId  = settings[`${partsName}Type`]  || null;
-    let selectedColorId = settings[`${partsName}Color`] || null;
+    let selectedTypeId  = settings[`${partsName}Type`];
+    let selectedColorId = settings[`${partsName}Color`];
 
     return (
       <div>

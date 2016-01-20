@@ -1,5 +1,4 @@
 'use strict';
-const TRANSPARENT = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNgYAAAAAMAASsJTYQAAAAASUVORK5CYII=';
 
 /**
  * node sh/make-parts-list.js すると、
@@ -108,7 +107,7 @@ module.exports = {
     tabOrder: 7,
     tabGroup: 'GEAR',
     selectType: 'TYPE',
-    items: [ { id: 0, path: TRANSPARENT } ]
+    items: []
   },
 
   clothes: {
@@ -116,7 +115,7 @@ module.exports = {
     tabOrder: 8,
     tabGroup: 'GEAR',
     selectType: 'TYPE',
-    items: [ { id: 0, path: TRANSPARENT } ]
+    items: []
   },
 
   bg: {
