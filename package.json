@@ -24,7 +24,8 @@
     "flumpt": "^0.1.4",
     "object-assign": "^4.0.1",
     "react": "^0.14.6",
-    "react-dom": "^0.14.6"
+    "react-dom": "^0.14.6",
+    "react-tap-event-plugin": "^0.2.1"
   },
   "devDependencies": {
     "autoprefixer": "^6.3.1",

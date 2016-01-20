@@ -17,7 +17,7 @@ class Header extends Component {
       <div className="header">
         <a className="button button--negative ft-ika" href="./index.html">モドル</a>
         <h1 className="header__title title ft-ika">スーパーイカメーカー</h1>
-        <a className="button ft-ika" onClick={this.onClickSave}>カンセイ</a>
+        <a className="button ft-ika" onTouchTap={this.onClickSave}>カンセイ</a>
       </div>
     );
   }

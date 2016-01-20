@@ -53,7 +53,7 @@ class ToolPanel extends Component {
                   ${isSelected ? 'is-selected' : ''}
                   ft-ika
                 `}
-                onClick={() => { this.onClickTab(idx); }}
+                onTouchTap={() => { this.onClickTab(idx); }}
                 key={item.order}
               >
                 <h2>{item.name}</h2>

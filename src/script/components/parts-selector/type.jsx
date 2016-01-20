@@ -19,7 +19,7 @@ class TypeSelector extends Component {
           return (
             <li className="parts-selector--item" key={idx}>
               <div
-                onClick={() => { onSelect({target, typeId}); }}
+                onTouchTap={() => { onSelect({target, typeId}); }}
                 className={`
                   type-selector
                   type-selector--type-${target}

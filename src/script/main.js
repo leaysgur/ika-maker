@@ -1,8 +1,11 @@
 'use strict';
 import * as ReactDOM from 'react-dom';
+import injectTapEventPlugin from 'react-tap-event-plugin';
 import objectAssign from 'object-assign';
 import App from './components/app.jsx';
 import PartsModel from './models/parts';
+
+injectTapEventPlugin();
 
 const app = new App({
   renderer: (el) => {

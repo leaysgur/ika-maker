@@ -17,7 +17,7 @@ class ColorSelector extends Component {
           return (
             <li className="parts-selector--item" key={idx}>
               <div
-                onClick={() => { onSelect({target, colorId}); }}
+                onTouchTap={() => { onSelect({target, colorId}); }}
                 className={`
                   color-selector
                   ${isSelected ? 'is-selected' : ''}
