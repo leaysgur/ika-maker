@@ -1,0 +1,15 @@
+.loading {
+  position: relative;
+}
+
+.loading--content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  width: 138px;
+  padding-top: 20%;
+  text-align: center;
+}
