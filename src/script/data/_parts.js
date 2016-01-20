@@ -58,10 +58,6 @@ module.exports = {
     tabGroup: 'FACE',
     selectType: 'TYPE_COLOR',
     items: [/* { id: 1, items: [ { id: 1, path: './path' } ] } */],
-    TYPES: {
-      1: 'ふつう',
-      2: 'よわき'
-    },
     COLORS: {
       1:  'FD8424',
       2:  '0F4DFB',
@@ -88,16 +84,6 @@ module.exports = {
     tabGroup: 'FACE',
     selectType: 'TYPE_COLOR',
     items: [],
-    TYPES: {
-      1: 'いち',
-      2: 'に',
-      3: 'さん',
-      4: 'よん',
-      5: 'ご',
-      6: 'ろく',
-      7: 'なな',
-      8: 'はち'
-    },
     COLORS: {
       1: '383834',
       2: '5D3C36',
@@ -115,16 +101,6 @@ module.exports = {
     tabGroup: 'FACE',
     selectType: 'TYPE',
     items: [],
-    TYPES: {
-      1: 'いち',
-      2: 'に',
-      3: 'さん',
-      4: 'よん',
-      5: 'ご',
-      6: 'ろく',
-      7: 'なな',
-      8: 'はち'
-    }
   },
 
   hat: {
@@ -149,10 +125,6 @@ module.exports = {
     tabGroup: 'OTHERS',
     selectType: 'TYPE_COLOR',
     items: [],
-    TYPES: {
-      1: '単色',
-      2: 'パターン'
-    },
     COLORS: {
       1:  'ffffff',
       2:  '000000',
