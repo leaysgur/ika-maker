@@ -26,6 +26,9 @@ class FixModal extends Component {
         ${isShow ? 'is-show' : ''}
       `}>
         <FixImage isShow={isShow} />
+        <p className="memo">
+          ※画像を長押し or 右クリックメニューから保存できます
+        </p>
         <div className="button-wrap">
           <ShareButton />
           <a className="button button--negative ft-ika" onTouchTap={this.onClickCancel}>てなおしする</a>
