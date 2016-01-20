@@ -2,7 +2,6 @@
 @import "./utils/util";
 
 @import "./components/loading";
-@import "./components/title";
 @import "./components/button";
 @import "./components/memo";
 @import "./components/header";

@@ -16,7 +16,7 @@ class Header extends Component {
     return (
       <div className="header">
         <a className="button button--negative ft-ika" href="./index.html">モドル</a>
-        <h1 className="header__title title ft-ika">スーパーイカメーカー</h1>
+        <h1 className="header__title ft-ika">スーパーイカメーカー</h1>
         <a className="button ft-ika" onTouchTap={this.onClickSave}>カンセイ</a>
       </div>
     );
