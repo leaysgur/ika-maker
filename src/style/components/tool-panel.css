@@ -38,6 +38,8 @@
   width: 80px;
   text-align: center;
   overflow: hidden;
+  /* XXX: なんでこんなことを・・ */
+  transform: translate3d(0,0,0);
 
   &.is-selected {
     animation: type-selected .25s 1 alternate;
