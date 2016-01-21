@@ -1,6 +1,8 @@
 @import "./utils/default";
 @import "./utils/util";
 
+@import "./components/index";
+
 @import "./components/loading";
 @import "./components/button";
 @import "./components/memo";
