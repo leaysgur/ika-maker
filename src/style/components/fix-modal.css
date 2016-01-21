@@ -7,8 +7,8 @@
   margin: auto;
   padding-top: 24px;
   z-index: 1;
-  transform: translate3d(0, -1000px, 0);
-  transition: transform 1s cubic-bezier(1, -0.81, 0.36, 1);
+  transform: translate3d(0, -100%, 0);
+  transition: transform .75s cubic-bezier(0.6, -0.28, 0.74, 0.05);
   background-color: rgba(0, 0, 0, .75);
   text-align: center;
 

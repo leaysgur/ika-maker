@@ -17,4 +17,4 @@ export const DEFAULT_PARTS_SETTINGS = {
 };
 
 export const SHARE_URL = 'https://twitter.com/intent/tweet?text=';
-export const SHARE_TEXT = `みんなもマイイカのアイコンつくらなイカ？\n\n${INDEX_URL} #スーパーイカメーカー`;
+export const SHARE_TEXT = `みんなもマイイカのアイコンつくらなイカ？\n${INDEX_URL} #スーパーイカメーカー`;
