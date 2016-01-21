@@ -21035,7 +21035,9 @@ var FixModal = function (_Component) {
         React.createElement(
           'p',
           { className: 'memo' },
-          '※画像を長押し or 右クリックメニューから保存できます'
+          '※画像を長押し or 右クリックメニューから保存できます',
+          React.createElement('br', null),
+          '※ツイートする場合の画像はご自身で添付してください'
         ),
         React.createElement(
           'div',
@@ -21813,7 +21815,7 @@ var DEFAULT_PARTS_SETTINGS = exports.DEFAULT_PARTS_SETTINGS = {
 };
 
 var SHARE_URL = exports.SHARE_URL = 'https://twitter.com/intent/tweet?text=';
-var SHARE_TEXT = exports.SHARE_TEXT = 'みんなもマイイカのアイコンつくらなイカ？\n\n' + INDEX_URL + ' #スーパーイカメーカー';
+var SHARE_TEXT = exports.SHARE_TEXT = 'みんなもマイイカのアイコンつくらなイカ？\n' + INDEX_URL + ' #スーパーイカメーカー';
 
 },{}],178:[function(require,module,exports){
 "use strict";
