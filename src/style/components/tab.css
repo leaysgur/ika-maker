@@ -22,16 +22,16 @@
 }
 
 .tab-header__item--type-BASE {
-  color: red;
+  color: #FD2A96;
 }
 .tab-header__item--type-FACE {
-  color: yellow;
+  color: #CA00DF;
 }
 .tab-header__item--type-GEAR {
-  color: orange;
+  color: #8CB800;
 }
 .tab-header__item--type-OTHERS {
-  color: green;
+  color: #0021FE;
 }
 
 .tab-body {
