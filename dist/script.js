@@ -21813,7 +21813,7 @@ var DEFAULT_PARTS_SETTINGS = exports.DEFAULT_PARTS_SETTINGS = {
 };
 
 var SHARE_URL = exports.SHARE_URL = 'https://twitter.com/intent/tweet?text=';
-var SHARE_TEXT = exports.SHARE_TEXT = 'うちのコかわいいでしょ？\n\n' + INDEX_URL + ' #スーパーイカメーカー';
+var SHARE_TEXT = exports.SHARE_TEXT = 'みんなもマイイカのアイコンつくらなイカ？\n\n' + INDEX_URL + ' #スーパーイカメーカー';
 
 },{}],178:[function(require,module,exports){
 "use strict";
