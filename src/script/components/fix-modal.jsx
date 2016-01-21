@@ -27,7 +27,8 @@ class FixModal extends Component {
       `}>
         <Preview fixImgSrc={fixImgSrc} />
         <p className="memo">
-          ※画像を長押し or 右クリックメニューから保存できます
+          ※画像を長押し or 右クリックメニューから保存できます<br/>
+          ※ツイートする場合の画像はご自身で添付してください
         </p>
         <div className="button-wrap">
           <ShareButton />
