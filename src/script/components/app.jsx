@@ -6,12 +6,14 @@ import Header from './header.jsx';
 import Preview from './preview.jsx';
 import ToolPanel from './tool-panel.jsx';
 import FixModal from './fix-modal.jsx';
+import PartsModel from '../models/parts';
 
 export default class extends Flux {
   subscribe() {
     this.on('set:color', ({target, colorId}) => {
       this.update((state) => {
         state.settings[`${target}Color`] = colorId;
+        state.fixImgSrc = PartsModel.getFixImgSrcBySettings(state.settings);
         return objectAssign({}, state);
       });
     });
@@ -19,6 +21,7 @@ export default class extends Flux {
     this.on('set:type', ({target, typeId}) => {
       this.update((state) => {
         state.settings[`${target}Type`] = typeId;
+        state.fixImgSrc = PartsModel.getFixImgSrcBySettings(state.settings);
         return objectAssign({}, state);
       });
     });
@@ -42,7 +45,7 @@ export default class extends Flux {
     return (
       <div>
         <Header />
-        <Preview settings={state.settings} />
+        <Preview fixImgSrc={state.fixImgSrc} />
         <ToolPanel settings={state.settings} />
         <FixModal isShow={state.showFixModal} />
       </div>

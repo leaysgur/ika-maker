@@ -14,7 +14,8 @@ const app = new App({
 
   initialState: {
     settings: {},
-    showFixModal: false
+    showFixModal: false,
+    fixImgSrc: ''
   },
 
   // TODO: あとでけす
@@ -29,7 +30,8 @@ const app = new App({
 global.addEventListener('load', () => {
   PartsModel.fetchAll().then(() => {
     app.update((state) => {
-      state.settings = PartsModel.getDefaultSettings();
+      state.settings  = PartsModel.getDefaultSettings();
+      state.fixImgSrc = PartsModel.getFixImgSrcBySettings(state.settings);
       return objectAssign({}, state);
     });
   });

@@ -1,17 +1,8 @@
 .ika {
-  position: relative;
   text-align: center;
   user-select: none;
 }
 
 .ika--parts {
-  position: absolute;
-  left: 0;
-  right: 0;
-  margin: auto;
   max-width: 600px;
-}
-
-.ika--parts:first-child {
-  position: static;
 }
