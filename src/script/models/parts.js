@@ -4,16 +4,16 @@ import PartsScheme from '../data/parts';
 import DefaultPartsSettings from '../data/default-parts';
 import {Promise} from 'es6-promise';
 
-const TRANSPARENT = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNgYAAAAAMAASsJTYQAAAAASUVORK5CYII=';
-
-export default {
-  cache: {},
+class PartsModel {
+  constructor() {
+    this.cache = {};
+  }
 
   getDefaultSettings() {
     return objectAssign({}, DefaultPartsSettings);
-  },
+  }
 
-  _getImgPath(partsName, type, color) {
+  _getImgRef(partsName, type, color) {
     let parts = PartsScheme[partsName];
     let path = '';
 
@@ -31,44 +31,43 @@ export default {
     }
 
     if (partsName === 'hat' && type === 0) {
-      path = TRANSPARENT;
+      return null;
     }
 
-    return path;
-  },
+    return this.cache[path];
+  }
 
   getFixImgSrcBySettings(settings) {
-    let cache = this.cache;
-    let imgPathArr = [
-      this._getImgPath('bg', settings.bgType, settings.bgColor),
+    let imgRefArr = [
+      this._getImgRef('bg', settings.bgType, settings.bgColor),
 
-      this._getImgPath('body', settings.bodyColor),
+      this._getImgRef('body', settings.bodyColor),
 
-      this._getImgPath('mouth', settings.mouthType),
-      this._getImgPath('brows', settings.browsType, settings.browsColor),
-      this._getImgPath('eyes', settings.eyesType, settings.eyesColor),
+      this._getImgRef('mouth', settings.mouthType),
+      this._getImgRef('brows', settings.browsType, settings.browsColor),
+      this._getImgRef('eyes', settings.eyesType, settings.eyesColor),
 
-      this._getImgPath('clothes', settings.clothesType),
+      this._getImgRef('clothes', settings.clothesType),
 
-      this._getImgPath('hair', settings.hairColor),
+      this._getImgRef('hair', settings.hairColor),
 
-      this._getImgPath('hat', settings.hatType),
+      this._getImgRef('hat', settings.hatType),
     ];
 
     let canvas = document.createElement('canvas');
     let ctx = canvas.getContext('2d');
     canvas.width = canvas.height = 600;
 
-    imgPathArr.forEach((path) => {
+    imgRefArr.forEach((img) => {
       // new Imageして呼ぶと、たまに間に合わないやつが出る
       // なのでキャッシュから確実に取る
-      ctx.drawImage(cache[path], 0, 0, 600, 600);
+      img && ctx.drawImage(img, 0, 0, 600, 600);
     });
 
     let src = canvas.toDataURL();
     canvas = null;
     return src;
-  },
+  }
 
   getTabItems() {
     let tabItems = Object.keys(PartsScheme).map((partsName) => {
@@ -84,7 +83,7 @@ export default {
     });
 
     return tabItems;
-  },
+  }
 
   getAllImgPath() {
     let imgPathArr = [];
@@ -101,7 +100,7 @@ export default {
     });
 
     return imgPathArr;
-  },
+  }
 
   fetchAll() {
     let cache = this.cache;
@@ -117,3 +116,5 @@ export default {
     }));
   }
 };
+
+export default (new PartsModel());
