@@ -4,8 +4,7 @@ import injectTapEventPlugin from 'react-tap-event-plugin';
 import objectAssign from 'object-assign';
 import App from './components/app.jsx';
 import PartsModel from './models/parts';
-import Const from './data/const';
-const INDEX_URL = Const.INDEX_URL;
+import {INDEX_URL} from './data/const';
 
 // TOPから注意事項に同意してきた人にだけ見せたいので、
 // そうじゃないものは一旦返す

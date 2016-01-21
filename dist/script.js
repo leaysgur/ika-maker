@@ -21635,6 +21635,8 @@ var React = _interopRequireWildcard(_react);
 
 var _flumpt = require('flumpt');
 
+var _const = require('../data/const');
+
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -21655,9 +21657,7 @@ var ShareButton = function (_Component) {
   _createClass(ShareButton, [{
     key: 'render',
     value: function render() {
-      // XXX: locationってココでさわっていいのか
-      var shareText = 'うちのコかわいいでしょ？\n\n' + location.origin + ' #スーパーイカメーカー';
-      var shareUrl = 'https://twitter.com/intent/tweet?text=' + encodeURIComponent(shareText);
+      var shareUrl = _const.SHARE_URL + encodeURIComponent(_const.SHARE_TEXT);
 
       return React.createElement(
         'a',
@@ -21674,7 +21674,7 @@ var ShareButton = function (_Component) {
 
 exports.default = ShareButton;
 
-},{"flumpt":30,"react":166}],176:[function(require,module,exports){
+},{"../data/const":177,"flumpt":30,"react":166}],176:[function(require,module,exports){
 'use strict';
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -21796,25 +21796,24 @@ exports.default = ToolPanel;
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = {
-  INDEX_URL: 'http://ikasu.lealog.net/',
-
-  IMG_SIZE: 600,
-
-  DEFAULT_PARTS_SETTINGS: {
-    bgType: 2,
-    bgColor: 2,
-    bodyColor: 2,
-    mouthType: 1,
-    browsType: 1,
-    browsColor: 1,
-    eyesType: 1,
-    eyesColor: 2,
-    clothesType: 6,
-    hairColor: 1,
-    hatType: 21
-  }
+var INDEX_URL = exports.INDEX_URL = 'http://ikasu.lealog.net/';
+var IMG_SIZE = exports.IMG_SIZE = 600;
+var DEFAULT_PARTS_SETTINGS = exports.DEFAULT_PARTS_SETTINGS = {
+  bgType: 2,
+  bgColor: 2,
+  bodyColor: 2,
+  mouthType: 1,
+  browsType: 1,
+  browsColor: 1,
+  eyesType: 1,
+  eyesColor: 2,
+  clothesType: 6,
+  hairColor: 1,
+  hatType: 21
 };
+
+var SHARE_URL = exports.SHARE_URL = 'https://twitter.com/intent/tweet?text=';
+var SHARE_TEXT = exports.SHARE_TEXT = 'うちのコかわいいでしょ？\n\n' + INDEX_URL + ' #スーパーイカメーカー';
 
 },{}],178:[function(require,module,exports){
 "use strict";
@@ -22537,18 +22536,14 @@ var _parts2 = _interopRequireDefault(_parts);
 
 var _const = require('./data/const');
 
-var _const2 = _interopRequireDefault(_const);
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
-var INDEX_URL = _const2.default.INDEX_URL;
-
 // TOPから注意事項に同意してきた人にだけ見せたいので、
 // そうじゃないものは一旦返す
-if (location.hostname !== 'localhost' && document.referrer !== INDEX_URL) {
-  location.replace(INDEX_URL);
+if (location.hostname !== 'localhost' && document.referrer !== _const.INDEX_URL) {
+  location.replace(_const.INDEX_URL);
 } else {
   (function () {
 
@@ -22600,8 +22595,6 @@ var _parts2 = _interopRequireDefault(_parts);
 
 var _const = require('../data/const');
 
-var _const2 = _interopRequireDefault(_const);
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -22616,7 +22609,7 @@ var PartsModel = function () {
   _createClass(PartsModel, [{
     key: 'getDefaultSettings',
     value: function getDefaultSettings() {
-      return (0, _objectAssign2.default)({}, _const2.default.DEFAULT_PARTS_SETTINGS);
+      return (0, _objectAssign2.default)({}, _const.DEFAULT_PARTS_SETTINGS);
     }
   }, {
     key: '_getImgRef',
@@ -22649,12 +22642,12 @@ var PartsModel = function () {
 
       var canvas = document.createElement('canvas');
       var ctx = canvas.getContext('2d');
-      canvas.width = canvas.height = _const2.default.IMG_SIZE;
+      canvas.width = canvas.height = _const.IMG_SIZE;
 
       imgRefArr.forEach(function (img) {
         // new Imageして呼ぶと、たまに間に合わないやつが出る
         // なのでキャッシュから確実に取る
-        img && ctx.drawImage(img, 0, 0, _const2.default.IMG_SIZE, _const2.default.IMG_SIZE);
+        img && ctx.drawImage(img, 0, 0, _const.IMG_SIZE, _const.IMG_SIZE);
       });
 
       var src = canvas.toDataURL();
