@@ -1,8 +1,8 @@
 'use strict';
 import objectAssign from 'object-assign';
-import PartsScheme from '../data/parts';
-import DefaultPartsSettings from '../data/default-parts';
 import {Promise} from 'es6-promise';
+import PartsScheme from '../data/parts';
+import Const from '../data/const';
 
 class PartsModel {
   constructor() {
@@ -10,7 +10,7 @@ class PartsModel {
   }
 
   getDefaultSettings() {
-    return objectAssign({}, DefaultPartsSettings);
+    return objectAssign({}, Const.DEFAULT_PARTS_SETTINGS);
   }
 
   _getImgRef(partsName, type, color) {
@@ -56,12 +56,12 @@ class PartsModel {
 
     let canvas = document.createElement('canvas');
     let ctx = canvas.getContext('2d');
-    canvas.width = canvas.height = 600;
+    canvas.width = canvas.height = Const.IMG_SIZE;
 
     imgRefArr.forEach((img) => {
       // new Imageして呼ぶと、たまに間に合わないやつが出る
       // なのでキャッシュから確実に取る
-      img && ctx.drawImage(img, 0, 0, 600, 600);
+      img && ctx.drawImage(img, 0, 0, Const.IMG_SIZE, Const.IMG_SIZE);
     });
 
     let src = canvas.toDataURL();

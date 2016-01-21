@@ -1,7 +1,7 @@
 'use strict';
 import * as React from 'react'; // eslint-disable-line no-unused-vars
 import {Component} from 'flumpt';
-import FixImage from './fix-image.jsx';
+import Preview from './preview.jsx';
 import ShareButton from './share-button.jsx';
 
 class FixModal extends Component {
@@ -25,7 +25,7 @@ class FixModal extends Component {
         fix-modal
         ${isShow ? 'is-show' : ''}
       `}>
-        <FixImage isShow={isShow} fixImgSrc={fixImgSrc} />
+        <Preview fixImgSrc={fixImgSrc} />
         <p className="memo">
           ※画像を長押し or 右クリックメニューから保存できます
         </p>

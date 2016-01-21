@@ -12,7 +12,7 @@ class Preview extends Component {
 
     return (
       <div className="ika" onTouchMove={this.handleTouchMove}>
-        <img width="95%" height="auto" className="ika--parts" src={fixImgSrc} />
+        <img width="95%" height="auto" className="ika--img" src={fixImgSrc} />
       </div>
     );
   }
