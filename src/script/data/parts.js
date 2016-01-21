@@ -772,6 +772,14 @@ export default {
       {
         "id": 18,
         "path": "./img/ika/clothes/18.png"
+      },
+      {
+        "id": 19,
+        "path": "./img/ika/clothes/19.png"
+      },
+      {
+        "id": 20,
+        "path": "./img/ika/clothes/20.png"
       }
     ]
   },
