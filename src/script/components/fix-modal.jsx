@@ -18,14 +18,14 @@ class FixModal extends Component {
   }
 
   render() {
-    let {isShow} = this.props;
+    let {isShow, fixImgSrc} = this.props;
 
     return (
       <div className={`
         fix-modal
         ${isShow ? 'is-show' : ''}
       `}>
-        <FixImage isShow={isShow} />
+        <FixImage isShow={isShow} fixImgSrc={fixImgSrc} />
         <p className="memo">
           ※画像を長押し or 右クリックメニューから保存できます
         </p>
@@ -40,7 +40,8 @@ class FixModal extends Component {
 };
 
 FixModal.propTypes = {
-  isShow: React.PropTypes.bool.isRequired
+  isShow:    React.PropTypes.bool.isRequired,
+  fixImgSrc: React.PropTypes.string.isRequired
 };
 
 export default FixModal;
