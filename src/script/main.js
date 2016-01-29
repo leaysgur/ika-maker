@@ -40,4 +40,8 @@ global.addEventListener('load', () => {
   });
 }, false);
 
+global.addEventListener('error', () => {
+  location.href = '/sorry.html';
+}, false);
+
 }
