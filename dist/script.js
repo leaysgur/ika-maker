@@ -21799,7 +21799,9 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var INDEX_URL = exports.INDEX_URL = 'http://ikasu.lealog.net/';
+
 var IMG_SIZE = exports.IMG_SIZE = 600;
+
 var DEFAULT_PARTS_SETTINGS = exports.DEFAULT_PARTS_SETTINGS = {
   bgType: 2,
   bgColor: 2,
@@ -21810,7 +21812,8 @@ var DEFAULT_PARTS_SETTINGS = exports.DEFAULT_PARTS_SETTINGS = {
   eyesType: 1,
   eyesColor: 2,
   clothesType: 6,
-  hairColor: 1,
+  hairType: 1,
+  hairColor: 10,
   hatType: 21
 };
 
@@ -21865,55 +21868,109 @@ exports.default = {
     "tabName": "カミ",
     "tabOrder": 2,
     "tabGroup": "BASE",
-    "selectType": "COLOR",
+    "selectType": "TYPE_COLOR",
     "items": [{
       "id": 1,
-      "path": "./img/ika/hair/1.png"
+      "items": [{
+        "id": 1,
+        "path": "./img/ika/hair/1/1.png"
+      }, {
+        "id": 2,
+        "path": "./img/ika/hair/1/2.png"
+      }, {
+        "id": 3,
+        "path": "./img/ika/hair/1/3.png"
+      }, {
+        "id": 4,
+        "path": "./img/ika/hair/1/4.png"
+      }, {
+        "id": 5,
+        "path": "./img/ika/hair/1/5.png"
+      }, {
+        "id": 6,
+        "path": "./img/ika/hair/1/6.png"
+      }, {
+        "id": 7,
+        "path": "./img/ika/hair/1/7.png"
+      }, {
+        "id": 8,
+        "path": "./img/ika/hair/1/8.png"
+      }, {
+        "id": 9,
+        "path": "./img/ika/hair/1/9.png"
+      }, {
+        "id": 10,
+        "path": "./img/ika/hair/1/10.png"
+      }, {
+        "id": 11,
+        "path": "./img/ika/hair/1/11.png"
+      }, {
+        "id": 12,
+        "path": "./img/ika/hair/1/12.png"
+      }, {
+        "id": 13,
+        "path": "./img/ika/hair/1/13.png"
+      }, {
+        "id": 14,
+        "path": "./img/ika/hair/1/14.png"
+      }, {
+        "id": 15,
+        "path": "./img/ika/hair/1/15.png"
+      }, {
+        "id": 16,
+        "path": "./img/ika/hair/1/16.png"
+      }]
     }, {
       "id": 2,
-      "path": "./img/ika/hair/2.png"
-    }, {
-      "id": 3,
-      "path": "./img/ika/hair/3.png"
-    }, {
-      "id": 4,
-      "path": "./img/ika/hair/4.png"
-    }, {
-      "id": 5,
-      "path": "./img/ika/hair/5.png"
-    }, {
-      "id": 6,
-      "path": "./img/ika/hair/6.png"
-    }, {
-      "id": 7,
-      "path": "./img/ika/hair/7.png"
-    }, {
-      "id": 8,
-      "path": "./img/ika/hair/8.png"
-    }, {
-      "id": 9,
-      "path": "./img/ika/hair/9.png"
-    }, {
-      "id": 10,
-      "path": "./img/ika/hair/10.png"
-    }, {
-      "id": 11,
-      "path": "./img/ika/hair/11.png"
-    }, {
-      "id": 12,
-      "path": "./img/ika/hair/12.png"
-    }, {
-      "id": 13,
-      "path": "./img/ika/hair/13.png"
-    }, {
-      "id": 14,
-      "path": "./img/ika/hair/14.png"
-    }, {
-      "id": 15,
-      "path": "./img/ika/hair/15.png"
-    }, {
-      "id": 16,
-      "path": "./img/ika/hair/16.png"
+      "items": [{
+        "id": 1,
+        "path": "./img/ika/hair/2/1.png"
+      }, {
+        "id": 2,
+        "path": "./img/ika/hair/2/2.png"
+      }, {
+        "id": 3,
+        "path": "./img/ika/hair/2/3.png"
+      }, {
+        "id": 4,
+        "path": "./img/ika/hair/2/4.png"
+      }, {
+        "id": 5,
+        "path": "./img/ika/hair/2/5.png"
+      }, {
+        "id": 6,
+        "path": "./img/ika/hair/2/6.png"
+      }, {
+        "id": 7,
+        "path": "./img/ika/hair/2/7.png"
+      }, {
+        "id": 8,
+        "path": "./img/ika/hair/2/8.png"
+      }, {
+        "id": 9,
+        "path": "./img/ika/hair/2/9.png"
+      }, {
+        "id": 10,
+        "path": "./img/ika/hair/2/10.png"
+      }, {
+        "id": 11,
+        "path": "./img/ika/hair/2/11.png"
+      }, {
+        "id": 12,
+        "path": "./img/ika/hair/2/12.png"
+      }, {
+        "id": 13,
+        "path": "./img/ika/hair/2/13.png"
+      }, {
+        "id": 14,
+        "path": "./img/ika/hair/2/14.png"
+      }, {
+        "id": 15,
+        "path": "./img/ika/hair/2/15.png"
+      }, {
+        "id": 16,
+        "path": "./img/ika/hair/2/16.png"
+      }]
     }],
     "COLORS": {
       "1": "FD8424",
@@ -22703,7 +22760,7 @@ var PartsModel = function () {
   }, {
     key: 'getFixImgSrcBySettings',
     value: function getFixImgSrcBySettings(settings) {
-      var imgRefArr = [this._getImgRef('bg', settings.bgType, settings.bgColor), this._getImgRef('body', settings.bodyColor), this._getImgRef('mouth', settings.mouthType), this._getImgRef('brows', settings.browsType, settings.browsColor), this._getImgRef('eyes', settings.eyesType, settings.eyesColor), this._getImgRef('clothes', settings.clothesType), this._getImgRef('hair', settings.hairColor), this._getImgRef('hat', settings.hatType)];
+      var imgRefArr = [this._getImgRef('bg', settings.bgType, settings.bgColor), this._getImgRef('body', settings.bodyColor), this._getImgRef('mouth', settings.mouthType), this._getImgRef('brows', settings.browsType, settings.browsColor), this._getImgRef('eyes', settings.eyesType, settings.eyesColor), this._getImgRef('clothes', settings.clothesType), this._getImgRef('hair', settings.hairType, settings.hairColor), this._getImgRef('hat', settings.hatType)];
 
       var canvas = document.createElement('canvas');
       var ctx = canvas.getContext('2d');

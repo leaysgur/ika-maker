@@ -29,7 +29,7 @@ module.exports = {
     tabName: 'カミ',
     tabOrder: 2,
     tabGroup: 'BASE',
-    selectType: 'COLOR',
+    selectType: 'TYPE_COLOR',
     items: [],
     COLORS: {
       1:  'FD8424',

@@ -49,7 +49,7 @@ class PartsModel {
 
       this._getImgRef('clothes', settings.clothesType),
 
-      this._getImgRef('hair', settings.hairColor),
+      this._getImgRef('hair', settings.hairType, settings.hairColor),
 
       this._getImgRef('hat', settings.hatType),
     ];
