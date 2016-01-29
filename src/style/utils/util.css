@@ -8,6 +8,10 @@
   vertical-align: text-bottom;
 }
 
+.ft-warn {
+  color: #FED430;
+}
+
 
 @keyframes color-selected {
   from { transform: scale(.5); }
