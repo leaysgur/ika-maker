@@ -16,13 +16,23 @@ class PartsModel {
   _getImgRef(partsName, type, color) {
     let parts = PartsScheme[partsName];
     let path = '';
+    let types = [], colors = [];
 
     if (type && color) {
-      path = parts.items.filter((item) => {
+      types = parts.items.filter((item) => {
         return item.id === type;
-      })[0].items.filter((item) => {
+      })[0].items;
+      colors = types.filter((item) => {
         return item.id === color;
-      })[0].path;
+      });
+
+      // その色は、他のタイプには存在しない場合がある
+      // その時は、先頭のものに戻す
+      if (colors.length !== 0) {
+        path = colors[0].path;
+      } else {
+        path = types[0].path;
+      }
     }
     else {
       path = parts.items.filter((item) => {
