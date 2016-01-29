@@ -21501,27 +21501,20 @@ var TypeColorSelector = function (_Component) {
     value: function setPartsType(_ref) {
       var target = _ref.target;
       var typeId = _ref.typeId;
-      var _props = this.props;
-      var _setPartsType = _props._setPartsType;
-      var _setPartsColor = _props._setPartsColor;
+      var _setPartsType = this.props._setPartsType;
 
       this.setState({ selectedTypeId: typeId });
       _setPartsType({ target: target, typeId: typeId });
-
-      // XXX: typeが変わると色が無い場合があるので先頭に戻す
-      // 気になる場合は、無い場合だけ戻す処理を追加
-      var colorId = this.getColorItemsBySelectedTypeId(typeId)[0].id;
-      _setPartsColor({ target: target, colorId: colorId });
     }
   }, {
     key: 'render',
     value: function render() {
-      var _props2 = this.props;
-      var target = _props2.target;
-      var parts = _props2.parts;
-      var _setPartsColor = _props2._setPartsColor;
-      var selectedTypeId = _props2.selectedTypeId;
-      var selectedColorId = _props2.selectedColorId;
+      var _props = this.props;
+      var target = _props.target;
+      var parts = _props.parts;
+      var _setPartsColor = _props._setPartsColor;
+      var selectedTypeId = _props.selectedTypeId;
+      var selectedColorId = _props.selectedColorId;
 
       var colorItems = this.getColorItemsBySelectedTypeId(this.state.selectedTypeId);
 
@@ -22738,13 +22731,24 @@ var PartsModel = function () {
     value: function _getImgRef(partsName, type, color) {
       var parts = _parts2.default[partsName];
       var path = '';
+      var types = [],
+          colors = [];
 
       if (type && color) {
-        path = parts.items.filter(function (item) {
+        types = parts.items.filter(function (item) {
           return item.id === type;
-        })[0].items.filter(function (item) {
+        })[0].items;
+        colors = types.filter(function (item) {
           return item.id === color;
-        })[0].path;
+        });
+
+        // その色は、他のタイプには存在しない場合がある
+        // その時は、先頭のものに戻す
+        if (colors.length !== 0) {
+          path = colors[0].path;
+        } else {
+          path = types[0].path;
+        }
       } else {
         path = parts.items.filter(function (item) {
           return item.id === type;
