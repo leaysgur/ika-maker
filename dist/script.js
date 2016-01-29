@@ -22685,6 +22685,10 @@ if (location.hostname !== 'localhost' && document.referrer !== _const.INDEX_URL)
         });
       });
     }, false);
+
+    global.addEventListener('error', function () {
+      location.href = '/sorry.html';
+    }, false);
   })();
 }
 
@@ -22820,12 +22824,19 @@ var PartsModel = function () {
     value: function fetchAll() {
       var cache = this.cache;
       return _es6Promise.Promise.all(this.getAllImgPath().map(function (path) {
+        cache[path] = null;
         return new _es6Promise.Promise(function (resolve) {
           var img = new Image();
           img.src = path;
           img.onload = function () {
             cache[path] = img;
             resolve();
+          };
+          img.onabort = function () {
+            resolve();
+          };
+          img.onerror = function () {
+            throw new Error('Cant get image properly..');
           };
         });
       }));

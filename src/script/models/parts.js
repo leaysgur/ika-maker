@@ -115,13 +115,20 @@ class PartsModel {
   fetchAll() {
     let cache = this.cache;
     return Promise.all(this.getAllImgPath().map((path) => {
+      cache[path] = null;
       return new Promise((resolve) => {
         let img = new Image();
         img.src = path;
         img.onload = () => {
           cache[path] = img;
           resolve();
-        }
+        };
+        img.onabort = () => {
+          resolve();
+        };
+        img.onerror = () => {
+          throw new Error('Cant get image properly..');
+        };
       });
     }));
   }
