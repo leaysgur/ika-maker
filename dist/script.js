@@ -21501,27 +21501,20 @@ var TypeColorSelector = function (_Component) {
     value: function setPartsType(_ref) {
       var target = _ref.target;
       var typeId = _ref.typeId;
-      var _props = this.props;
-      var _setPartsType = _props._setPartsType;
-      var _setPartsColor = _props._setPartsColor;
+      var _setPartsType = this.props._setPartsType;
 
       this.setState({ selectedTypeId: typeId });
       _setPartsType({ target: target, typeId: typeId });
-
-      // XXX: typeが変わると色が無い場合があるので先頭に戻す
-      // 気になる場合は、無い場合だけ戻す処理を追加
-      var colorId = this.getColorItemsBySelectedTypeId(typeId)[0].id;
-      _setPartsColor({ target: target, colorId: colorId });
     }
   }, {
     key: 'render',
     value: function render() {
-      var _props2 = this.props;
-      var target = _props2.target;
-      var parts = _props2.parts;
-      var _setPartsColor = _props2._setPartsColor;
-      var selectedTypeId = _props2.selectedTypeId;
-      var selectedColorId = _props2.selectedColorId;
+      var _props = this.props;
+      var target = _props.target;
+      var parts = _props.parts;
+      var _setPartsColor = _props._setPartsColor;
+      var selectedTypeId = _props.selectedTypeId;
+      var selectedColorId = _props.selectedColorId;
 
       var colorItems = this.getColorItemsBySelectedTypeId(this.state.selectedTypeId);
 
@@ -21799,7 +21792,9 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var INDEX_URL = exports.INDEX_URL = 'http://ikasu.lealog.net/';
+
 var IMG_SIZE = exports.IMG_SIZE = 600;
+
 var DEFAULT_PARTS_SETTINGS = exports.DEFAULT_PARTS_SETTINGS = {
   bgType: 2,
   bgColor: 2,
@@ -21810,7 +21805,8 @@ var DEFAULT_PARTS_SETTINGS = exports.DEFAULT_PARTS_SETTINGS = {
   eyesType: 1,
   eyesColor: 2,
   clothesType: 6,
-  hairColor: 1,
+  hairType: 1,
+  hairColor: 10,
   hatType: 21
 };
 
@@ -21865,55 +21861,109 @@ exports.default = {
     "tabName": "カミ",
     "tabOrder": 2,
     "tabGroup": "BASE",
-    "selectType": "COLOR",
+    "selectType": "TYPE_COLOR",
     "items": [{
       "id": 1,
-      "path": "./img/ika/hair/1.png"
+      "items": [{
+        "id": 1,
+        "path": "./img/ika/hair/1/1.png"
+      }, {
+        "id": 2,
+        "path": "./img/ika/hair/1/2.png"
+      }, {
+        "id": 3,
+        "path": "./img/ika/hair/1/3.png"
+      }, {
+        "id": 4,
+        "path": "./img/ika/hair/1/4.png"
+      }, {
+        "id": 5,
+        "path": "./img/ika/hair/1/5.png"
+      }, {
+        "id": 6,
+        "path": "./img/ika/hair/1/6.png"
+      }, {
+        "id": 7,
+        "path": "./img/ika/hair/1/7.png"
+      }, {
+        "id": 8,
+        "path": "./img/ika/hair/1/8.png"
+      }, {
+        "id": 9,
+        "path": "./img/ika/hair/1/9.png"
+      }, {
+        "id": 10,
+        "path": "./img/ika/hair/1/10.png"
+      }, {
+        "id": 11,
+        "path": "./img/ika/hair/1/11.png"
+      }, {
+        "id": 12,
+        "path": "./img/ika/hair/1/12.png"
+      }, {
+        "id": 13,
+        "path": "./img/ika/hair/1/13.png"
+      }, {
+        "id": 14,
+        "path": "./img/ika/hair/1/14.png"
+      }, {
+        "id": 15,
+        "path": "./img/ika/hair/1/15.png"
+      }, {
+        "id": 16,
+        "path": "./img/ika/hair/1/16.png"
+      }]
     }, {
       "id": 2,
-      "path": "./img/ika/hair/2.png"
-    }, {
-      "id": 3,
-      "path": "./img/ika/hair/3.png"
-    }, {
-      "id": 4,
-      "path": "./img/ika/hair/4.png"
-    }, {
-      "id": 5,
-      "path": "./img/ika/hair/5.png"
-    }, {
-      "id": 6,
-      "path": "./img/ika/hair/6.png"
-    }, {
-      "id": 7,
-      "path": "./img/ika/hair/7.png"
-    }, {
-      "id": 8,
-      "path": "./img/ika/hair/8.png"
-    }, {
-      "id": 9,
-      "path": "./img/ika/hair/9.png"
-    }, {
-      "id": 10,
-      "path": "./img/ika/hair/10.png"
-    }, {
-      "id": 11,
-      "path": "./img/ika/hair/11.png"
-    }, {
-      "id": 12,
-      "path": "./img/ika/hair/12.png"
-    }, {
-      "id": 13,
-      "path": "./img/ika/hair/13.png"
-    }, {
-      "id": 14,
-      "path": "./img/ika/hair/14.png"
-    }, {
-      "id": 15,
-      "path": "./img/ika/hair/15.png"
-    }, {
-      "id": 16,
-      "path": "./img/ika/hair/16.png"
+      "items": [{
+        "id": 1,
+        "path": "./img/ika/hair/2/1.png"
+      }, {
+        "id": 2,
+        "path": "./img/ika/hair/2/2.png"
+      }, {
+        "id": 3,
+        "path": "./img/ika/hair/2/3.png"
+      }, {
+        "id": 4,
+        "path": "./img/ika/hair/2/4.png"
+      }, {
+        "id": 5,
+        "path": "./img/ika/hair/2/5.png"
+      }, {
+        "id": 6,
+        "path": "./img/ika/hair/2/6.png"
+      }, {
+        "id": 7,
+        "path": "./img/ika/hair/2/7.png"
+      }, {
+        "id": 8,
+        "path": "./img/ika/hair/2/8.png"
+      }, {
+        "id": 9,
+        "path": "./img/ika/hair/2/9.png"
+      }, {
+        "id": 10,
+        "path": "./img/ika/hair/2/10.png"
+      }, {
+        "id": 11,
+        "path": "./img/ika/hair/2/11.png"
+      }, {
+        "id": 12,
+        "path": "./img/ika/hair/2/12.png"
+      }, {
+        "id": 13,
+        "path": "./img/ika/hair/2/13.png"
+      }, {
+        "id": 14,
+        "path": "./img/ika/hair/2/14.png"
+      }, {
+        "id": 15,
+        "path": "./img/ika/hair/2/15.png"
+      }, {
+        "id": 16,
+        "path": "./img/ika/hair/2/16.png"
+      }]
     }],
     "COLORS": {
       "1": "FD8424",
@@ -22356,6 +22406,33 @@ exports.default = {
     }, {
       "id": 26,
       "path": "./img/ika/hat/26.png"
+    }, {
+      "id": 27,
+      "path": "./img/ika/hat/27.png"
+    }, {
+      "id": 28,
+      "path": "./img/ika/hat/28.png"
+    }, {
+      "id": 29,
+      "path": "./img/ika/hat/29.png"
+    }, {
+      "id": 30,
+      "path": "./img/ika/hat/30.png"
+    }, {
+      "id": 31,
+      "path": "./img/ika/hat/31.png"
+    }, {
+      "id": 32,
+      "path": "./img/ika/hat/32.png"
+    }, {
+      "id": 33,
+      "path": "./img/ika/hat/33.png"
+    }, {
+      "id": 34,
+      "path": "./img/ika/hat/34.png"
+    }, {
+      "id": 35,
+      "path": "./img/ika/hat/35.png"
     }]
   },
   "clothes": {
@@ -22423,6 +22500,42 @@ exports.default = {
     }, {
       "id": 20,
       "path": "./img/ika/clothes/20.png"
+    }, {
+      "id": 21,
+      "path": "./img/ika/clothes/21.png"
+    }, {
+      "id": 22,
+      "path": "./img/ika/clothes/22.png"
+    }, {
+      "id": 23,
+      "path": "./img/ika/clothes/23.png"
+    }, {
+      "id": 24,
+      "path": "./img/ika/clothes/24.png"
+    }, {
+      "id": 25,
+      "path": "./img/ika/clothes/25.png"
+    }, {
+      "id": 26,
+      "path": "./img/ika/clothes/26.png"
+    }, {
+      "id": 27,
+      "path": "./img/ika/clothes/27.png"
+    }, {
+      "id": 28,
+      "path": "./img/ika/clothes/28.png"
+    }, {
+      "id": 29,
+      "path": "./img/ika/clothes/29.png"
+    }, {
+      "id": 30,
+      "path": "./img/ika/clothes/30.png"
+    }, {
+      "id": 31,
+      "path": "./img/ika/clothes/31.png"
+    }, {
+      "id": 32,
+      "path": "./img/ika/clothes/32.png"
     }]
   },
   "bg": {
@@ -22618,13 +22731,24 @@ var PartsModel = function () {
     value: function _getImgRef(partsName, type, color) {
       var parts = _parts2.default[partsName];
       var path = '';
+      var types = [],
+          colors = [];
 
       if (type && color) {
-        path = parts.items.filter(function (item) {
+        types = parts.items.filter(function (item) {
           return item.id === type;
-        })[0].items.filter(function (item) {
+        })[0].items;
+        colors = types.filter(function (item) {
           return item.id === color;
-        })[0].path;
+        });
+
+        // その色は、他のタイプには存在しない場合がある
+        // その時は、先頭のものに戻す
+        if (colors.length !== 0) {
+          path = colors[0].path;
+        } else {
+          path = types[0].path;
+        }
       } else {
         path = parts.items.filter(function (item) {
           return item.id === type;
@@ -22640,7 +22764,7 @@ var PartsModel = function () {
   }, {
     key: 'getFixImgSrcBySettings',
     value: function getFixImgSrcBySettings(settings) {
-      var imgRefArr = [this._getImgRef('bg', settings.bgType, settings.bgColor), this._getImgRef('body', settings.bodyColor), this._getImgRef('mouth', settings.mouthType), this._getImgRef('brows', settings.browsType, settings.browsColor), this._getImgRef('eyes', settings.eyesType, settings.eyesColor), this._getImgRef('clothes', settings.clothesType), this._getImgRef('hair', settings.hairColor), this._getImgRef('hat', settings.hatType)];
+      var imgRefArr = [this._getImgRef('bg', settings.bgType, settings.bgColor), this._getImgRef('body', settings.bodyColor), this._getImgRef('mouth', settings.mouthType), this._getImgRef('brows', settings.browsType, settings.browsColor), this._getImgRef('eyes', settings.eyesType, settings.eyesColor), this._getImgRef('clothes', settings.clothesType), this._getImgRef('hair', settings.hairType, settings.hairColor), this._getImgRef('hat', settings.hatType)];
 
       var canvas = document.createElement('canvas');
       var ctx = canvas.getContext('2d');

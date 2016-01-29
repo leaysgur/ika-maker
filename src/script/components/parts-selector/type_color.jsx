@@ -22,14 +22,9 @@ class TypeColorSelector extends Component {
   }
 
   setPartsType({ target, typeId }) {
-    let {_setPartsType, _setPartsColor} = this.props;
+    let {_setPartsType} = this.props;
     this.setState({ selectedTypeId: typeId });
     _setPartsType({target, typeId});
-
-    // XXX: typeが変わると色が無い場合があるので先頭に戻す
-    // 気になる場合は、無い場合だけ戻す処理を追加
-    let colorId = this.getColorItemsBySelectedTypeId(typeId)[0].id;
-    _setPartsColor({target, colorId});
   }
 
   render() {
