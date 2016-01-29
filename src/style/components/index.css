@@ -8,18 +8,22 @@
   text-align: center;
 }
 
-.index-spacer {
-  border: none;
-  height: 16px;
-}
+.index-table {
+  width: 280px;
+  margin: 0 auto;
+  font-size: .8rem;
 
-.index-footer {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
+  img,
+  td { vertical-align: middle; }
 
   a {
     color: #fff;
+    font-size: .75rem;
   }
+}
+
+
+.index-spacer {
+  border: none;
+  height: 16px;
 }
