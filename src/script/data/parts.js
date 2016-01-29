@@ -692,6 +692,42 @@ export default {
       {
         "id": 26,
         "path": "./img/ika/hat/26.png"
+      },
+      {
+        "id": 27,
+        "path": "./img/ika/hat/27.png"
+      },
+      {
+        "id": 28,
+        "path": "./img/ika/hat/28.png"
+      },
+      {
+        "id": 29,
+        "path": "./img/ika/hat/29.png"
+      },
+      {
+        "id": 30,
+        "path": "./img/ika/hat/30.png"
+      },
+      {
+        "id": 31,
+        "path": "./img/ika/hat/31.png"
+      },
+      {
+        "id": 32,
+        "path": "./img/ika/hat/32.png"
+      },
+      {
+        "id": 33,
+        "path": "./img/ika/hat/33.png"
+      },
+      {
+        "id": 34,
+        "path": "./img/ika/hat/34.png"
+      },
+      {
+        "id": 35,
+        "path": "./img/ika/hat/35.png"
       }
     ]
   },
@@ -780,6 +816,54 @@ export default {
       {
         "id": 20,
         "path": "./img/ika/clothes/20.png"
+      },
+      {
+        "id": 21,
+        "path": "./img/ika/clothes/21.png"
+      },
+      {
+        "id": 22,
+        "path": "./img/ika/clothes/22.png"
+      },
+      {
+        "id": 23,
+        "path": "./img/ika/clothes/23.png"
+      },
+      {
+        "id": 24,
+        "path": "./img/ika/clothes/24.png"
+      },
+      {
+        "id": 25,
+        "path": "./img/ika/clothes/25.png"
+      },
+      {
+        "id": 26,
+        "path": "./img/ika/clothes/26.png"
+      },
+      {
+        "id": 27,
+        "path": "./img/ika/clothes/27.png"
+      },
+      {
+        "id": 28,
+        "path": "./img/ika/clothes/28.png"
+      },
+      {
+        "id": 29,
+        "path": "./img/ika/clothes/29.png"
+      },
+      {
+        "id": 30,
+        "path": "./img/ika/clothes/30.png"
+      },
+      {
+        "id": 31,
+        "path": "./img/ika/clothes/31.png"
+      },
+      {
+        "id": 32,
+        "path": "./img/ika/clothes/32.png"
       }
     ]
   },
