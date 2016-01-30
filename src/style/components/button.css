@@ -9,7 +9,15 @@
   .button + .button {
     margin-top: 8px;
   }
+
+  &--twins {
+    .button {
+      display: inline-block;
+      width: 45%;
+    }
+  }
 }
+
 
 .button {
   display: inline;
