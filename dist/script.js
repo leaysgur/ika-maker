@@ -21152,7 +21152,7 @@ var React = _interopRequireWildcard(_react);
 
 var _flumpt = require('flumpt');
 
-var _parts = require('../data/parts');
+var _parts = require('../models/parts');
 
 var _parts2 = _interopRequireDefault(_parts);
 
@@ -21214,7 +21214,7 @@ var PartsSelector = function (_Component) {
       var partsName = _props.partsName;
       var settings = _props.settings;
 
-      var parts = _parts2.default[partsName];
+      var parts = _parts2.default.getParts(partsName);
       var selectedTypeId = settings[partsName + 'Type'];
       var selectedColorId = settings[partsName + 'Color'];
 
@@ -21258,7 +21258,7 @@ PartsSelector.propTypes = {
 
 exports.default = PartsSelector;
 
-},{"../data/parts":178,"./parts-selector/color.jsx":171,"./parts-selector/type.jsx":172,"./parts-selector/type_color.jsx":173,"flumpt":30,"react":166}],171:[function(require,module,exports){
+},{"../models/parts":180,"./parts-selector/color.jsx":171,"./parts-selector/type.jsx":172,"./parts-selector/type_color.jsx":173,"flumpt":30,"react":166}],171:[function(require,module,exports){
 'use strict';
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -21796,18 +21796,34 @@ var INDEX_URL = exports.INDEX_URL = 'http://ikasu.lealog.net/';
 var IMG_SIZE = exports.IMG_SIZE = 600;
 
 var DEFAULT_PARTS_SETTINGS = exports.DEFAULT_PARTS_SETTINGS = {
-  bgType: 2,
-  bgColor: 2,
-  bodyColor: 2,
-  mouthType: 1,
-  browsType: 1,
-  browsColor: 1,
-  eyesType: 1,
-  eyesColor: 2,
-  clothesType: 6,
-  hairType: 1,
-  hairColor: 10,
-  hatType: 21
+  girl: {
+    bgType: 2,
+    bgColor: 2,
+    bodyColor: 2,
+    mouthType: 1,
+    browsType: 1,
+    browsColor: 1,
+    eyesType: 1,
+    eyesColor: 2,
+    clothesType: 6,
+    hairType: 1,
+    hairColor: 10,
+    hatType: 21
+  },
+  boy: {
+    bgType: 2,
+    bgColor: 1,
+    bodyColor: 3,
+    mouthType: 2,
+    browsType: 1,
+    browsColor: 2,
+    eyesType: 1,
+    eyesColor: 2,
+    clothesType: 1,
+    hairType: 1,
+    hairColor: 1,
+    hatType: 0
+  }
 };
 
 var SHARE_URL = exports.SHARE_URL = 'https://twitter.com/intent/tweet?text=';
@@ -21820,807 +21836,1196 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = {
-  "body": {
-    "tabName": "カラダ",
-    "tabOrder": 1,
-    "tabGroup": "BASE",
-    "selectType": "COLOR",
-    "items": [{
-      "id": 1,
-      "path": "./img/ika/body/1.png"
-    }, {
-      "id": 2,
-      "path": "./img/ika/body/2.png"
-    }, {
-      "id": 3,
-      "path": "./img/ika/body/3.png"
-    }, {
-      "id": 4,
-      "path": "./img/ika/body/4.png"
-    }, {
-      "id": 5,
-      "path": "./img/ika/body/5.png"
-    }, {
-      "id": 6,
-      "path": "./img/ika/body/6.png"
-    }, {
-      "id": 7,
-      "path": "./img/ika/body/7.png"
-    }],
-    "COLORS": {
-      "1": "FEECE4",
-      "2": "FED8C1",
-      "3": "FEC49F",
-      "4": "9D6B48",
-      "5": "79491F",
-      "6": "4E2C07",
-      "7": "41230F"
-    }
-  },
-  "hair": {
-    "tabName": "カミ",
-    "tabOrder": 2,
-    "tabGroup": "BASE",
-    "selectType": "TYPE_COLOR",
-    "items": [{
-      "id": 1,
+  "girl": {
+    "body": {
+      "tabName": "カラダ",
+      "tabOrder": 1,
+      "tabGroup": "BASE",
+      "selectType": "COLOR",
       "items": [{
         "id": 1,
-        "path": "./img/ika/hair/1/1.png"
+        "path": "./img/ika/girl/body/1.png"
       }, {
         "id": 2,
-        "path": "./img/ika/hair/1/2.png"
+        "path": "./img/ika/girl/body/2.png"
       }, {
         "id": 3,
-        "path": "./img/ika/hair/1/3.png"
+        "path": "./img/ika/girl/body/3.png"
       }, {
         "id": 4,
-        "path": "./img/ika/hair/1/4.png"
+        "path": "./img/ika/girl/body/4.png"
       }, {
         "id": 5,
-        "path": "./img/ika/hair/1/5.png"
+        "path": "./img/ika/girl/body/5.png"
       }, {
         "id": 6,
-        "path": "./img/ika/hair/1/6.png"
+        "path": "./img/ika/girl/body/6.png"
       }, {
         "id": 7,
-        "path": "./img/ika/hair/1/7.png"
+        "path": "./img/ika/girl/body/7.png"
+      }],
+      "COLORS": {
+        "1": "FEECE4",
+        "2": "FED8C1",
+        "3": "FEC49F",
+        "4": "9D6B48",
+        "5": "79491F",
+        "6": "4E2C07",
+        "7": "41230F"
+      }
+    },
+    "hair": {
+      "tabName": "カミ",
+      "tabOrder": 2,
+      "tabGroup": "BASE",
+      "selectType": "TYPE_COLOR",
+      "items": [{
+        "id": 1,
+        "items": [{
+          "id": 1,
+          "path": "./img/ika/girl/hair/1/1.png"
+        }, {
+          "id": 2,
+          "path": "./img/ika/girl/hair/1/2.png"
+        }, {
+          "id": 3,
+          "path": "./img/ika/girl/hair/1/3.png"
+        }, {
+          "id": 4,
+          "path": "./img/ika/girl/hair/1/4.png"
+        }, {
+          "id": 5,
+          "path": "./img/ika/girl/hair/1/5.png"
+        }, {
+          "id": 6,
+          "path": "./img/ika/girl/hair/1/6.png"
+        }, {
+          "id": 7,
+          "path": "./img/ika/girl/hair/1/7.png"
+        }, {
+          "id": 8,
+          "path": "./img/ika/girl/hair/1/8.png"
+        }, {
+          "id": 9,
+          "path": "./img/ika/girl/hair/1/9.png"
+        }, {
+          "id": 10,
+          "path": "./img/ika/girl/hair/1/10.png"
+        }, {
+          "id": 11,
+          "path": "./img/ika/girl/hair/1/11.png"
+        }, {
+          "id": 12,
+          "path": "./img/ika/girl/hair/1/12.png"
+        }, {
+          "id": 13,
+          "path": "./img/ika/girl/hair/1/13.png"
+        }, {
+          "id": 14,
+          "path": "./img/ika/girl/hair/1/14.png"
+        }, {
+          "id": 15,
+          "path": "./img/ika/girl/hair/1/15.png"
+        }, {
+          "id": 16,
+          "path": "./img/ika/girl/hair/1/16.png"
+        }]
+      }, {
+        "id": 2,
+        "items": [{
+          "id": 1,
+          "path": "./img/ika/girl/hair/2/1.png"
+        }, {
+          "id": 2,
+          "path": "./img/ika/girl/hair/2/2.png"
+        }, {
+          "id": 3,
+          "path": "./img/ika/girl/hair/2/3.png"
+        }, {
+          "id": 4,
+          "path": "./img/ika/girl/hair/2/4.png"
+        }, {
+          "id": 5,
+          "path": "./img/ika/girl/hair/2/5.png"
+        }, {
+          "id": 6,
+          "path": "./img/ika/girl/hair/2/6.png"
+        }, {
+          "id": 7,
+          "path": "./img/ika/girl/hair/2/7.png"
+        }, {
+          "id": 8,
+          "path": "./img/ika/girl/hair/2/8.png"
+        }, {
+          "id": 9,
+          "path": "./img/ika/girl/hair/2/9.png"
+        }, {
+          "id": 10,
+          "path": "./img/ika/girl/hair/2/10.png"
+        }, {
+          "id": 11,
+          "path": "./img/ika/girl/hair/2/11.png"
+        }, {
+          "id": 12,
+          "path": "./img/ika/girl/hair/2/12.png"
+        }, {
+          "id": 13,
+          "path": "./img/ika/girl/hair/2/13.png"
+        }, {
+          "id": 14,
+          "path": "./img/ika/girl/hair/2/14.png"
+        }, {
+          "id": 15,
+          "path": "./img/ika/girl/hair/2/15.png"
+        }, {
+          "id": 16,
+          "path": "./img/ika/girl/hair/2/16.png"
+        }]
+      }],
+      "COLORS": {
+        "1": "FD8424",
+        "2": "0F4DFB",
+        "3": "FC1999",
+        "4": "3DEB2B",
+        "5": "FED430",
+        "6": "9D1FD8",
+        "7": "FFF2C4",
+        "8": "222124",
+        "9": "DB0A16",
+        "10": "FD97B8",
+        "11": "D699FC",
+        "12": "A4F7FE",
+        "13": "95FEE5",
+        "14": "C5FEB8",
+        "15": "FFFDA1",
+        "16": "53A3FC"
+      }
+    },
+    "brows": {
+      "tabName": "マユ",
+      "tabOrder": 3,
+      "tabGroup": "FACE",
+      "selectType": "TYPE_COLOR",
+      "items": [{
+        "id": 1,
+        "items": [{
+          "id": 1,
+          "path": "./img/ika/girl/brows/1/1.png"
+        }, {
+          "id": 2,
+          "path": "./img/ika/girl/brows/1/2.png"
+        }, {
+          "id": 3,
+          "path": "./img/ika/girl/brows/1/3.png"
+        }, {
+          "id": 4,
+          "path": "./img/ika/girl/brows/1/4.png"
+        }, {
+          "id": 5,
+          "path": "./img/ika/girl/brows/1/5.png"
+        }, {
+          "id": 6,
+          "path": "./img/ika/girl/brows/1/6.png"
+        }, {
+          "id": 7,
+          "path": "./img/ika/girl/brows/1/7.png"
+        }, {
+          "id": 8,
+          "path": "./img/ika/girl/brows/1/8.png"
+        }, {
+          "id": 9,
+          "path": "./img/ika/girl/brows/1/9.png"
+        }, {
+          "id": 10,
+          "path": "./img/ika/girl/brows/1/10.png"
+        }, {
+          "id": 11,
+          "path": "./img/ika/girl/brows/1/11.png"
+        }, {
+          "id": 12,
+          "path": "./img/ika/girl/brows/1/12.png"
+        }, {
+          "id": 13,
+          "path": "./img/ika/girl/brows/1/13.png"
+        }, {
+          "id": 14,
+          "path": "./img/ika/girl/brows/1/14.png"
+        }, {
+          "id": 15,
+          "path": "./img/ika/girl/brows/1/15.png"
+        }, {
+          "id": 16,
+          "path": "./img/ika/girl/brows/1/16.png"
+        }]
+      }, {
+        "id": 2,
+        "items": [{
+          "id": 1,
+          "path": "./img/ika/girl/brows/2/1.png"
+        }, {
+          "id": 2,
+          "path": "./img/ika/girl/brows/2/2.png"
+        }, {
+          "id": 3,
+          "path": "./img/ika/girl/brows/2/3.png"
+        }, {
+          "id": 4,
+          "path": "./img/ika/girl/brows/2/4.png"
+        }, {
+          "id": 5,
+          "path": "./img/ika/girl/brows/2/5.png"
+        }, {
+          "id": 6,
+          "path": "./img/ika/girl/brows/2/6.png"
+        }, {
+          "id": 7,
+          "path": "./img/ika/girl/brows/2/7.png"
+        }, {
+          "id": 8,
+          "path": "./img/ika/girl/brows/2/8.png"
+        }, {
+          "id": 9,
+          "path": "./img/ika/girl/brows/2/9.png"
+        }, {
+          "id": 10,
+          "path": "./img/ika/girl/brows/2/10.png"
+        }, {
+          "id": 11,
+          "path": "./img/ika/girl/brows/2/11.png"
+        }, {
+          "id": 12,
+          "path": "./img/ika/girl/brows/2/12.png"
+        }, {
+          "id": 13,
+          "path": "./img/ika/girl/brows/2/13.png"
+        }, {
+          "id": 14,
+          "path": "./img/ika/girl/brows/2/14.png"
+        }, {
+          "id": 15,
+          "path": "./img/ika/girl/brows/2/15.png"
+        }, {
+          "id": 16,
+          "path": "./img/ika/girl/brows/2/16.png"
+        }]
+      }],
+      "COLORS": {
+        "1": "FD8424",
+        "2": "0F4DFB",
+        "3": "FC1999",
+        "4": "3DEB2B",
+        "5": "FED430",
+        "6": "9D1FD8",
+        "7": "FFF2C4",
+        "8": "222124",
+        "9": "DB0A16",
+        "10": "FD97B8",
+        "11": "D699FC",
+        "12": "A4F7FE",
+        "13": "95FEE5",
+        "14": "C5FEB8",
+        "15": "FFFDA1",
+        "16": "53A3FC"
+      }
+    },
+    "eyes": {
+      "tabName": "メ",
+      "tabOrder": 5,
+      "tabGroup": "FACE",
+      "selectType": "TYPE_COLOR",
+      "items": [{
+        "id": 1,
+        "items": [{
+          "id": 1,
+          "path": "./img/ika/cmn/eyes/1/1.png"
+        }, {
+          "id": 2,
+          "path": "./img/ika/cmn/eyes/1/2.png"
+        }, {
+          "id": 3,
+          "path": "./img/ika/cmn/eyes/1/3.png"
+        }, {
+          "id": 4,
+          "path": "./img/ika/cmn/eyes/1/4.png"
+        }, {
+          "id": 5,
+          "path": "./img/ika/cmn/eyes/1/5.png"
+        }, {
+          "id": 6,
+          "path": "./img/ika/cmn/eyes/1/6.png"
+        }, {
+          "id": 7,
+          "path": "./img/ika/cmn/eyes/1/7.png"
+        }]
+      }, {
+        "id": 2,
+        "items": [{
+          "id": 1,
+          "path": "./img/ika/cmn/eyes/2/1.png"
+        }, {
+          "id": 2,
+          "path": "./img/ika/cmn/eyes/2/2.png"
+        }, {
+          "id": 3,
+          "path": "./img/ika/cmn/eyes/2/3.png"
+        }, {
+          "id": 4,
+          "path": "./img/ika/cmn/eyes/2/4.png"
+        }, {
+          "id": 5,
+          "path": "./img/ika/cmn/eyes/2/5.png"
+        }, {
+          "id": 6,
+          "path": "./img/ika/cmn/eyes/2/6.png"
+        }, {
+          "id": 7,
+          "path": "./img/ika/cmn/eyes/2/7.png"
+        }]
+      }, {
+        "id": 3,
+        "items": [{
+          "id": 1,
+          "path": "./img/ika/cmn/eyes/3/1.png"
+        }, {
+          "id": 2,
+          "path": "./img/ika/cmn/eyes/3/2.png"
+        }, {
+          "id": 3,
+          "path": "./img/ika/cmn/eyes/3/3.png"
+        }, {
+          "id": 4,
+          "path": "./img/ika/cmn/eyes/3/4.png"
+        }, {
+          "id": 5,
+          "path": "./img/ika/cmn/eyes/3/5.png"
+        }, {
+          "id": 6,
+          "path": "./img/ika/cmn/eyes/3/6.png"
+        }, {
+          "id": 7,
+          "path": "./img/ika/cmn/eyes/3/7.png"
+        }]
+      }, {
+        "id": 4,
+        "items": [{
+          "id": 1,
+          "path": "./img/ika/cmn/eyes/4/1.png"
+        }, {
+          "id": 2,
+          "path": "./img/ika/cmn/eyes/4/2.png"
+        }, {
+          "id": 3,
+          "path": "./img/ika/cmn/eyes/4/3.png"
+        }, {
+          "id": 4,
+          "path": "./img/ika/cmn/eyes/4/4.png"
+        }, {
+          "id": 5,
+          "path": "./img/ika/cmn/eyes/4/5.png"
+        }, {
+          "id": 6,
+          "path": "./img/ika/cmn/eyes/4/6.png"
+        }, {
+          "id": 7,
+          "path": "./img/ika/cmn/eyes/4/7.png"
+        }]
+      }, {
+        "id": 5,
+        "items": [{
+          "id": 1,
+          "path": "./img/ika/cmn/eyes/5/1.png"
+        }, {
+          "id": 2,
+          "path": "./img/ika/cmn/eyes/5/2.png"
+        }, {
+          "id": 3,
+          "path": "./img/ika/cmn/eyes/5/3.png"
+        }, {
+          "id": 4,
+          "path": "./img/ika/cmn/eyes/5/4.png"
+        }, {
+          "id": 5,
+          "path": "./img/ika/cmn/eyes/5/5.png"
+        }, {
+          "id": 6,
+          "path": "./img/ika/cmn/eyes/5/6.png"
+        }, {
+          "id": 7,
+          "path": "./img/ika/cmn/eyes/5/7.png"
+        }]
+      }, {
+        "id": 6,
+        "items": [{
+          "id": 1,
+          "path": "./img/ika/cmn/eyes/6/1.png"
+        }, {
+          "id": 2,
+          "path": "./img/ika/cmn/eyes/6/2.png"
+        }, {
+          "id": 3,
+          "path": "./img/ika/cmn/eyes/6/3.png"
+        }, {
+          "id": 4,
+          "path": "./img/ika/cmn/eyes/6/4.png"
+        }, {
+          "id": 5,
+          "path": "./img/ika/cmn/eyes/6/5.png"
+        }, {
+          "id": 6,
+          "path": "./img/ika/cmn/eyes/6/6.png"
+        }, {
+          "id": 7,
+          "path": "./img/ika/cmn/eyes/6/7.png"
+        }]
+      }, {
+        "id": 7,
+        "items": [{
+          "id": 1,
+          "path": "./img/ika/cmn/eyes/7/1.png"
+        }]
       }, {
         "id": 8,
-        "path": "./img/ika/hair/1/8.png"
+        "items": [{
+          "id": 3,
+          "path": "./img/ika/cmn/eyes/8/3.png"
+        }, {
+          "id": 5,
+          "path": "./img/ika/cmn/eyes/8/5.png"
+        }, {
+          "id": 7,
+          "path": "./img/ika/cmn/eyes/8/7.png"
+        }]
+      }],
+      "COLORS": {
+        "1": "383834",
+        "2": "5D3C36",
+        "3": "C01594",
+        "4": "F09925",
+        "5": "E2D22E",
+        "6": "159167",
+        "7": "081EDC"
+      }
+    },
+    "mouth": {
+      "tabName": "クチ",
+      "tabOrder": 6,
+      "tabGroup": "FACE",
+      "selectType": "TYPE",
+      "items": [{
+        "id": 1,
+        "path": "./img/ika/girl/mouth/1.png"
+      }, {
+        "id": 2,
+        "path": "./img/ika/girl/mouth/2.png"
+      }, {
+        "id": 3,
+        "path": "./img/ika/girl/mouth/3.png"
+      }, {
+        "id": 4,
+        "path": "./img/ika/girl/mouth/4.png"
+      }, {
+        "id": 5,
+        "path": "./img/ika/girl/mouth/5.png"
+      }, {
+        "id": 6,
+        "path": "./img/ika/girl/mouth/6.png"
+      }, {
+        "id": 7,
+        "path": "./img/ika/girl/mouth/7.png"
+      }, {
+        "id": 8,
+        "path": "./img/ika/girl/mouth/8.png"
+      }]
+    },
+    "hat": {
+      "tabName": "アタマ",
+      "tabOrder": 7,
+      "tabGroup": "GEAR",
+      "selectType": "TYPE",
+      "items": [{
+        "id": 0,
+        "path": "./img/ika/girl/hat/0.png"
+      }, {
+        "id": 1,
+        "path": "./img/ika/girl/hat/1.png"
+      }, {
+        "id": 2,
+        "path": "./img/ika/girl/hat/2.png"
+      }, {
+        "id": 3,
+        "path": "./img/ika/girl/hat/3.png"
+      }, {
+        "id": 4,
+        "path": "./img/ika/girl/hat/4.png"
+      }, {
+        "id": 5,
+        "path": "./img/ika/girl/hat/5.png"
+      }, {
+        "id": 6,
+        "path": "./img/ika/girl/hat/6.png"
+      }, {
+        "id": 7,
+        "path": "./img/ika/girl/hat/7.png"
+      }, {
+        "id": 8,
+        "path": "./img/ika/girl/hat/8.png"
       }, {
         "id": 9,
-        "path": "./img/ika/hair/1/9.png"
+        "path": "./img/ika/girl/hat/9.png"
       }, {
         "id": 10,
-        "path": "./img/ika/hair/1/10.png"
+        "path": "./img/ika/girl/hat/10.png"
       }, {
         "id": 11,
-        "path": "./img/ika/hair/1/11.png"
+        "path": "./img/ika/girl/hat/11.png"
       }, {
         "id": 12,
-        "path": "./img/ika/hair/1/12.png"
+        "path": "./img/ika/girl/hat/12.png"
       }, {
         "id": 13,
-        "path": "./img/ika/hair/1/13.png"
+        "path": "./img/ika/girl/hat/13.png"
       }, {
         "id": 14,
-        "path": "./img/ika/hair/1/14.png"
+        "path": "./img/ika/girl/hat/14.png"
       }, {
         "id": 15,
-        "path": "./img/ika/hair/1/15.png"
+        "path": "./img/ika/girl/hat/15.png"
       }, {
         "id": 16,
-        "path": "./img/ika/hair/1/16.png"
+        "path": "./img/ika/girl/hat/16.png"
+      }, {
+        "id": 17,
+        "path": "./img/ika/girl/hat/17.png"
+      }, {
+        "id": 18,
+        "path": "./img/ika/girl/hat/18.png"
+      }, {
+        "id": 19,
+        "path": "./img/ika/girl/hat/19.png"
+      }, {
+        "id": 20,
+        "path": "./img/ika/girl/hat/20.png"
+      }, {
+        "id": 21,
+        "path": "./img/ika/girl/hat/21.png"
+      }, {
+        "id": 22,
+        "path": "./img/ika/girl/hat/22.png"
+      }, {
+        "id": 23,
+        "path": "./img/ika/girl/hat/23.png"
+      }, {
+        "id": 24,
+        "path": "./img/ika/girl/hat/24.png"
+      }, {
+        "id": 25,
+        "path": "./img/ika/girl/hat/25.png"
+      }, {
+        "id": 26,
+        "path": "./img/ika/girl/hat/26.png"
+      }, {
+        "id": 27,
+        "path": "./img/ika/girl/hat/27.png"
+      }, {
+        "id": 28,
+        "path": "./img/ika/girl/hat/28.png"
+      }, {
+        "id": 29,
+        "path": "./img/ika/girl/hat/29.png"
+      }, {
+        "id": 30,
+        "path": "./img/ika/girl/hat/30.png"
+      }, {
+        "id": 31,
+        "path": "./img/ika/girl/hat/31.png"
+      }, {
+        "id": 32,
+        "path": "./img/ika/girl/hat/32.png"
+      }, {
+        "id": 33,
+        "path": "./img/ika/girl/hat/33.png"
+      }, {
+        "id": 34,
+        "path": "./img/ika/girl/hat/34.png"
+      }, {
+        "id": 35,
+        "path": "./img/ika/girl/hat/35.png"
       }]
-    }, {
-      "id": 2,
+    },
+    "clothes": {
+      "tabName": "フク",
+      "tabOrder": 8,
+      "tabGroup": "GEAR",
+      "selectType": "TYPE",
       "items": [{
         "id": 1,
-        "path": "./img/ika/hair/2/1.png"
+        "path": "./img/ika/girl/clothes/1.png"
       }, {
         "id": 2,
-        "path": "./img/ika/hair/2/2.png"
+        "path": "./img/ika/girl/clothes/2.png"
       }, {
         "id": 3,
-        "path": "./img/ika/hair/2/3.png"
+        "path": "./img/ika/girl/clothes/3.png"
       }, {
         "id": 4,
-        "path": "./img/ika/hair/2/4.png"
+        "path": "./img/ika/girl/clothes/4.png"
       }, {
         "id": 5,
-        "path": "./img/ika/hair/2/5.png"
+        "path": "./img/ika/girl/clothes/5.png"
       }, {
         "id": 6,
-        "path": "./img/ika/hair/2/6.png"
+        "path": "./img/ika/girl/clothes/6.png"
       }, {
         "id": 7,
-        "path": "./img/ika/hair/2/7.png"
+        "path": "./img/ika/girl/clothes/7.png"
       }, {
         "id": 8,
-        "path": "./img/ika/hair/2/8.png"
+        "path": "./img/ika/girl/clothes/8.png"
       }, {
         "id": 9,
-        "path": "./img/ika/hair/2/9.png"
+        "path": "./img/ika/girl/clothes/9.png"
       }, {
         "id": 10,
-        "path": "./img/ika/hair/2/10.png"
+        "path": "./img/ika/girl/clothes/10.png"
       }, {
         "id": 11,
-        "path": "./img/ika/hair/2/11.png"
+        "path": "./img/ika/girl/clothes/11.png"
       }, {
         "id": 12,
-        "path": "./img/ika/hair/2/12.png"
+        "path": "./img/ika/girl/clothes/12.png"
       }, {
         "id": 13,
-        "path": "./img/ika/hair/2/13.png"
+        "path": "./img/ika/girl/clothes/13.png"
       }, {
         "id": 14,
-        "path": "./img/ika/hair/2/14.png"
+        "path": "./img/ika/girl/clothes/14.png"
       }, {
         "id": 15,
-        "path": "./img/ika/hair/2/15.png"
+        "path": "./img/ika/girl/clothes/15.png"
       }, {
         "id": 16,
-        "path": "./img/ika/hair/2/16.png"
+        "path": "./img/ika/girl/clothes/16.png"
+      }, {
+        "id": 17,
+        "path": "./img/ika/girl/clothes/17.png"
+      }, {
+        "id": 18,
+        "path": "./img/ika/girl/clothes/18.png"
+      }, {
+        "id": 19,
+        "path": "./img/ika/girl/clothes/19.png"
+      }, {
+        "id": 20,
+        "path": "./img/ika/girl/clothes/20.png"
+      }, {
+        "id": 21,
+        "path": "./img/ika/girl/clothes/21.png"
+      }, {
+        "id": 22,
+        "path": "./img/ika/girl/clothes/22.png"
+      }, {
+        "id": 23,
+        "path": "./img/ika/girl/clothes/23.png"
+      }, {
+        "id": 24,
+        "path": "./img/ika/girl/clothes/24.png"
+      }, {
+        "id": 25,
+        "path": "./img/ika/girl/clothes/25.png"
+      }, {
+        "id": 26,
+        "path": "./img/ika/girl/clothes/26.png"
+      }, {
+        "id": 27,
+        "path": "./img/ika/girl/clothes/27.png"
+      }, {
+        "id": 28,
+        "path": "./img/ika/girl/clothes/28.png"
+      }, {
+        "id": 29,
+        "path": "./img/ika/girl/clothes/29.png"
+      }, {
+        "id": 30,
+        "path": "./img/ika/girl/clothes/30.png"
+      }, {
+        "id": 31,
+        "path": "./img/ika/girl/clothes/31.png"
+      }, {
+        "id": 32,
+        "path": "./img/ika/girl/clothes/32.png"
       }]
-    }],
-    "COLORS": {
-      "1": "FD8424",
-      "2": "0F4DFB",
-      "3": "FC1999",
-      "4": "3DEB2B",
-      "5": "FED430",
-      "6": "9D1FD8",
-      "7": "FFF2C4",
-      "8": "222124",
-      "9": "DB0A16",
-      "10": "FD97B8",
-      "11": "D699FC",
-      "12": "A4F7FE",
-      "13": "95FEE5",
-      "14": "C5FEB8",
-      "15": "FFFDA1",
-      "16": "53A3FC"
+    },
+    "bg": {
+      "tabName": "ハイケイ",
+      "tabOrder": 9,
+      "tabGroup": "OTHERS",
+      "selectType": "TYPE_COLOR",
+      "items": [{
+        "id": 1,
+        "items": [{
+          "id": 1,
+          "path": "./img/ika/cmn/bg/1/1.png"
+        }, {
+          "id": 3,
+          "path": "./img/ika/cmn/bg/1/3.png"
+        }, {
+          "id": 4,
+          "path": "./img/ika/cmn/bg/1/4.png"
+        }, {
+          "id": 5,
+          "path": "./img/ika/cmn/bg/1/5.png"
+        }, {
+          "id": 6,
+          "path": "./img/ika/cmn/bg/1/6.png"
+        }, {
+          "id": 7,
+          "path": "./img/ika/cmn/bg/1/7.png"
+        }, {
+          "id": 8,
+          "path": "./img/ika/cmn/bg/1/8.png"
+        }, {
+          "id": 9,
+          "path": "./img/ika/cmn/bg/1/9.png"
+        }, {
+          "id": 10,
+          "path": "./img/ika/cmn/bg/1/10.png"
+        }, {
+          "id": 11,
+          "path": "./img/ika/cmn/bg/1/11.png"
+        }]
+      }, {
+        "id": 2,
+        "items": [{
+          "id": 1,
+          "path": "./img/ika/cmn/bg/2/1.png"
+        }, {
+          "id": 2,
+          "path": "./img/ika/cmn/bg/2/2.png"
+        }, {
+          "id": 3,
+          "path": "./img/ika/cmn/bg/2/3.png"
+        }, {
+          "id": 4,
+          "path": "./img/ika/cmn/bg/2/4.png"
+        }, {
+          "id": 5,
+          "path": "./img/ika/cmn/bg/2/5.png"
+        }, {
+          "id": 6,
+          "path": "./img/ika/cmn/bg/2/6.png"
+        }, {
+          "id": 7,
+          "path": "./img/ika/cmn/bg/2/7.png"
+        }, {
+          "id": 8,
+          "path": "./img/ika/cmn/bg/2/8.png"
+        }, {
+          "id": 9,
+          "path": "./img/ika/cmn/bg/2/9.png"
+        }, {
+          "id": 10,
+          "path": "./img/ika/cmn/bg/2/10.png"
+        }]
+      }],
+      "COLORS": {
+        "1": "000000",
+        "2": "00212F",
+        "3": "0C1CB0",
+        "4": "0091FF",
+        "5": "2CFEED",
+        "6": "42E62A",
+        "7": "FEF035",
+        "8": "FD9126",
+        "9": "FD89C1",
+        "10": "CD0814",
+        "11": "ffffff"
+      }
     }
   },
-  "brows": {
-    "tabName": "マユ",
-    "tabOrder": 3,
-    "tabGroup": "FACE",
-    "selectType": "TYPE_COLOR",
-    "items": [{
-      "id": 1,
+  "boy": {
+    "body": {
+      "tabName": "カラダ",
+      "tabOrder": 1,
+      "tabGroup": "BASE",
+      "selectType": "COLOR",
+      "items": [{
+        "id": 3,
+        "path": "./img/ika/boy/body/3.png"
+      }],
+      "COLORS": {
+        "1": "FEECE4",
+        "2": "FED8C1",
+        "3": "FEC49F",
+        "4": "9D6B48",
+        "5": "79491F",
+        "6": "4E2C07",
+        "7": "41230F"
+      }
+    },
+    "hair": {
+      "tabName": "カミ",
+      "tabOrder": 2,
+      "tabGroup": "BASE",
+      "selectType": "TYPE_COLOR",
       "items": [{
         "id": 1,
-        "path": "./img/ika/brows/1/1.png"
+        "items": [{
+          "id": 2,
+          "path": "./img/ika/boy/hair/1/2.png"
+        }]
       }, {
         "id": 2,
-        "path": "./img/ika/brows/1/2.png"
+        "items": [{
+          "id": 2,
+          "path": "./img/ika/boy/hair/2/2.png"
+        }]
+      }],
+      "COLORS": {
+        "1": "FD8424",
+        "2": "0F4DFB",
+        "3": "FC1999",
+        "4": "3DEB2B",
+        "5": "FED430",
+        "6": "9D1FD8",
+        "7": "FFF2C4",
+        "8": "222124",
+        "9": "DB0A16",
+        "10": "FD97B8",
+        "11": "D699FC",
+        "12": "A4F7FE",
+        "13": "95FEE5",
+        "14": "C5FEB8",
+        "15": "FFFDA1",
+        "16": "53A3FC"
+      }
+    },
+    "brows": {
+      "tabName": "マユ",
+      "tabOrder": 3,
+      "tabGroup": "FACE",
+      "selectType": "TYPE_COLOR",
+      "items": [{
+        "id": 1,
+        "items": [{
+          "id": 2,
+          "path": "./img/ika/boy/brows/1/2.png"
+        }]
+      }],
+      "COLORS": {
+        "1": "FD8424",
+        "2": "0F4DFB",
+        "3": "FC1999",
+        "4": "3DEB2B",
+        "5": "FED430",
+        "6": "9D1FD8",
+        "7": "FFF2C4",
+        "8": "222124",
+        "9": "DB0A16",
+        "10": "FD97B8",
+        "11": "D699FC",
+        "12": "A4F7FE",
+        "13": "95FEE5",
+        "14": "C5FEB8",
+        "15": "FFFDA1",
+        "16": "53A3FC"
+      }
+    },
+    "eyes": {
+      "tabName": "メ",
+      "tabOrder": 5,
+      "tabGroup": "FACE",
+      "selectType": "TYPE_COLOR",
+      "items": [{
+        "id": 1,
+        "items": [{
+          "id": 1,
+          "path": "./img/ika/cmn/eyes/1/1.png"
+        }, {
+          "id": 2,
+          "path": "./img/ika/cmn/eyes/1/2.png"
+        }, {
+          "id": 3,
+          "path": "./img/ika/cmn/eyes/1/3.png"
+        }, {
+          "id": 4,
+          "path": "./img/ika/cmn/eyes/1/4.png"
+        }, {
+          "id": 5,
+          "path": "./img/ika/cmn/eyes/1/5.png"
+        }, {
+          "id": 6,
+          "path": "./img/ika/cmn/eyes/1/6.png"
+        }, {
+          "id": 7,
+          "path": "./img/ika/cmn/eyes/1/7.png"
+        }]
+      }, {
+        "id": 2,
+        "items": [{
+          "id": 1,
+          "path": "./img/ika/cmn/eyes/2/1.png"
+        }, {
+          "id": 2,
+          "path": "./img/ika/cmn/eyes/2/2.png"
+        }, {
+          "id": 3,
+          "path": "./img/ika/cmn/eyes/2/3.png"
+        }, {
+          "id": 4,
+          "path": "./img/ika/cmn/eyes/2/4.png"
+        }, {
+          "id": 5,
+          "path": "./img/ika/cmn/eyes/2/5.png"
+        }, {
+          "id": 6,
+          "path": "./img/ika/cmn/eyes/2/6.png"
+        }, {
+          "id": 7,
+          "path": "./img/ika/cmn/eyes/2/7.png"
+        }]
       }, {
         "id": 3,
-        "path": "./img/ika/brows/1/3.png"
+        "items": [{
+          "id": 1,
+          "path": "./img/ika/cmn/eyes/3/1.png"
+        }, {
+          "id": 2,
+          "path": "./img/ika/cmn/eyes/3/2.png"
+        }, {
+          "id": 3,
+          "path": "./img/ika/cmn/eyes/3/3.png"
+        }, {
+          "id": 4,
+          "path": "./img/ika/cmn/eyes/3/4.png"
+        }, {
+          "id": 5,
+          "path": "./img/ika/cmn/eyes/3/5.png"
+        }, {
+          "id": 6,
+          "path": "./img/ika/cmn/eyes/3/6.png"
+        }, {
+          "id": 7,
+          "path": "./img/ika/cmn/eyes/3/7.png"
+        }]
       }, {
         "id": 4,
-        "path": "./img/ika/brows/1/4.png"
+        "items": [{
+          "id": 1,
+          "path": "./img/ika/cmn/eyes/4/1.png"
+        }, {
+          "id": 2,
+          "path": "./img/ika/cmn/eyes/4/2.png"
+        }, {
+          "id": 3,
+          "path": "./img/ika/cmn/eyes/4/3.png"
+        }, {
+          "id": 4,
+          "path": "./img/ika/cmn/eyes/4/4.png"
+        }, {
+          "id": 5,
+          "path": "./img/ika/cmn/eyes/4/5.png"
+        }, {
+          "id": 6,
+          "path": "./img/ika/cmn/eyes/4/6.png"
+        }, {
+          "id": 7,
+          "path": "./img/ika/cmn/eyes/4/7.png"
+        }]
       }, {
         "id": 5,
-        "path": "./img/ika/brows/1/5.png"
+        "items": [{
+          "id": 1,
+          "path": "./img/ika/cmn/eyes/5/1.png"
+        }, {
+          "id": 2,
+          "path": "./img/ika/cmn/eyes/5/2.png"
+        }, {
+          "id": 3,
+          "path": "./img/ika/cmn/eyes/5/3.png"
+        }, {
+          "id": 4,
+          "path": "./img/ika/cmn/eyes/5/4.png"
+        }, {
+          "id": 5,
+          "path": "./img/ika/cmn/eyes/5/5.png"
+        }, {
+          "id": 6,
+          "path": "./img/ika/cmn/eyes/5/6.png"
+        }, {
+          "id": 7,
+          "path": "./img/ika/cmn/eyes/5/7.png"
+        }]
       }, {
         "id": 6,
-        "path": "./img/ika/brows/1/6.png"
+        "items": [{
+          "id": 1,
+          "path": "./img/ika/cmn/eyes/6/1.png"
+        }, {
+          "id": 2,
+          "path": "./img/ika/cmn/eyes/6/2.png"
+        }, {
+          "id": 3,
+          "path": "./img/ika/cmn/eyes/6/3.png"
+        }, {
+          "id": 4,
+          "path": "./img/ika/cmn/eyes/6/4.png"
+        }, {
+          "id": 5,
+          "path": "./img/ika/cmn/eyes/6/5.png"
+        }, {
+          "id": 6,
+          "path": "./img/ika/cmn/eyes/6/6.png"
+        }, {
+          "id": 7,
+          "path": "./img/ika/cmn/eyes/6/7.png"
+        }]
       }, {
         "id": 7,
-        "path": "./img/ika/brows/1/7.png"
+        "items": [{
+          "id": 1,
+          "path": "./img/ika/cmn/eyes/7/1.png"
+        }]
       }, {
         "id": 8,
-        "path": "./img/ika/brows/1/8.png"
-      }, {
-        "id": 9,
-        "path": "./img/ika/brows/1/9.png"
-      }, {
-        "id": 10,
-        "path": "./img/ika/brows/1/10.png"
-      }, {
-        "id": 11,
-        "path": "./img/ika/brows/1/11.png"
-      }, {
-        "id": 12,
-        "path": "./img/ika/brows/1/12.png"
-      }, {
-        "id": 13,
-        "path": "./img/ika/brows/1/13.png"
-      }, {
-        "id": 14,
-        "path": "./img/ika/brows/1/14.png"
-      }, {
-        "id": 15,
-        "path": "./img/ika/brows/1/15.png"
-      }, {
-        "id": 16,
-        "path": "./img/ika/brows/1/16.png"
-      }]
-    }, {
-      "id": 2,
+        "items": [{
+          "id": 3,
+          "path": "./img/ika/cmn/eyes/8/3.png"
+        }, {
+          "id": 5,
+          "path": "./img/ika/cmn/eyes/8/5.png"
+        }, {
+          "id": 7,
+          "path": "./img/ika/cmn/eyes/8/7.png"
+        }]
+      }],
+      "COLORS": {
+        "1": "383834",
+        "2": "5D3C36",
+        "3": "C01594",
+        "4": "F09925",
+        "5": "E2D22E",
+        "6": "159167",
+        "7": "081EDC"
+      }
+    },
+    "mouth": {
+      "tabName": "クチ",
+      "tabOrder": 6,
+      "tabGroup": "FACE",
+      "selectType": "TYPE",
       "items": [{
-        "id": 1,
-        "path": "./img/ika/brows/2/1.png"
+        "id": 2,
+        "path": "./img/ika/boy/mouth/2.png"
+      }]
+    },
+    "hat": {
+      "tabName": "アタマ",
+      "tabOrder": 7,
+      "tabGroup": "GEAR",
+      "selectType": "TYPE",
+      "items": [{
+        "id": 0,
+        "path": "./img/ika/boy/hat/0.png"
       }, {
         "id": 2,
-        "path": "./img/ika/brows/2/2.png"
-      }, {
-        "id": 3,
-        "path": "./img/ika/brows/2/3.png"
-      }, {
-        "id": 4,
-        "path": "./img/ika/brows/2/4.png"
-      }, {
-        "id": 5,
-        "path": "./img/ika/brows/2/5.png"
-      }, {
-        "id": 6,
-        "path": "./img/ika/brows/2/6.png"
-      }, {
-        "id": 7,
-        "path": "./img/ika/brows/2/7.png"
-      }, {
-        "id": 8,
-        "path": "./img/ika/brows/2/8.png"
-      }, {
-        "id": 9,
-        "path": "./img/ika/brows/2/9.png"
-      }, {
-        "id": 10,
-        "path": "./img/ika/brows/2/10.png"
-      }, {
-        "id": 11,
-        "path": "./img/ika/brows/2/11.png"
-      }, {
-        "id": 12,
-        "path": "./img/ika/brows/2/12.png"
-      }, {
-        "id": 13,
-        "path": "./img/ika/brows/2/13.png"
-      }, {
-        "id": 14,
-        "path": "./img/ika/brows/2/14.png"
-      }, {
-        "id": 15,
-        "path": "./img/ika/brows/2/15.png"
-      }, {
-        "id": 16,
-        "path": "./img/ika/brows/2/16.png"
+        "path": "./img/ika/boy/hat/2.png"
       }]
-    }],
-    "COLORS": {
-      "1": "FD8424",
-      "2": "0F4DFB",
-      "3": "FC1999",
-      "4": "3DEB2B",
-      "5": "FED430",
-      "6": "9D1FD8",
-      "7": "FFF2C4",
-      "8": "222124",
-      "9": "DB0A16",
-      "10": "FD97B8",
-      "11": "D699FC",
-      "12": "A4F7FE",
-      "13": "95FEE5",
-      "14": "C5FEB8",
-      "15": "FFFDA1",
-      "16": "53A3FC"
-    }
-  },
-  "eyes": {
-    "tabName": "メ",
-    "tabOrder": 5,
-    "tabGroup": "FACE",
-    "selectType": "TYPE_COLOR",
-    "items": [{
-      "id": 1,
+    },
+    "clothes": {
+      "tabName": "フク",
+      "tabOrder": 8,
+      "tabGroup": "GEAR",
+      "selectType": "TYPE",
       "items": [{
         "id": 1,
-        "path": "./img/ika/eyes/1/1.png"
+        "path": "./img/ika/boy/clothes/1.png"
+      }]
+    },
+    "bg": {
+      "tabName": "ハイケイ",
+      "tabOrder": 9,
+      "tabGroup": "OTHERS",
+      "selectType": "TYPE_COLOR",
+      "items": [{
+        "id": 1,
+        "items": [{
+          "id": 1,
+          "path": "./img/ika/cmn/bg/1/1.png"
+        }, {
+          "id": 3,
+          "path": "./img/ika/cmn/bg/1/3.png"
+        }, {
+          "id": 4,
+          "path": "./img/ika/cmn/bg/1/4.png"
+        }, {
+          "id": 5,
+          "path": "./img/ika/cmn/bg/1/5.png"
+        }, {
+          "id": 6,
+          "path": "./img/ika/cmn/bg/1/6.png"
+        }, {
+          "id": 7,
+          "path": "./img/ika/cmn/bg/1/7.png"
+        }, {
+          "id": 8,
+          "path": "./img/ika/cmn/bg/1/8.png"
+        }, {
+          "id": 9,
+          "path": "./img/ika/cmn/bg/1/9.png"
+        }, {
+          "id": 10,
+          "path": "./img/ika/cmn/bg/1/10.png"
+        }, {
+          "id": 11,
+          "path": "./img/ika/cmn/bg/1/11.png"
+        }]
       }, {
         "id": 2,
-        "path": "./img/ika/eyes/1/2.png"
-      }, {
-        "id": 3,
-        "path": "./img/ika/eyes/1/3.png"
-      }, {
-        "id": 4,
-        "path": "./img/ika/eyes/1/4.png"
-      }, {
-        "id": 5,
-        "path": "./img/ika/eyes/1/5.png"
-      }, {
-        "id": 6,
-        "path": "./img/ika/eyes/1/6.png"
-      }, {
-        "id": 7,
-        "path": "./img/ika/eyes/1/7.png"
-      }]
-    }, {
-      "id": 2,
-      "items": [{
-        "id": 1,
-        "path": "./img/ika/eyes/2/1.png"
-      }, {
-        "id": 2,
-        "path": "./img/ika/eyes/2/2.png"
-      }, {
-        "id": 3,
-        "path": "./img/ika/eyes/2/3.png"
-      }, {
-        "id": 4,
-        "path": "./img/ika/eyes/2/4.png"
-      }, {
-        "id": 5,
-        "path": "./img/ika/eyes/2/5.png"
-      }, {
-        "id": 6,
-        "path": "./img/ika/eyes/2/6.png"
-      }, {
-        "id": 7,
-        "path": "./img/ika/eyes/2/7.png"
-      }]
-    }, {
-      "id": 3,
-      "items": [{
-        "id": 1,
-        "path": "./img/ika/eyes/3/1.png"
-      }, {
-        "id": 2,
-        "path": "./img/ika/eyes/3/2.png"
-      }, {
-        "id": 3,
-        "path": "./img/ika/eyes/3/3.png"
-      }, {
-        "id": 4,
-        "path": "./img/ika/eyes/3/4.png"
-      }, {
-        "id": 5,
-        "path": "./img/ika/eyes/3/5.png"
-      }, {
-        "id": 6,
-        "path": "./img/ika/eyes/3/6.png"
-      }, {
-        "id": 7,
-        "path": "./img/ika/eyes/3/7.png"
-      }]
-    }, {
-      "id": 4,
-      "items": [{
-        "id": 1,
-        "path": "./img/ika/eyes/4/1.png"
-      }, {
-        "id": 2,
-        "path": "./img/ika/eyes/4/2.png"
-      }, {
-        "id": 3,
-        "path": "./img/ika/eyes/4/3.png"
-      }, {
-        "id": 4,
-        "path": "./img/ika/eyes/4/4.png"
-      }, {
-        "id": 5,
-        "path": "./img/ika/eyes/4/5.png"
-      }, {
-        "id": 6,
-        "path": "./img/ika/eyes/4/6.png"
-      }, {
-        "id": 7,
-        "path": "./img/ika/eyes/4/7.png"
-      }]
-    }, {
-      "id": 5,
-      "items": [{
-        "id": 1,
-        "path": "./img/ika/eyes/5/1.png"
-      }, {
-        "id": 2,
-        "path": "./img/ika/eyes/5/2.png"
-      }, {
-        "id": 3,
-        "path": "./img/ika/eyes/5/3.png"
-      }, {
-        "id": 4,
-        "path": "./img/ika/eyes/5/4.png"
-      }, {
-        "id": 5,
-        "path": "./img/ika/eyes/5/5.png"
-      }, {
-        "id": 6,
-        "path": "./img/ika/eyes/5/6.png"
-      }, {
-        "id": 7,
-        "path": "./img/ika/eyes/5/7.png"
-      }]
-    }, {
-      "id": 6,
-      "items": [{
-        "id": 1,
-        "path": "./img/ika/eyes/6/1.png"
-      }, {
-        "id": 2,
-        "path": "./img/ika/eyes/6/2.png"
-      }, {
-        "id": 3,
-        "path": "./img/ika/eyes/6/3.png"
-      }, {
-        "id": 4,
-        "path": "./img/ika/eyes/6/4.png"
-      }, {
-        "id": 5,
-        "path": "./img/ika/eyes/6/5.png"
-      }, {
-        "id": 6,
-        "path": "./img/ika/eyes/6/6.png"
-      }, {
-        "id": 7,
-        "path": "./img/ika/eyes/6/7.png"
-      }]
-    }, {
-      "id": 7,
-      "items": [{
-        "id": 1,
-        "path": "./img/ika/eyes/7/1.png"
-      }]
-    }, {
-      "id": 8,
-      "items": [{
-        "id": 3,
-        "path": "./img/ika/eyes/8/3.png"
-      }, {
-        "id": 5,
-        "path": "./img/ika/eyes/8/5.png"
-      }, {
-        "id": 7,
-        "path": "./img/ika/eyes/8/7.png"
-      }]
-    }],
-    "COLORS": {
-      "1": "383834",
-      "2": "5D3C36",
-      "3": "C01594",
-      "4": "F09925",
-      "5": "E2D22E",
-      "6": "159167",
-      "7": "081EDC"
-    }
-  },
-  "mouth": {
-    "tabName": "クチ",
-    "tabOrder": 6,
-    "tabGroup": "FACE",
-    "selectType": "TYPE",
-    "items": [{
-      "id": 1,
-      "path": "./img/ika/mouth/1.png"
-    }, {
-      "id": 2,
-      "path": "./img/ika/mouth/2.png"
-    }, {
-      "id": 3,
-      "path": "./img/ika/mouth/3.png"
-    }, {
-      "id": 4,
-      "path": "./img/ika/mouth/4.png"
-    }, {
-      "id": 5,
-      "path": "./img/ika/mouth/5.png"
-    }, {
-      "id": 6,
-      "path": "./img/ika/mouth/6.png"
-    }, {
-      "id": 7,
-      "path": "./img/ika/mouth/7.png"
-    }, {
-      "id": 8,
-      "path": "./img/ika/mouth/8.png"
-    }]
-  },
-  "hat": {
-    "tabName": "アタマ",
-    "tabOrder": 7,
-    "tabGroup": "GEAR",
-    "selectType": "TYPE",
-    "items": [{
-      "id": 0,
-      "path": "./img/ika/hat/0.png"
-    }, {
-      "id": 1,
-      "path": "./img/ika/hat/1.png"
-    }, {
-      "id": 2,
-      "path": "./img/ika/hat/2.png"
-    }, {
-      "id": 3,
-      "path": "./img/ika/hat/3.png"
-    }, {
-      "id": 4,
-      "path": "./img/ika/hat/4.png"
-    }, {
-      "id": 5,
-      "path": "./img/ika/hat/5.png"
-    }, {
-      "id": 6,
-      "path": "./img/ika/hat/6.png"
-    }, {
-      "id": 7,
-      "path": "./img/ika/hat/7.png"
-    }, {
-      "id": 8,
-      "path": "./img/ika/hat/8.png"
-    }, {
-      "id": 9,
-      "path": "./img/ika/hat/9.png"
-    }, {
-      "id": 10,
-      "path": "./img/ika/hat/10.png"
-    }, {
-      "id": 11,
-      "path": "./img/ika/hat/11.png"
-    }, {
-      "id": 12,
-      "path": "./img/ika/hat/12.png"
-    }, {
-      "id": 13,
-      "path": "./img/ika/hat/13.png"
-    }, {
-      "id": 14,
-      "path": "./img/ika/hat/14.png"
-    }, {
-      "id": 15,
-      "path": "./img/ika/hat/15.png"
-    }, {
-      "id": 16,
-      "path": "./img/ika/hat/16.png"
-    }, {
-      "id": 17,
-      "path": "./img/ika/hat/17.png"
-    }, {
-      "id": 18,
-      "path": "./img/ika/hat/18.png"
-    }, {
-      "id": 19,
-      "path": "./img/ika/hat/19.png"
-    }, {
-      "id": 20,
-      "path": "./img/ika/hat/20.png"
-    }, {
-      "id": 21,
-      "path": "./img/ika/hat/21.png"
-    }, {
-      "id": 22,
-      "path": "./img/ika/hat/22.png"
-    }, {
-      "id": 23,
-      "path": "./img/ika/hat/23.png"
-    }, {
-      "id": 24,
-      "path": "./img/ika/hat/24.png"
-    }, {
-      "id": 25,
-      "path": "./img/ika/hat/25.png"
-    }, {
-      "id": 26,
-      "path": "./img/ika/hat/26.png"
-    }, {
-      "id": 27,
-      "path": "./img/ika/hat/27.png"
-    }, {
-      "id": 28,
-      "path": "./img/ika/hat/28.png"
-    }, {
-      "id": 29,
-      "path": "./img/ika/hat/29.png"
-    }, {
-      "id": 30,
-      "path": "./img/ika/hat/30.png"
-    }, {
-      "id": 31,
-      "path": "./img/ika/hat/31.png"
-    }, {
-      "id": 32,
-      "path": "./img/ika/hat/32.png"
-    }, {
-      "id": 33,
-      "path": "./img/ika/hat/33.png"
-    }, {
-      "id": 34,
-      "path": "./img/ika/hat/34.png"
-    }, {
-      "id": 35,
-      "path": "./img/ika/hat/35.png"
-    }]
-  },
-  "clothes": {
-    "tabName": "フク",
-    "tabOrder": 8,
-    "tabGroup": "GEAR",
-    "selectType": "TYPE",
-    "items": [{
-      "id": 1,
-      "path": "./img/ika/clothes/1.png"
-    }, {
-      "id": 2,
-      "path": "./img/ika/clothes/2.png"
-    }, {
-      "id": 3,
-      "path": "./img/ika/clothes/3.png"
-    }, {
-      "id": 4,
-      "path": "./img/ika/clothes/4.png"
-    }, {
-      "id": 5,
-      "path": "./img/ika/clothes/5.png"
-    }, {
-      "id": 6,
-      "path": "./img/ika/clothes/6.png"
-    }, {
-      "id": 7,
-      "path": "./img/ika/clothes/7.png"
-    }, {
-      "id": 8,
-      "path": "./img/ika/clothes/8.png"
-    }, {
-      "id": 9,
-      "path": "./img/ika/clothes/9.png"
-    }, {
-      "id": 10,
-      "path": "./img/ika/clothes/10.png"
-    }, {
-      "id": 11,
-      "path": "./img/ika/clothes/11.png"
-    }, {
-      "id": 12,
-      "path": "./img/ika/clothes/12.png"
-    }, {
-      "id": 13,
-      "path": "./img/ika/clothes/13.png"
-    }, {
-      "id": 14,
-      "path": "./img/ika/clothes/14.png"
-    }, {
-      "id": 15,
-      "path": "./img/ika/clothes/15.png"
-    }, {
-      "id": 16,
-      "path": "./img/ika/clothes/16.png"
-    }, {
-      "id": 17,
-      "path": "./img/ika/clothes/17.png"
-    }, {
-      "id": 18,
-      "path": "./img/ika/clothes/18.png"
-    }, {
-      "id": 19,
-      "path": "./img/ika/clothes/19.png"
-    }, {
-      "id": 20,
-      "path": "./img/ika/clothes/20.png"
-    }, {
-      "id": 21,
-      "path": "./img/ika/clothes/21.png"
-    }, {
-      "id": 22,
-      "path": "./img/ika/clothes/22.png"
-    }, {
-      "id": 23,
-      "path": "./img/ika/clothes/23.png"
-    }, {
-      "id": 24,
-      "path": "./img/ika/clothes/24.png"
-    }, {
-      "id": 25,
-      "path": "./img/ika/clothes/25.png"
-    }, {
-      "id": 26,
-      "path": "./img/ika/clothes/26.png"
-    }, {
-      "id": 27,
-      "path": "./img/ika/clothes/27.png"
-    }, {
-      "id": 28,
-      "path": "./img/ika/clothes/28.png"
-    }, {
-      "id": 29,
-      "path": "./img/ika/clothes/29.png"
-    }, {
-      "id": 30,
-      "path": "./img/ika/clothes/30.png"
-    }, {
-      "id": 31,
-      "path": "./img/ika/clothes/31.png"
-    }, {
-      "id": 32,
-      "path": "./img/ika/clothes/32.png"
-    }]
-  },
-  "bg": {
-    "tabName": "ハイケイ",
-    "tabOrder": 9,
-    "tabGroup": "OTHERS",
-    "selectType": "TYPE_COLOR",
-    "items": [{
-      "id": 1,
-      "items": [{
-        "id": 1,
-        "path": "./img/ika/bg/1/1.png"
-      }, {
-        "id": 2,
-        "path": "./img/ika/bg/1/2.png"
-      }, {
-        "id": 3,
-        "path": "./img/ika/bg/1/3.png"
-      }, {
-        "id": 4,
-        "path": "./img/ika/bg/1/4.png"
-      }, {
-        "id": 5,
-        "path": "./img/ika/bg/1/5.png"
-      }, {
-        "id": 6,
-        "path": "./img/ika/bg/1/6.png"
-      }, {
-        "id": 7,
-        "path": "./img/ika/bg/1/7.png"
-      }, {
-        "id": 8,
-        "path": "./img/ika/bg/1/8.png"
-      }, {
-        "id": 9,
-        "path": "./img/ika/bg/1/9.png"
-      }, {
-        "id": 10,
-        "path": "./img/ika/bg/1/10.png"
-      }]
-    }, {
-      "id": 2,
-      "items": [{
-        "id": 1,
-        "path": "./img/ika/bg/2/1.png"
-      }, {
-        "id": 2,
-        "path": "./img/ika/bg/2/2.png"
-      }, {
-        "id": 3,
-        "path": "./img/ika/bg/2/3.png"
-      }, {
-        "id": 4,
-        "path": "./img/ika/bg/2/4.png"
-      }, {
-        "id": 5,
-        "path": "./img/ika/bg/2/5.png"
-      }, {
-        "id": 6,
-        "path": "./img/ika/bg/2/6.png"
-      }, {
-        "id": 7,
-        "path": "./img/ika/bg/2/7.png"
-      }, {
-        "id": 8,
-        "path": "./img/ika/bg/2/8.png"
-      }, {
-        "id": 9,
-        "path": "./img/ika/bg/2/9.png"
-      }, {
-        "id": 10,
-        "path": "./img/ika/bg/2/10.png"
-      }]
-    }],
-    "COLORS": {
-      "1": "ffffff",
-      "2": "000000",
-      "3": "0C1CB0",
-      "4": "0091FF",
-      "5": "2CFEED",
-      "6": "42E62A",
-      "7": "FEF035",
-      "8": "FD9126",
-      "9": "FD89C1",
-      "10": "CD0814"
+        "items": [{
+          "id": 1,
+          "path": "./img/ika/cmn/bg/2/1.png"
+        }, {
+          "id": 2,
+          "path": "./img/ika/cmn/bg/2/2.png"
+        }, {
+          "id": 3,
+          "path": "./img/ika/cmn/bg/2/3.png"
+        }, {
+          "id": 4,
+          "path": "./img/ika/cmn/bg/2/4.png"
+        }, {
+          "id": 5,
+          "path": "./img/ika/cmn/bg/2/5.png"
+        }, {
+          "id": 6,
+          "path": "./img/ika/cmn/bg/2/6.png"
+        }, {
+          "id": 7,
+          "path": "./img/ika/cmn/bg/2/7.png"
+        }, {
+          "id": 8,
+          "path": "./img/ika/cmn/bg/2/8.png"
+        }, {
+          "id": 9,
+          "path": "./img/ika/cmn/bg/2/9.png"
+        }, {
+          "id": 10,
+          "path": "./img/ika/cmn/bg/2/10.png"
+        }]
+      }],
+      "COLORS": {
+        "1": "000000",
+        "2": "00212F",
+        "3": "0C1CB0",
+        "4": "0091FF",
+        "5": "2CFEED",
+        "6": "42E62A",
+        "7": "FEF035",
+        "8": "FD9126",
+        "9": "FD89C1",
+        "10": "CD0814",
+        "11": "ffffff"
+      }
     }
   }
 };
@@ -22659,38 +23064,43 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 // そうじゃないものは一旦返す
 if (location.hostname !== 'localhost' && document.referrer !== _const.INDEX_URL) {
   location.replace(_const.INDEX_URL);
-} else {
-  (function () {
-
-    (0, _reactTapEventPlugin2.default)();
-
-    var app = new _app2.default({
-      renderer: function renderer(el) {
-        ReactDOM.render(el, document.getElementById('jsApp'));
-      },
-
-      initialState: {
-        settings: {},
-        showFixModal: false,
-        fixImgSrc: ''
-      }
-    });
-
-    global.addEventListener('load', function () {
-      _parts2.default.fetchAll().then(function () {
-        app.update(function (state) {
-          state.settings = _parts2.default.getDefaultSettings();
-          state.fixImgSrc = _parts2.default.getFixImgSrcBySettings(state.settings);
-          return (0, _objectAssign2.default)({}, state);
-        });
-      });
-    }, false);
-
-    global.addEventListener('error', function () {
-      location.href = '/sorry.html';
-    }, false);
-  })();
 }
+
+// okなら処理開始
+(0, _reactTapEventPlugin2.default)();
+
+global.addEventListener('error', function () {
+  location.href = '/sorry.html';
+}, false);
+
+var appEl = document.getElementById('jsApp');
+var appType = appEl.getAttribute('data-app-type');
+
+if (appType !== 'boy' && appType !== 'girl') {
+  throw new Error('Undefined appType: ' + appType);
+}
+
+var app = new _app2.default({
+  renderer: function renderer(el) {
+    ReactDOM.render(el, appEl);
+  },
+
+  initialState: {
+    settings: {},
+    showFixModal: false,
+    fixImgSrc: ''
+  }
+});
+
+global.addEventListener('load', function () {
+  _parts2.default.init(appType).fetchAll().then(function () {
+    app.update(function (state) {
+      state.settings = _parts2.default.getDefaultSettings();
+      state.fixImgSrc = _parts2.default.getFixImgSrcBySettings(state.settings);
+      return (0, _objectAssign2.default)({}, state);
+    });
+  });
+}, false);
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 },{"./components/app.jsx":167,"./data/const":177,"./models/parts":180,"object-assign":31,"react-dom":33,"react-tap-event-plugin":37}],180:[function(require,module,exports){
@@ -22723,17 +23133,31 @@ var PartsModel = function () {
     _classCallCheck(this, PartsModel);
 
     this.cache = {};
+    this.scheme = {};
+    this.appType = null;
   }
 
   _createClass(PartsModel, [{
+    key: 'init',
+    value: function init(type) {
+      this.appType = type;
+      this.scheme = (0, _objectAssign2.default)({}, _parts2.default[type]);
+      return this;
+    }
+  }, {
     key: 'getDefaultSettings',
     value: function getDefaultSettings() {
-      return (0, _objectAssign2.default)({}, _const.DEFAULT_PARTS_SETTINGS);
+      return (0, _objectAssign2.default)({}, _const.DEFAULT_PARTS_SETTINGS[this.appType]);
+    }
+  }, {
+    key: 'getParts',
+    value: function getParts(partsName) {
+      return (0, _objectAssign2.default)({}, this.scheme[partsName]);
     }
   }, {
     key: '_getImgRef',
     value: function _getImgRef(partsName, type, color) {
-      var parts = _parts2.default[partsName];
+      var parts = this.scheme[partsName];
       var path = '';
       var types = [],
           colors = [];
@@ -22787,8 +23211,10 @@ var PartsModel = function () {
   }, {
     key: 'getTabItems',
     value: function getTabItems() {
-      var tabItems = Object.keys(_parts2.default).map(function (partsName) {
-        var parts = _parts2.default[partsName];
+      var _this = this;
+
+      var tabItems = Object.keys(this.scheme).map(function (partsName) {
+        var parts = _this.scheme[partsName];
         return {
           id: partsName,
           order: parts.tabOrder,
@@ -22804,9 +23230,11 @@ var PartsModel = function () {
   }, {
     key: 'getAllImgPath',
     value: function getAllImgPath() {
+      var _this2 = this;
+
       var imgPathArr = [];
-      Object.keys(_parts2.default).forEach(function (parts) {
-        _parts2.default[parts].items.forEach(function (item) {
+      Object.keys(this.scheme).forEach(function (parts) {
+        _this2.scheme[parts].items.forEach(function (item) {
           if ('path' in item) {
             imgPathArr.push(item.path);
           } else {
