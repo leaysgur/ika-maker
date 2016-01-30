@@ -21186,6 +21186,7 @@ var PartsSelector = function (_Component) {
 
     var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(PartsSelector).call(this));
 
+    _this.appType = _parts2.default.getAppType();
     _this.setPartsType = _this.setPartsType.bind(_this);
     _this.setPartsColor = _this.setPartsColor.bind(_this);
     return _this;
@@ -21218,31 +21219,35 @@ var PartsSelector = function (_Component) {
       var selectedTypeId = settings[partsName + 'Type'];
       var selectedColorId = settings[partsName + 'Color'];
 
-      return React.createElement(
-        'div',
-        null,
-        parts.selectType === 'TYPE' ? React.createElement(_type2.default, {
+      if (parts.selectType === 'TYPE') {
+        return React.createElement(_type2.default, {
+          appType: this.appType,
           onSelect: this.setPartsType,
           target: partsName,
           items: parts.items,
           selectedTypeId: selectedTypeId
-        }) : null,
-        parts.selectType === 'COLOR' ? React.createElement(_color2.default, {
+        });
+      }
+      if (parts.selectType === 'COLOR') {
+        return React.createElement(_color2.default, {
           onSelect: this.setPartsColor,
           target: partsName,
           COLORS: parts.COLORS,
           items: parts.items,
           selectedColorId: selectedColorId
-        }) : null,
-        parts.selectType === 'TYPE_COLOR' ? React.createElement(_type_color2.default, {
+        });
+      }
+      if (parts.selectType === 'TYPE_COLOR') {
+        return React.createElement(_type_color2.default, {
+          appType: this.appType,
           target: partsName,
           parts: parts,
           selectedTypeId: selectedTypeId,
           selectedColorId: selectedColorId,
           _setPartsType: this.setPartsType,
           _setPartsColor: this.setPartsColor
-        }) : null
-      );
+        });
+      }
     }
   }]);
 
@@ -21310,14 +21315,14 @@ var ColorSelector = function (_Component) {
         ),
         React.createElement(
           'ul',
-          { className: 'parts-selector' },
+          { className: 'parts-selector-items' },
           items.map(function (item, idx) {
             var style = { backgroundColor: '#' + COLORS[item.id] };
             var colorId = item.id;
             var isSelected = colorId === selectedColorId;
             return React.createElement(
               'li',
-              { className: 'parts-selector--item', key: idx },
+              { className: 'parts-selector-items--item', key: idx },
               React.createElement('div', {
                 onTouchTap: function onTouchTap() {
                   onSelect({ target: target, colorId: colorId });
@@ -21383,6 +21388,7 @@ var TypeSelector = function (_Component) {
     key: 'render',
     value: function render() {
       var _props = this.props;
+      var appType = _props.appType;
       var target = _props.target;
       var items = _props.items;
       var onSelect = _props.onSelect;
@@ -21390,7 +21396,7 @@ var TypeSelector = function (_Component) {
 
       return React.createElement(
         'div',
-        null,
+        { className: 'parts-selector parts-selector--app-' + appType },
         React.createElement(
           'h3',
           { className: 'parts-selector-header ft-ika' },
@@ -21398,7 +21404,7 @@ var TypeSelector = function (_Component) {
         ),
         React.createElement(
           'ul',
-          { className: 'parts-selector' },
+          { className: 'parts-selector-items' },
           items.map(function (item, idx) {
             var typeId = item.id;
             // TypeColorの場合、Typeの階層ではパスがない
@@ -21407,7 +21413,7 @@ var TypeSelector = function (_Component) {
 
             return React.createElement(
               'li',
-              { className: 'parts-selector--item', key: idx },
+              { className: 'parts-selector-items--item', key: idx },
               React.createElement(
                 'div',
                 {
@@ -21431,6 +21437,7 @@ var TypeSelector = function (_Component) {
 ;
 
 TypeSelector.propTypes = {
+  appType: React.PropTypes.string.isRequired,
   target: React.PropTypes.string.isRequired,
   items: React.PropTypes.array.isRequired,
   onSelect: React.PropTypes.func.isRequired,
@@ -21510,6 +21517,7 @@ var TypeColorSelector = function (_Component) {
     key: 'render',
     value: function render() {
       var _props = this.props;
+      var appType = _props.appType;
       var target = _props.target;
       var parts = _props.parts;
       var _setPartsColor = _props._setPartsColor;
@@ -21522,6 +21530,7 @@ var TypeColorSelector = function (_Component) {
         'div',
         null,
         React.createElement(_type2.default, {
+          appType: appType,
           onSelect: this.setPartsType,
           target: target,
           items: parts.items,
@@ -21544,6 +21553,7 @@ var TypeColorSelector = function (_Component) {
 ;
 
 TypeColorSelector.propTypes = {
+  appType: React.PropTypes.string.isRequired,
   target: React.PropTypes.string.isRequired,
   parts: React.PropTypes.object.isRequired,
   _setPartsType: React.PropTypes.func.isRequired,
@@ -23143,6 +23153,11 @@ var PartsModel = function () {
       this.appType = type;
       this.scheme = (0, _objectAssign2.default)({}, _parts2.default[type]);
       return this;
+    }
+  }, {
+    key: 'getAppType',
+    value: function getAppType() {
+      return this.appType;
     }
   }, {
     key: 'getDefaultSettings',
