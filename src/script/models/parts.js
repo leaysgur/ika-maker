@@ -6,14 +6,14 @@ import {DEFAULT_PARTS_SETTINGS, IMG_SIZE} from '../data/const';
 
 class PartsModel {
   constructor() {
-    this.cache = {};
-    this.scheme = {};
+    this.cache   = {};
+    this.scheme  = {};
     this.appType = null;
   }
 
-  setAppType(type) {
+  init(type) {
     this.appType = type;
-    this.scheme = PartsScheme[type];
+    this.scheme = objectAssign({}, PartsScheme[type]);
     return this;
   }
 

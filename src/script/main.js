@@ -43,7 +43,7 @@ const app = new App({
 
 global.addEventListener('load', () => {
   PartsModel
-    .setAppType(appType)
+    .init(appType)
     .fetchAll()
     .then(() => {
       app.update((state) => {
