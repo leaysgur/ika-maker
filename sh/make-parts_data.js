@@ -19,38 +19,50 @@ console.log(`Generate ${SCHEME_DIST_DIR}.js`);
  * このオブジェクトを、存在する画像ファイルから補完する
  *
  */
-const partsScheme = require(path.resolve(BASE_DIR, SCHEME_SRC_DIR));
+let _partsScheme = require(path.resolve(BASE_DIR, SCHEME_SRC_DIR));
+let getPartsSchemebyAppType = (_appType) => {
+  let partsScheme = JSON.parse(JSON.stringify(_partsScheme));
 
-Object.keys(partsScheme).forEach((parts) => {
-  let partsList = fs.readdirSync(path.resolve(PARTS_DIR, parts));
-  let selectType = partsScheme[parts].selectType;
+  Object.keys(partsScheme).forEach((parts) => {
+    let appType = (parts === 'bg' || parts === 'eyes') ? 'cmn' : _appType;
+    let partsPath = path.resolve(PARTS_DIR, appType, parts);
+    let partsList = fs.readdirSync(partsPath);
+    let selectType = partsScheme[parts].selectType;
 
-  if (selectType === 'TYPE' || selectType === 'COLOR') {
-    partsList
-      .sort(_sortByFileNo)
-      .forEach((file) => {
-        partsScheme[parts].items.push(_getElementByFileName(file, `${PARTS_DIR}/${parts}`));
-      });
-  }
-
-  if (selectType === 'TYPE_COLOR') {
-    partsList.forEach((type) => {
-      let colorsList = fs.readdirSync(path.resolve(PARTS_DIR, parts, type));
-      let colorItems = colorsList
+    if (selectType === 'TYPE' || selectType === 'COLOR') {
+      partsList
         .sort(_sortByFileNo)
-        .map((file) => {
-          return _getElementByFileName(file, `${PARTS_DIR}/${parts}/${type}`);
+        .forEach((file) => {
+          partsScheme[parts].items.push(_getElementByFileName(file, `${PARTS_DIR}/${appType}/${parts}`));
         });
+    }
 
-      partsScheme[parts].items.push({
-        id:    type|0,
-        items: colorItems
+    if (selectType === 'TYPE_COLOR') {
+      partsList.forEach((type) => {
+        let colorsList = fs.readdirSync(path.resolve(PARTS_DIR, appType, parts, type));
+        let colorItems = colorsList
+          .sort(_sortByFileNo)
+          .map((file) => {
+            return _getElementByFileName(file, `${PARTS_DIR}/${appType}/${parts}/${type}`);
+          });
+
+        partsScheme[parts].items.push({
+          id:    type|0,
+          items: colorItems
+        });
       });
-    });
-  }
-});
+    }
+  });
 
-let data = `export default ${JSON.stringify(partsScheme, null, 2)};`;
+  return partsScheme;
+};
+
+let ret = {
+  girl: getPartsSchemebyAppType('girl'),
+  boy:  getPartsSchemebyAppType('boy'),
+};
+
+let data = `export default ${JSON.stringify(ret, null, 2)};`;
 
 fs.writeFileSync(`${path.resolve(BASE_DIR, SCHEME_DIST_DIR)}.js`, data);
 console.log('Done!');

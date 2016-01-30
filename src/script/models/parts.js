@@ -7,24 +7,26 @@ import {DEFAULT_PARTS_SETTINGS, IMG_SIZE} from '../data/const';
 class PartsModel {
   constructor() {
     this.cache = {};
+    this.scheme = {};
     this.appType = null;
   }
 
   setAppType(type) {
     this.appType = type;
+    this.scheme = PartsScheme[type];
     return this;
   }
 
   getDefaultSettings() {
-    return objectAssign({}, DEFAULT_PARTS_SETTINGS);
+    return objectAssign({}, DEFAULT_PARTS_SETTINGS[this.appType]);
   }
 
   getParts(partsName) {
-    return objectAssign({}, PartsScheme[partsName]);
+    return objectAssign({}, this.scheme[partsName]);
   }
 
   _getImgRef(partsName, type, color) {
-    let parts = PartsScheme[partsName];
+    let parts = this.scheme[partsName];
     let path = '';
     let types = [], colors = [];
 
@@ -90,8 +92,8 @@ class PartsModel {
   }
 
   getTabItems() {
-    let tabItems = Object.keys(PartsScheme).map((partsName) => {
-      let parts = PartsScheme[partsName];
+    let tabItems = Object.keys(this.scheme).map((partsName) => {
+      let parts = this.scheme[partsName];
       return {
         id:    partsName,
         order: parts.tabOrder,
@@ -107,8 +109,8 @@ class PartsModel {
 
   getAllImgPath() {
     let imgPathArr = [];
-    Object.keys(PartsScheme).forEach((parts) => {
-      PartsScheme[parts].items.forEach((item) => {
+    Object.keys(this.scheme).forEach((parts) => {
+      this.scheme[parts].items.forEach((item) => {
         if ('path' in item) {
           imgPathArr.push(item.path);
         } else {

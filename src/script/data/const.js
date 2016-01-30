@@ -5,18 +5,34 @@ export const INDEX_URL = 'http://ikasu.lealog.net/';
 export const IMG_SIZE = 600;
 
 export const DEFAULT_PARTS_SETTINGS = {
-  bgType:      2,
-  bgColor:     2,
-  bodyColor:   2,
-  mouthType:   1,
-  browsType:   1,
-  browsColor:  1,
-  eyesType:    1,
-  eyesColor:   2,
-  clothesType: 6,
-  hairType:    1,
-  hairColor:   10,
-  hatType:     21
+  girl: {
+    bgType:      2,
+    bgColor:     2,
+    bodyColor:   2,
+    mouthType:   1,
+    browsType:   1,
+    browsColor:  1,
+    eyesType:    1,
+    eyesColor:   2,
+    clothesType: 6,
+    hairType:    1,
+    hairColor:   10,
+    hatType:     21
+  },
+  boy: {
+    bgType:      2,
+    bgColor:     1,
+    bodyColor:   3,
+    mouthType:   2,
+    browsType:   1,
+    browsColor:  1,
+    eyesType:    1,
+    eyesColor:   2,
+    clothesType: 1,
+    hairType:    1,
+    hairColor:   1,
+    hatType:     0
+  }
 };
 
 export const SHARE_URL = 'https://twitter.com/intent/tweet?text=';
