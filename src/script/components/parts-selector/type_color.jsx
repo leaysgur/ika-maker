@@ -28,12 +28,13 @@ class TypeColorSelector extends Component {
   }
 
   render() {
-    let {target, parts, _setPartsColor, selectedTypeId, selectedColorId} = this.props;
+    let {appType, target, parts, _setPartsColor, selectedTypeId, selectedColorId} = this.props;
     let colorItems = this.getColorItemsBySelectedTypeId(this.state.selectedTypeId);
 
     return (
       <div>
         <TypeSelector
+          appType={appType}
           onSelect={this.setPartsType}
           target={target}
           items={parts.items}
@@ -52,6 +53,7 @@ class TypeColorSelector extends Component {
 };
 
 TypeColorSelector.propTypes = {
+  appType:        React.PropTypes.string.isRequired,
   target:          React.PropTypes.string.isRequired,
   parts:           React.PropTypes.object.isRequired,
   _setPartsType:   React.PropTypes.func.isRequired,

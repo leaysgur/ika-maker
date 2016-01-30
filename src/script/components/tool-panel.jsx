@@ -7,7 +7,6 @@ import PartsSelector from './parts-selector.jsx';
 class ToolPanel extends Component {
   constructor() {
     super();
-
     this.state = {
       selectedTabIdx: 0
     };

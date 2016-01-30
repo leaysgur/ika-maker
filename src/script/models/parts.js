@@ -17,6 +17,10 @@ class PartsModel {
     return this;
   }
 
+  getAppType() {
+    return this.appType;
+  }
+
   getDefaultSettings() {
     return objectAssign({}, DEFAULT_PARTS_SETTINGS[this.appType]);
   }

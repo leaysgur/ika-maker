@@ -9,6 +9,7 @@ import TypeColorSelector from './parts-selector/type_color.jsx';
 class PartsSelector extends Component {
   constructor() {
     super();
+    this.appType = PartsModel.getAppType();
     this.setPartsType  = this.setPartsType.bind(this);
     this.setPartsColor = this.setPartsColor.bind(this);
   }
@@ -27,31 +28,35 @@ class PartsSelector extends Component {
     let selectedTypeId  = settings[`${partsName}Type`];
     let selectedColorId = settings[`${partsName}Color`];
 
-    return (
-      <div>
-        {parts.selectType === 'TYPE'       ? <TypeSelector
-                                               onSelect={this.setPartsType}
-                                               target={partsName}
-                                               items={parts.items}
-                                               selectedTypeId={selectedTypeId}
-                                             /> : null}
-        {parts.selectType === 'COLOR'      ? <ColorSelector
-                                               onSelect={this.setPartsColor}
-                                               target={partsName}
-                                               COLORS={parts.COLORS}
-                                               items={parts.items}
-                                               selectedColorId={selectedColorId}
-                                             /> : null}
-        {parts.selectType === 'TYPE_COLOR' ? <TypeColorSelector
-                                               target={partsName}
-                                               parts={parts}
-                                               selectedTypeId={selectedTypeId}
-                                               selectedColorId={selectedColorId}
-                                               _setPartsType={this.setPartsType}
-                                               _setPartsColor={this.setPartsColor}
-                                             /> : null}
-      </div>
-    );
+    if (parts.selectType === 'TYPE') {
+      return <TypeSelector
+               appType={this.appType}
+               onSelect={this.setPartsType}
+               target={partsName}
+               items={parts.items}
+               selectedTypeId={selectedTypeId}
+             />;
+    }
+    if (parts.selectType === 'COLOR') {
+      return <ColorSelector
+               onSelect={this.setPartsColor}
+               target={partsName}
+               COLORS={parts.COLORS}
+               items={parts.items}
+               selectedColorId={selectedColorId}
+             />;
+    }
+    if (parts.selectType === 'TYPE_COLOR') {
+      return <TypeColorSelector
+               appType={this.appType}
+               target={partsName}
+               parts={parts}
+               selectedTypeId={selectedTypeId}
+               selectedColorId={selectedColorId}
+               _setPartsType={this.setPartsType}
+               _setPartsColor={this.setPartsColor}
+             />;
+    }
   }
 };
 
