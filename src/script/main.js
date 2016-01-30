@@ -13,14 +13,25 @@ if (
   document.referrer !== INDEX_URL
 ) {
   location.replace(INDEX_URL);
+}
 
-} else {
-
+// okなら処理開始
 injectTapEventPlugin();
+
+global.addEventListener('error', () => {
+  location.href = '/sorry.html';
+}, false);
+
+const appEl = document.getElementById('jsApp');
+const appType = appEl.getAttribute('data-app-type');
+
+if (appType !== 'boy' && appType !== 'girl') {
+  throw new Error(`Undefined appType: ${appType}`);
+}
 
 const app = new App({
   renderer: (el) => {
-    ReactDOM.render(el, document.getElementById('jsApp'));
+    ReactDOM.render(el, appEl);
   },
 
   initialState: {
@@ -31,17 +42,14 @@ const app = new App({
 });
 
 global.addEventListener('load', () => {
-  PartsModel.fetchAll().then(() => {
-    app.update((state) => {
-      state.settings  = PartsModel.getDefaultSettings();
-      state.fixImgSrc = PartsModel.getFixImgSrcBySettings(state.settings);
-      return objectAssign({}, state);
+  PartsModel
+    .setAppType(appType)
+    .fetchAll()
+    .then(() => {
+      app.update((state) => {
+        state.settings  = PartsModel.getDefaultSettings();
+        state.fixImgSrc = PartsModel.getFixImgSrcBySettings(state.settings);
+        return objectAssign({}, state);
+      });
     });
-  });
 }, false);
-
-global.addEventListener('error', () => {
-  location.href = '/sorry.html';
-}, false);
-
-}

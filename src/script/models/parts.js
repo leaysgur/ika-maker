@@ -7,6 +7,12 @@ import {DEFAULT_PARTS_SETTINGS, IMG_SIZE} from '../data/const';
 class PartsModel {
   constructor() {
     this.cache = {};
+    this.appType = null;
+  }
+
+  setAppType(type) {
+    this.appType = type;
+    return this;
   }
 
   getDefaultSettings() {
