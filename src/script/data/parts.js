@@ -956,10 +956,6 @@ export default {
               "path": "./img/ika/cmn/bg/1/1.png"
             },
             {
-              "id": 2,
-              "path": "./img/ika/cmn/bg/1/2.png"
-            },
-            {
               "id": 3,
               "path": "./img/ika/cmn/bg/1/3.png"
             },
@@ -990,6 +986,10 @@ export default {
             {
               "id": 10,
               "path": "./img/ika/cmn/bg/1/10.png"
+            },
+            {
+              "id": 11,
+              "path": "./img/ika/cmn/bg/1/11.png"
             }
           ]
         },
@@ -1040,8 +1040,8 @@ export default {
         }
       ],
       "COLORS": {
-        "1": "ffffff",
-        "2": "000000",
+        "1": "000000",
+        "2": "00212F",
         "3": "0C1CB0",
         "4": "0091FF",
         "5": "2CFEED",
@@ -1049,7 +1049,8 @@ export default {
         "7": "FEF035",
         "8": "FD9126",
         "9": "FD89C1",
-        "10": "CD0814"
+        "10": "CD0814",
+        "11": "ffffff"
       }
     }
   },
@@ -1129,8 +1130,8 @@ export default {
           "id": 1,
           "items": [
             {
-              "id": 1,
-              "path": "./img/ika/boy/brows/1/1.png"
+              "id": 2,
+              "path": "./img/ika/boy/brows/1/2.png"
             }
           ]
         }
@@ -1449,10 +1450,6 @@ export default {
               "path": "./img/ika/cmn/bg/1/1.png"
             },
             {
-              "id": 2,
-              "path": "./img/ika/cmn/bg/1/2.png"
-            },
-            {
               "id": 3,
               "path": "./img/ika/cmn/bg/1/3.png"
             },
@@ -1483,6 +1480,10 @@ export default {
             {
               "id": 10,
               "path": "./img/ika/cmn/bg/1/10.png"
+            },
+            {
+              "id": 11,
+              "path": "./img/ika/cmn/bg/1/11.png"
             }
           ]
         },
@@ -1533,8 +1534,8 @@ export default {
         }
       ],
       "COLORS": {
-        "1": "ffffff",
-        "2": "000000",
+        "1": "000000",
+        "2": "00212F",
         "3": "0C1CB0",
         "4": "0091FF",
         "5": "2CFEED",
@@ -1542,7 +1543,8 @@ export default {
         "7": "FEF035",
         "8": "FD9126",
         "9": "FD89C1",
-        "10": "CD0814"
+        "10": "CD0814",
+        "11": "ffffff"
       }
     }
   }

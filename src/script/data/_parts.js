@@ -125,8 +125,8 @@ module.exports = {
     selectType: 'TYPE_COLOR',
     items: [],
     COLORS: {
-      1:  'ffffff',
-      2:  '000000',
+      1:  '000000',
+      2:  '00212F',
       3:  '0C1CB0',
       4:  '0091FF',
       5:  '2CFEED',
@@ -134,7 +134,8 @@ module.exports = {
       7:  'FEF035',
       8:  'FD9126',
       9:  'FD89C1',
-      10: 'CD0814'
+      10: 'CD0814',
+      11: 'ffffff'
     }
   }
 };

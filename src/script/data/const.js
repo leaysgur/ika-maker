@@ -25,7 +25,7 @@ export const DEFAULT_PARTS_SETTINGS = {
     bodyColor:   3,
     mouthType:   2,
     browsType:   1,
-    browsColor:  1,
+    browsColor:  2,
     eyesType:    1,
     eyesColor:   2,
     clothesType: 1,
