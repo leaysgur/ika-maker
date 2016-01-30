@@ -1,7 +1,7 @@
 'use strict';
 import * as React from 'react'; // eslint-disable-line no-unused-vars
 import {Component} from 'flumpt';
-import PartsScheme from '../data/parts';
+import PartsModel from '../models/parts';
 import TypeSelector from './parts-selector/type.jsx';
 import ColorSelector from './parts-selector/color.jsx';
 import TypeColorSelector from './parts-selector/type_color.jsx';
@@ -23,7 +23,7 @@ class PartsSelector extends Component {
 
   render() {
     let {partsName, settings} = this.props;
-    let parts = PartsScheme[partsName];
+    let parts = PartsModel.getParts(partsName);
     let selectedTypeId  = settings[`${partsName}Type`];
     let selectedColorId = settings[`${partsName}Color`];
 

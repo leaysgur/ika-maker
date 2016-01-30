@@ -19,6 +19,10 @@ class PartsModel {
     return objectAssign({}, DEFAULT_PARTS_SETTINGS);
   }
 
+  getParts(partsName) {
+    return objectAssign({}, PartsScheme[partsName]);
+  }
+
   _getImgRef(partsName, type, color) {
     let parts = PartsScheme[partsName];
     let path = '';
