@@ -23,14 +23,14 @@ export const DEFAULT_PARTS_SETTINGS = {
     bgType:      2,
     bgColor:     1,
     bodyColor:   3,
-    mouthType:   2,
+    mouthType:   5,
     browsType:   1,
     browsColor:  2,
     eyesType:    1,
-    eyesColor:   2,
+    eyesColor:   1,
     clothesType: 1,
     hairType:    1,
-    hairColor:   1,
+    hairColor:   2,
     hatType:     0
   }
 };

@@ -1062,8 +1062,32 @@ export default {
       "selectType": "COLOR",
       "items": [
         {
+          "id": 1,
+          "path": "./img/ika/boy/body/1.png"
+        },
+        {
+          "id": 2,
+          "path": "./img/ika/boy/body/2.png"
+        },
+        {
           "id": 3,
           "path": "./img/ika/boy/body/3.png"
+        },
+        {
+          "id": 4,
+          "path": "./img/ika/boy/body/4.png"
+        },
+        {
+          "id": 5,
+          "path": "./img/ika/boy/body/5.png"
+        },
+        {
+          "id": 6,
+          "path": "./img/ika/boy/body/6.png"
+        },
+        {
+          "id": 7,
+          "path": "./img/ika/boy/body/7.png"
         }
       ],
       "COLORS": {
@@ -1086,8 +1110,68 @@ export default {
           "id": 1,
           "items": [
             {
+              "id": 1,
+              "path": "./img/ika/boy/hair/1/1.png"
+            },
+            {
               "id": 2,
               "path": "./img/ika/boy/hair/1/2.png"
+            },
+            {
+              "id": 3,
+              "path": "./img/ika/boy/hair/1/3.png"
+            },
+            {
+              "id": 4,
+              "path": "./img/ika/boy/hair/1/4.png"
+            },
+            {
+              "id": 5,
+              "path": "./img/ika/boy/hair/1/5.png"
+            },
+            {
+              "id": 6,
+              "path": "./img/ika/boy/hair/1/6.png"
+            },
+            {
+              "id": 7,
+              "path": "./img/ika/boy/hair/1/7.png"
+            },
+            {
+              "id": 8,
+              "path": "./img/ika/boy/hair/1/8.png"
+            },
+            {
+              "id": 9,
+              "path": "./img/ika/boy/hair/1/9.png"
+            },
+            {
+              "id": 10,
+              "path": "./img/ika/boy/hair/1/10.png"
+            },
+            {
+              "id": 11,
+              "path": "./img/ika/boy/hair/1/11.png"
+            },
+            {
+              "id": 12,
+              "path": "./img/ika/boy/hair/1/12.png"
+            },
+            {
+              "id": 13,
+              "path": "./img/ika/boy/hair/1/13.png"
+            },
+            {
+              "id": 14,
+              "path": "./img/ika/boy/hair/1/14.png"
+            },
+            {
+              "id": 15,
+              "path": "./img/ika/boy/hair/1/15.png"
+            },
+            {
+              "id": 16,
+              "path": "./img/ika/boy/hair/1/16.png"
             }
           ]
         },
@@ -1095,8 +1179,68 @@ export default {
           "id": 2,
           "items": [
             {
+              "id": 1,
+              "path": "./img/ika/boy/hair/2/1.png"
+            },
+            {
               "id": 2,
               "path": "./img/ika/boy/hair/2/2.png"
+            },
+            {
+              "id": 3,
+              "path": "./img/ika/boy/hair/2/3.png"
+            },
+            {
+              "id": 4,
+              "path": "./img/ika/boy/hair/2/4.png"
+            },
+            {
+              "id": 5,
+              "path": "./img/ika/boy/hair/2/5.png"
+            },
+            {
+              "id": 6,
+              "path": "./img/ika/boy/hair/2/6.png"
+            },
+            {
+              "id": 7,
+              "path": "./img/ika/boy/hair/2/7.png"
+            },
+            {
+              "id": 8,
+              "path": "./img/ika/boy/hair/2/8.png"
+            },
+            {
+              "id": 9,
+              "path": "./img/ika/boy/hair/2/9.png"
+            },
+            {
+              "id": 10,
+              "path": "./img/ika/boy/hair/2/10.png"
+            },
+            {
+              "id": 11,
+              "path": "./img/ika/boy/hair/2/11.png"
+            },
+            {
+              "id": 12,
+              "path": "./img/ika/boy/hair/2/12.png"
+            },
+            {
+              "id": 13,
+              "path": "./img/ika/boy/hair/2/13.png"
+            },
+            {
+              "id": 14,
+              "path": "./img/ika/boy/hair/2/14.png"
+            },
+            {
+              "id": 15,
+              "path": "./img/ika/boy/hair/2/15.png"
+            },
+            {
+              "id": 16,
+              "path": "./img/ika/boy/hair/2/16.png"
             }
           ]
         }
@@ -1130,8 +1274,137 @@ export default {
           "id": 1,
           "items": [
             {
+              "id": 1,
+              "path": "./img/ika/boy/brows/1/1.png"
+            },
+            {
               "id": 2,
               "path": "./img/ika/boy/brows/1/2.png"
+            },
+            {
+              "id": 3,
+              "path": "./img/ika/boy/brows/1/3.png"
+            },
+            {
+              "id": 4,
+              "path": "./img/ika/boy/brows/1/4.png"
+            },
+            {
+              "id": 5,
+              "path": "./img/ika/boy/brows/1/5.png"
+            },
+            {
+              "id": 6,
+              "path": "./img/ika/boy/brows/1/6.png"
+            },
+            {
+              "id": 7,
+              "path": "./img/ika/boy/brows/1/7.png"
+            },
+            {
+              "id": 8,
+              "path": "./img/ika/boy/brows/1/8.png"
+            },
+            {
+              "id": 9,
+              "path": "./img/ika/boy/brows/1/9.png"
+            },
+            {
+              "id": 10,
+              "path": "./img/ika/boy/brows/1/10.png"
+            },
+            {
+              "id": 11,
+              "path": "./img/ika/boy/brows/1/11.png"
+            },
+            {
+              "id": 12,
+              "path": "./img/ika/boy/brows/1/12.png"
+            },
+            {
+              "id": 13,
+              "path": "./img/ika/boy/brows/1/13.png"
+            },
+            {
+              "id": 14,
+              "path": "./img/ika/boy/brows/1/14.png"
+            },
+            {
+              "id": 15,
+              "path": "./img/ika/boy/brows/1/15.png"
+            },
+            {
+              "id": 16,
+              "path": "./img/ika/boy/brows/1/16.png"
+            }
+          ]
+        },
+        {
+          "id": 2,
+          "items": [
+            {
+              "id": 1,
+              "path": "./img/ika/boy/brows/2/1.png"
+            },
+            {
+              "id": 2,
+              "path": "./img/ika/boy/brows/2/2.png"
+            },
+            {
+              "id": 3,
+              "path": "./img/ika/boy/brows/2/3.png"
+            },
+            {
+              "id": 4,
+              "path": "./img/ika/boy/brows/2/4.png"
+            },
+            {
+              "id": 5,
+              "path": "./img/ika/boy/brows/2/5.png"
+            },
+            {
+              "id": 6,
+              "path": "./img/ika/boy/brows/2/6.png"
+            },
+            {
+              "id": 7,
+              "path": "./img/ika/boy/brows/2/7.png"
+            },
+            {
+              "id": 8,
+              "path": "./img/ika/boy/brows/2/8.png"
+            },
+            {
+              "id": 9,
+              "path": "./img/ika/boy/brows/2/9.png"
+            },
+            {
+              "id": 10,
+              "path": "./img/ika/boy/brows/2/10.png"
+            },
+            {
+              "id": 11,
+              "path": "./img/ika/boy/brows/2/11.png"
+            },
+            {
+              "id": 12,
+              "path": "./img/ika/boy/brows/2/12.png"
+            },
+            {
+              "id": 13,
+              "path": "./img/ika/boy/brows/2/13.png"
+            },
+            {
+              "id": 14,
+              "path": "./img/ika/boy/brows/2/14.png"
+            },
+            {
+              "id": 15,
+              "path": "./img/ika/boy/brows/2/15.png"
+            },
+            {
+              "id": 16,
+              "path": "./img/ika/boy/brows/2/16.png"
             }
           ]
         }
@@ -1403,8 +1676,36 @@ export default {
       "selectType": "TYPE",
       "items": [
         {
+          "id": 1,
+          "path": "./img/ika/boy/mouth/1.png"
+        },
+        {
           "id": 2,
           "path": "./img/ika/boy/mouth/2.png"
+        },
+        {
+          "id": 3,
+          "path": "./img/ika/boy/mouth/3.png"
+        },
+        {
+          "id": 4,
+          "path": "./img/ika/boy/mouth/4.png"
+        },
+        {
+          "id": 5,
+          "path": "./img/ika/boy/mouth/5.png"
+        },
+        {
+          "id": 6,
+          "path": "./img/ika/boy/mouth/6.png"
+        },
+        {
+          "id": 7,
+          "path": "./img/ika/boy/mouth/7.png"
+        },
+        {
+          "id": 8,
+          "path": "./img/ika/boy/mouth/8.png"
         }
       ]
     },
