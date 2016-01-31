@@ -19,13 +19,24 @@ console.log(`Generate ${SCHEME_DIST_DIR}.js`);
  * このオブジェクトを、存在する画像ファイルから補完する
  *
  */
-let _partsScheme = require(path.resolve(BASE_DIR, SCHEME_SRC_DIR));
-let getPartsSchemebyAppType = (_appType) => {
-  let partsScheme = JSON.parse(JSON.stringify(_partsScheme));
+const PARTS_SCHEME = require(path.resolve(BASE_DIR, SCHEME_SRC_DIR));
+const cmnItemMap = { bg: 1, eyes: 1 };
+
+let data = {
+  girl: _getPartsSchemebyAppType('girl'),
+  boy:  _getPartsSchemebyAppType('boy'),
+};
+data = `export default ${JSON.stringify(data, null, 2)};`;
+
+fs.writeFileSync(`${path.resolve(BASE_DIR, SCHEME_DIST_DIR)}.js`, data);
+console.log('Done!');
+
+function _getPartsSchemebyAppType(appType) {
+  let partsScheme = JSON.parse(JSON.stringify(PARTS_SCHEME));
 
   Object.keys(partsScheme).forEach((parts) => {
-    let appType = (parts === 'bg' || parts === 'eyes') ? 'cmn' : _appType;
-    let partsPath = path.resolve(PARTS_DIR, appType, parts);
+    let appPartsType = parts in cmnItemMap ? 'cmn' : appType;
+    let partsPath = path.resolve(PARTS_DIR, appPartsType, parts);
     let partsList = fs.readdirSync(partsPath);
     let selectType = partsScheme[parts].selectType;
 
@@ -33,17 +44,17 @@ let getPartsSchemebyAppType = (_appType) => {
       partsList
         .sort(_sortByFileNo)
         .forEach((file) => {
-          partsScheme[parts].items.push(_getElementByFileName(file, `${PARTS_DIR}/${appType}/${parts}`));
+          partsScheme[parts].items.push(_getElementByFileName(file, `${PARTS_DIR}/${appPartsType}/${parts}`));
         });
     }
 
     if (selectType === 'TYPE_COLOR') {
       partsList.forEach((type) => {
-        let colorsList = fs.readdirSync(path.resolve(PARTS_DIR, appType, parts, type));
+        let colorsList = fs.readdirSync(path.resolve(PARTS_DIR, appPartsType, parts, type));
         let colorItems = colorsList
           .sort(_sortByFileNo)
           .map((file) => {
-            return _getElementByFileName(file, `${PARTS_DIR}/${appType}/${parts}/${type}`);
+            return _getElementByFileName(file, `${PARTS_DIR}/${appPartsType}/${parts}/${type}`);
           });
 
         partsScheme[parts].items.push({
@@ -55,17 +66,7 @@ let getPartsSchemebyAppType = (_appType) => {
   });
 
   return partsScheme;
-};
-
-let ret = {
-  girl: getPartsSchemebyAppType('girl'),
-  boy:  getPartsSchemebyAppType('boy'),
-};
-
-let data = `export default ${JSON.stringify(ret, null, 2)};`;
-
-fs.writeFileSync(`${path.resolve(BASE_DIR, SCHEME_DIST_DIR)}.js`, data);
-console.log('Done!');
+}
 
 function _getElementByFileName(file, path) {
   return {
