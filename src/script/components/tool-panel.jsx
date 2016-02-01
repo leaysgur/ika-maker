@@ -29,8 +29,6 @@ class ToolPanel extends Component {
             return (
               <li
                 className={`
-                  tab-body__item
-                  tab-body__item--type-${item.group}
                   ${isSelected ? '' :  'is-hidden'}
                 `}
                 key={item.order}
