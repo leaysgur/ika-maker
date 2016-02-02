@@ -27,11 +27,10 @@ class TextForm extends Component {
             type="text" maxLength="10"
             value={settings[partsName]}
             onChange={this.onChangeInput}
+            placeholder="入力は10文字まで"
           />
         </div>
         <p className="memo">
-          ※テキストは10文字まで
-          <br/>
           ※一部の文字種にはイカしたフォントが当たりません
         </p>
       </div>

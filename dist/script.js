@@ -21754,14 +21754,13 @@ var TextForm = function (_Component) {
             className: 'parts-selector-items--text',
             type: 'text', maxLength: '10',
             value: settings[partsName],
-            onChange: this.onChangeInput
+            onChange: this.onChangeInput,
+            placeholder: '入力は10文字まで'
           })
         ),
         React.createElement(
           'p',
           { className: 'memo' },
-          '※テキストは10文字まで',
-          React.createElement('br', null),
           '※一部の文字種にはイカしたフォントが当たりません'
         )
       );
