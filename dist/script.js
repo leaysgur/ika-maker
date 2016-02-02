@@ -20934,6 +20934,17 @@ var _class = function (_Flux) {
         });
       });
 
+      this.on('set:text', function (_ref3) {
+        var target = _ref3.target;
+        var text = _ref3.text;
+
+        _this2.update(function (state) {
+          state.settings['' + target] = text;
+          state.fixImgSrc = _parts2.default.getFixImgSrcBySettings(state.settings);
+          return (0, _objectAssign2.default)({}, state);
+        });
+      });
+
       this.on('show:fixModal', function () {
         _this2.update(function (state) {
           state.showFixModal = true;
@@ -20968,7 +20979,7 @@ var _class = function (_Flux) {
 exports.default = _class;
 ;
 
-},{"../models/parts":180,"./fix-modal.jsx":168,"./header.jsx":169,"./preview.jsx":174,"./tool-panel.jsx":176,"flumpt":30,"object-assign":31,"react":166}],168:[function(require,module,exports){
+},{"../models/parts":181,"./fix-modal.jsx":168,"./header.jsx":169,"./preview.jsx":174,"./tool-panel.jsx":177,"flumpt":30,"object-assign":31,"react":166}],168:[function(require,module,exports){
 'use strict';
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -21263,7 +21274,7 @@ PartsSelector.propTypes = {
 
 exports.default = PartsSelector;
 
-},{"../models/parts":180,"./parts-selector/color.jsx":171,"./parts-selector/type.jsx":172,"./parts-selector/type_color.jsx":173,"flumpt":30,"react":166}],171:[function(require,module,exports){
+},{"../models/parts":181,"./parts-selector/color.jsx":171,"./parts-selector/type.jsx":172,"./parts-selector/type_color.jsx":173,"flumpt":30,"react":166}],171:[function(require,module,exports){
 'use strict';
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -21679,7 +21690,97 @@ var ShareButton = function (_Component) {
 
 exports.default = ShareButton;
 
-},{"../data/const":177,"flumpt":30,"react":166}],176:[function(require,module,exports){
+},{"../data/const":178,"flumpt":30,"react":166}],176:[function(require,module,exports){
+'use strict';
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _react = require('react');
+
+var React = _interopRequireWildcard(_react);
+
+var _flumpt = require('flumpt');
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } // eslint-disable-line no-unused-vars
+
+var TextForm = function (_Component) {
+  _inherits(TextForm, _Component);
+
+  function TextForm() {
+    _classCallCheck(this, TextForm);
+
+    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(TextForm).call(this));
+
+    _this.onChangeInput = _this.onChangeInput.bind(_this);
+    return _this;
+  }
+
+  _createClass(TextForm, [{
+    key: 'onChangeInput',
+    value: function onChangeInput(ev) {
+      var text = ev.target.value;
+      var target = this.props.partsName;
+      this.dispatch('set:text', { target: target, text: text });
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      var _props = this.props;
+      var partsName = _props.partsName;
+      var settings = _props.settings;
+
+      return React.createElement(
+        'div',
+        { className: 'parts-selector' },
+        React.createElement(
+          'h3',
+          { className: 'parts-selector-header ft-ika' },
+          'テキストをにゅうりょく'
+        ),
+        React.createElement(
+          'div',
+          { className: 'parts-selector-items' },
+          React.createElement('input', {
+            className: 'parts-selector-items--text',
+            type: 'text', maxLength: '10',
+            value: settings[partsName],
+            onChange: this.onChangeInput
+          })
+        ),
+        React.createElement(
+          'p',
+          { className: 'memo' },
+          '※テキストは10文字まで',
+          React.createElement('br', null),
+          '※一部の文字種にはイカしたフォントが当たりません'
+        )
+      );
+    }
+  }]);
+
+  return TextForm;
+}(_flumpt.Component);
+
+;
+
+TextForm.propTypes = {
+  settings: React.PropTypes.object.isRequired,
+  partsName: React.PropTypes.string.isRequired
+};
+
+exports.default = TextForm;
+
+},{"flumpt":30,"react":166}],177:[function(require,module,exports){
 'use strict';
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -21701,6 +21802,10 @@ var _parts2 = _interopRequireDefault(_parts);
 var _partsSelector = require('./parts-selector.jsx');
 
 var _partsSelector2 = _interopRequireDefault(_partsSelector);
+
+var _textForm = require('./text-form.jsx');
+
+var _textForm2 = _interopRequireDefault(_textForm);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -21748,13 +21853,20 @@ var ToolPanel = function (_Component) {
           { className: 'tab-body' },
           tabItems.map(function (item, idx) {
             var isSelected = idx === selectedTabIdx;
+            var Selector = undefined;
+            if (item.id === 'text') {
+              Selector = React.createElement(_textForm2.default, { settings: settings, partsName: item.id });
+            } else {
+              Selector = React.createElement(_partsSelector2.default, { settings: settings, partsName: item.id });
+            }
+
             return React.createElement(
               'li',
               {
-                className: '\n                  tab-body__item\n                  tab-body__item--type-' + item.group + '\n                  ' + (isSelected ? '' : 'is-hidden') + '\n                ',
+                className: '\n                  ' + (isSelected ? '' : 'is-hidden') + '\n                ',
                 key: item.order
               },
-              React.createElement(_partsSelector2.default, { settings: settings, partsName: item.id })
+              Selector
             );
           })
         ),
@@ -21795,7 +21907,7 @@ ToolPanel.propTypes = {
 
 exports.default = ToolPanel;
 
-},{"../models/parts":180,"./parts-selector.jsx":170,"flumpt":30,"react":166}],177:[function(require,module,exports){
+},{"../models/parts":181,"./parts-selector.jsx":170,"./text-form.jsx":176,"flumpt":30,"react":166}],178:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -21818,7 +21930,8 @@ var DEFAULT_PARTS_SETTINGS = exports.DEFAULT_PARTS_SETTINGS = {
     clothesType: 6,
     hairType: 1,
     hairColor: 10,
-    hatType: 21
+    hatType: 21,
+    text: ''
   },
   boy: {
     bgType: 2,
@@ -21832,14 +21945,15 @@ var DEFAULT_PARTS_SETTINGS = exports.DEFAULT_PARTS_SETTINGS = {
     clothesType: 1,
     hairType: 1,
     hairColor: 2,
-    hatType: 0
+    hatType: 0,
+    text: ''
   }
 };
 
 var SHARE_URL = exports.SHARE_URL = 'https://twitter.com/intent/tweet?text=';
 var SHARE_TEXT = exports.SHARE_TEXT = 'みんなもマイイカのアイコンつくらなイカ？\n' + INDEX_URL + ' #スーパーイカメーカー';
 
-},{}],178:[function(require,module,exports){
+},{}],179:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -23265,7 +23379,7 @@ exports.default = {
   }
 };
 
-},{}],179:[function(require,module,exports){
+},{}],180:[function(require,module,exports){
 (function (global){
 'use strict';
 
@@ -23338,7 +23452,7 @@ global.addEventListener('load', function () {
 }, false);
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"./components/app.jsx":167,"./data/const":177,"./models/parts":180,"object-assign":31,"react-dom":33,"react-tap-event-plugin":37}],180:[function(require,module,exports){
+},{"./components/app.jsx":167,"./data/const":178,"./models/parts":181,"object-assign":31,"react-dom":33,"react-tap-event-plugin":37}],181:[function(require,module,exports){
 'use strict';
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -23444,6 +23558,13 @@ var PartsModel = function () {
         img && ctx.drawImage(img, 0, 0, _const.IMG_SIZE, _const.IMG_SIZE);
       });
 
+      var GAP = 16;
+      ctx.font = '80px ikamodoki';
+      ctx.textAlign = 'right';
+      ctx.fillStyle = '#ffffff';
+      var text = settings.text;
+      ctx.fillText(text, _const.IMG_SIZE - GAP, _const.IMG_SIZE - GAP, _const.IMG_SIZE - GAP * 2);
+
       var src = canvas.toDataURL();
       canvas = null;
       return src;
@@ -23463,6 +23584,14 @@ var PartsModel = function () {
         };
       }).sort(function (a, b) {
         return a.order > b.order ? 1 : -1;
+      });
+
+      // これは画像がないので個別にいれる
+      tabItems.push({
+        id: 'text',
+        order: 99,
+        group: 'OTHERS',
+        name: 'テキスト'
       });
 
       return tabItems;
@@ -23518,4 +23647,4 @@ var PartsModel = function () {
 
 exports.default = new PartsModel();
 
-},{"../data/const":177,"../data/parts":178,"es6-promise":1,"object-assign":31}]},{},[179]);
+},{"../data/const":178,"../data/parts":179,"es6-promise":1,"object-assign":31}]},{},[180]);
