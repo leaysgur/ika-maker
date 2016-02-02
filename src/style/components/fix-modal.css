@@ -5,7 +5,7 @@
   right: 0;
   bottom: 0;
   margin: auto;
-  padding: 24px 0 8px;
+  padding: 8px 0;
   z-index: 1;
   transition: opacity .75s cubic-bezier(0.6, -0.28, 0.74, 0.05);
   opacity: 0;
