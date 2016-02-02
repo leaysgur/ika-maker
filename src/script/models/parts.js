@@ -97,7 +97,19 @@ class PartsModel {
     // 文字は別途書き込む
     let text = settings.text;
     if (text.trim().length > 0) {
-      objectAssign(ctx, TEXT_STYLES);
+      ctx.font = TEXT_STYLES.font;
+      ctx.textAlign = TEXT_STYLES.textAlign;
+
+      // 白いフクに白い文字だと見えないので、
+      ctx.fillStyle = TEXT_STYLES.COLORS[0];
+      ctx.fillText(
+        text,
+        IMG_SIZE - TEXT_STYLES.GAP + 2,  // x
+        IMG_SIZE - TEXT_STYLES.GAP + 2,  // y
+        IMG_SIZE - TEXT_STYLES.GAP*2     // maxWidth
+      );
+      // 2重に書いて影をつける
+      ctx.fillStyle = TEXT_STYLES.COLORS[1];
       ctx.fillText(
         text,
         IMG_SIZE - TEXT_STYLES.GAP,  // x

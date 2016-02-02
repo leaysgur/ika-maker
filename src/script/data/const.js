@@ -8,7 +8,7 @@ export const TEXT_STYLES = {
   GAP:       16,
   font:      '80px ikamodoki',
   textAlign: 'right',
-  fillStyle: '#fff'
+  COLORS: ['#000', '#fff']
 };
 
 export const DEFAULT_PARTS_SETTINGS = {
