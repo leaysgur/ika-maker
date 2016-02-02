@@ -117,6 +117,22 @@ export default {
             {
               "id": 16,
               "path": "./img/ika/girl/hair/1/16.png"
+            },
+            {
+              "id": 17,
+              "path": "./img/ika/girl/hair/1/17.png"
+            },
+            {
+              "id": 18,
+              "path": "./img/ika/girl/hair/1/18.png"
+            },
+            {
+              "id": 19,
+              "path": "./img/ika/girl/hair/1/19.png"
+            },
+            {
+              "id": 20,
+              "path": "./img/ika/girl/hair/1/20.png"
             }
           ]
         },
@@ -186,6 +202,22 @@ export default {
             {
               "id": 16,
               "path": "./img/ika/girl/hair/2/16.png"
+            },
+            {
+              "id": 17,
+              "path": "./img/ika/girl/hair/2/17.png"
+            },
+            {
+              "id": 18,
+              "path": "./img/ika/girl/hair/2/18.png"
+            },
+            {
+              "id": 19,
+              "path": "./img/ika/girl/hair/2/19.png"
+            },
+            {
+              "id": 20,
+              "path": "./img/ika/girl/hair/2/20.png"
             }
           ]
         }
@@ -206,7 +238,11 @@ export default {
         "13": "95FEE5",
         "14": "C5FEB8",
         "15": "FFFDA1",
-        "16": "53A3FC"
+        "16": "53A3FC",
+        "17": "FFFFFF",
+        "18": "D4D4D4",
+        "19": "DBEDF2",
+        "20": "F9DFEA"
       }
     },
     "brows": {
@@ -370,7 +406,11 @@ export default {
         "13": "95FEE5",
         "14": "C5FEB8",
         "15": "FFFDA1",
-        "16": "53A3FC"
+        "16": "53A3FC",
+        "17": "FFFFFF",
+        "18": "D4D4D4",
+        "19": "DBEDF2",
+        "20": "F9DFEA"
       }
     },
     "eyes": {
@@ -1172,6 +1212,22 @@ export default {
             {
               "id": 16,
               "path": "./img/ika/boy/hair/1/16.png"
+            },
+            {
+              "id": 17,
+              "path": "./img/ika/boy/hair/1/17.png"
+            },
+            {
+              "id": 18,
+              "path": "./img/ika/boy/hair/1/18.png"
+            },
+            {
+              "id": 19,
+              "path": "./img/ika/boy/hair/1/19.png"
+            },
+            {
+              "id": 20,
+              "path": "./img/ika/boy/hair/1/20.png"
             }
           ]
         },
@@ -1241,6 +1297,22 @@ export default {
             {
               "id": 16,
               "path": "./img/ika/boy/hair/2/16.png"
+            },
+            {
+              "id": 17,
+              "path": "./img/ika/boy/hair/2/17.png"
+            },
+            {
+              "id": 18,
+              "path": "./img/ika/boy/hair/2/18.png"
+            },
+            {
+              "id": 19,
+              "path": "./img/ika/boy/hair/2/19.png"
+            },
+            {
+              "id": 20,
+              "path": "./img/ika/boy/hair/2/20.png"
             }
           ]
         }
@@ -1261,7 +1333,11 @@ export default {
         "13": "95FEE5",
         "14": "C5FEB8",
         "15": "FFFDA1",
-        "16": "53A3FC"
+        "16": "53A3FC",
+        "17": "FFFFFF",
+        "18": "D4D4D4",
+        "19": "DBEDF2",
+        "20": "F9DFEA"
       }
     },
     "brows": {
@@ -1425,7 +1501,11 @@ export default {
         "13": "95FEE5",
         "14": "C5FEB8",
         "15": "FFFDA1",
-        "16": "53A3FC"
+        "16": "53A3FC",
+        "17": "FFFFFF",
+        "18": "D4D4D4",
+        "19": "DBEDF2",
+        "20": "F9DFEA"
       }
     },
     "eyes": {
