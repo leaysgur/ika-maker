@@ -90,6 +90,13 @@ class PartsModel {
       img && ctx.drawImage(img, 0, 0, IMG_SIZE, IMG_SIZE);
     });
 
+    let GAP = 16;
+    ctx.font = '80px ikamodoki';
+    ctx.textAlign = 'right';
+    ctx.fillStyle = '#ffffff';
+    let text = settings.text;
+    ctx.fillText(text, IMG_SIZE - GAP, IMG_SIZE - GAP, IMG_SIZE - GAP*2);
+
     let src = canvas.toDataURL();
     canvas = null;
     return src;
@@ -106,6 +113,14 @@ class PartsModel {
       };
     }).sort((a, b) => {
       return a.order > b.order ? 1 : -1;
+    });
+
+    // これは画像がないので個別にいれる
+    tabItems.push({
+      id:    'text',
+      order: 99,
+      group: 'OTHERS',
+      name:  'テキスト'
     });
 
     return tabItems;

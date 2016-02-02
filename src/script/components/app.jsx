@@ -26,6 +26,14 @@ export default class extends Flux {
       });
     });
 
+    this.on('set:text', ({target, text}) => {
+      this.update((state) => {
+        state.settings[`${target}`] = text;
+        state.fixImgSrc = PartsModel.getFixImgSrcBySettings(state.settings);
+        return objectAssign({}, state);
+      });
+    });
+
     this.on('show:fixModal', () => {
       this.update((state) => {
         state.showFixModal = true;
