@@ -16,7 +16,6 @@
 }
 
 .parts-selector-items {
-  overflow: hidden;
   overflow-x: scroll;
   -webkit-overflow-scrolling: touch;
   display: flex;
@@ -26,6 +25,7 @@
 
 .parts-selector-items--item {
   min-width: 64px;
+  overflow: hidden;
 }
 
 .parts-selector-items--text {
