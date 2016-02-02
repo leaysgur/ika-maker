@@ -4,6 +4,13 @@ export const INDEX_URL = 'http://ikasu.lealog.net/';
 
 export const IMG_SIZE = 600;
 
+export const TEXT_STYLES = {
+  GAP:       16,
+  font:      '80px ikamodoki',
+  textAlign: 'right',
+  fillStyle: '#fff'
+};
+
 export const DEFAULT_PARTS_SETTINGS = {
   girl: {
     bgType:      2,

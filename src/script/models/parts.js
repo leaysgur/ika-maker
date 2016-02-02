@@ -2,7 +2,11 @@
 import objectAssign from 'object-assign';
 import {Promise} from 'es6-promise';
 import PartsScheme from '../data/parts';
-import {DEFAULT_PARTS_SETTINGS, IMG_SIZE} from '../data/const';
+import {
+  DEFAULT_PARTS_SETTINGS,
+  IMG_SIZE,
+  TEXT_STYLES
+} from '../data/const';
 
 class PartsModel {
   constructor() {
@@ -90,12 +94,17 @@ class PartsModel {
       img && ctx.drawImage(img, 0, 0, IMG_SIZE, IMG_SIZE);
     });
 
-    let GAP = 16;
-    ctx.font = '80px ikamodoki';
-    ctx.textAlign = 'right';
-    ctx.fillStyle = '#ffffff';
+    // 文字は別途書き込む
     let text = settings.text;
-    ctx.fillText(text, IMG_SIZE - GAP, IMG_SIZE - GAP, IMG_SIZE - GAP*2);
+    if (text.trim().length > 0) {
+      objectAssign(ctx, TEXT_STYLES);
+      ctx.fillText(
+        text,
+        IMG_SIZE - TEXT_STYLES.GAP,  // x
+        IMG_SIZE - TEXT_STYLES.GAP,  // y
+        IMG_SIZE - TEXT_STYLES.GAP*2 // maxWidth
+      );
+    }
 
     let src = canvas.toDataURL();
     canvas = null;
