@@ -5,7 +5,6 @@
   right: 0;
   bottom: 0;
   margin: auto;
-  padding-top: 24px;
   z-index: 1;
   transition: opacity .75s cubic-bezier(0.6, -0.28, 0.74, 0.05);
   opacity: 0;
@@ -16,5 +15,9 @@
   &.is-show {
     opacity: 1;
     pointer-events: auto;
+  }
+
+  .ika {
+    margin-top: 8px;
   }
 }

@@ -2,7 +2,11 @@
 import objectAssign from 'object-assign';
 import {Promise} from 'es6-promise';
 import PartsScheme from '../data/parts';
-import {DEFAULT_PARTS_SETTINGS, IMG_SIZE} from '../data/const';
+import {
+  DEFAULT_PARTS_SETTINGS,
+  IMG_SIZE,
+  TEXT_STYLES
+} from '../data/const';
 
 class PartsModel {
   constructor() {
@@ -90,6 +94,30 @@ class PartsModel {
       img && ctx.drawImage(img, 0, 0, IMG_SIZE, IMG_SIZE);
     });
 
+    // 文字は別途書き込む
+    let text = settings.text;
+    if (text.trim().length > 0) {
+      ctx.font = TEXT_STYLES.font;
+      ctx.textAlign = TEXT_STYLES.textAlign;
+
+      // 白いフクに白い文字だと見えないので、
+      ctx.fillStyle = TEXT_STYLES.COLORS[0];
+      ctx.fillText(
+        text,
+        IMG_SIZE - TEXT_STYLES.GAP + 2,  // x
+        IMG_SIZE - TEXT_STYLES.GAP + 2,  // y
+        IMG_SIZE - TEXT_STYLES.GAP*2     // maxWidth
+      );
+      // 2重に書いて影をつける
+      ctx.fillStyle = TEXT_STYLES.COLORS[1];
+      ctx.fillText(
+        text,
+        IMG_SIZE - TEXT_STYLES.GAP,  // x
+        IMG_SIZE - TEXT_STYLES.GAP,  // y
+        IMG_SIZE - TEXT_STYLES.GAP*2 // maxWidth
+      );
+    }
+
     let src = canvas.toDataURL();
     canvas = null;
     return src;
@@ -106,6 +134,14 @@ class PartsModel {
       };
     }).sort((a, b) => {
       return a.order > b.order ? 1 : -1;
+    });
+
+    // これは画像がないので個別にいれる
+    tabItems.push({
+      id:    'text',
+      order: 99,
+      group: 'OTHERS',
+      name:  'テキスト'
     });
 
     return tabItems;

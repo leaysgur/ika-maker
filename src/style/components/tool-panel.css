@@ -16,7 +16,7 @@
 }
 
 .parts-selector-items {
-  overflow: scroll;
+  overflow-x: scroll;
   -webkit-overflow-scrolling: touch;
   display: flex;
   align-items: center;
@@ -25,6 +25,15 @@
 
 .parts-selector-items--item {
   min-width: 64px;
+  overflow: hidden;
+}
+
+.parts-selector-items--text {
+  flex: 1 1 auto;
+  margin: 0 32px;
+  font-size: 1.1rem;
+  line-height: 1.5rem;
+  text-align: center;
 }
 
 .type-selector,

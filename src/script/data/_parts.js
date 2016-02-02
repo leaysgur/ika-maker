@@ -34,6 +34,10 @@ const HAIR_COLORS = {
   14: 'C5FEB8',
   15: 'FFFDA1',
   16: '53A3FC',
+  17: 'FFFFFF',
+  18: 'D4D4D4',
+  19: 'DBEDF2',
+  20: 'F9DFEA'
 };
 
 const EYE_COLORS = {

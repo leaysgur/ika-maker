@@ -20934,6 +20934,17 @@ var _class = function (_Flux) {
         });
       });
 
+      this.on('set:text', function (_ref3) {
+        var target = _ref3.target;
+        var text = _ref3.text;
+
+        _this2.update(function (state) {
+          state.settings['' + target] = text;
+          state.fixImgSrc = _parts2.default.getFixImgSrcBySettings(state.settings);
+          return (0, _objectAssign2.default)({}, state);
+        });
+      });
+
       this.on('show:fixModal', function () {
         _this2.update(function (state) {
           state.showFixModal = true;
@@ -20968,7 +20979,7 @@ var _class = function (_Flux) {
 exports.default = _class;
 ;
 
-},{"../models/parts":180,"./fix-modal.jsx":168,"./header.jsx":169,"./preview.jsx":174,"./tool-panel.jsx":176,"flumpt":30,"object-assign":31,"react":166}],168:[function(require,module,exports){
+},{"../models/parts":181,"./fix-modal.jsx":168,"./header.jsx":169,"./preview.jsx":174,"./tool-panel.jsx":177,"flumpt":30,"object-assign":31,"react":166}],168:[function(require,module,exports){
 'use strict';
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -21263,7 +21274,7 @@ PartsSelector.propTypes = {
 
 exports.default = PartsSelector;
 
-},{"../models/parts":180,"./parts-selector/color.jsx":171,"./parts-selector/type.jsx":172,"./parts-selector/type_color.jsx":173,"flumpt":30,"react":166}],171:[function(require,module,exports){
+},{"../models/parts":181,"./parts-selector/color.jsx":171,"./parts-selector/type.jsx":172,"./parts-selector/type_color.jsx":173,"flumpt":30,"react":166}],171:[function(require,module,exports){
 'use strict';
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -21679,7 +21690,96 @@ var ShareButton = function (_Component) {
 
 exports.default = ShareButton;
 
-},{"../data/const":177,"flumpt":30,"react":166}],176:[function(require,module,exports){
+},{"../data/const":178,"flumpt":30,"react":166}],176:[function(require,module,exports){
+'use strict';
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _react = require('react');
+
+var React = _interopRequireWildcard(_react);
+
+var _flumpt = require('flumpt');
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } // eslint-disable-line no-unused-vars
+
+var TextForm = function (_Component) {
+  _inherits(TextForm, _Component);
+
+  function TextForm() {
+    _classCallCheck(this, TextForm);
+
+    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(TextForm).call(this));
+
+    _this.onChangeInput = _this.onChangeInput.bind(_this);
+    return _this;
+  }
+
+  _createClass(TextForm, [{
+    key: 'onChangeInput',
+    value: function onChangeInput(ev) {
+      var text = ev.target.value;
+      var target = this.props.partsName;
+      this.dispatch('set:text', { target: target, text: text });
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      var _props = this.props;
+      var partsName = _props.partsName;
+      var settings = _props.settings;
+
+      return React.createElement(
+        'div',
+        { className: 'parts-selector' },
+        React.createElement(
+          'h3',
+          { className: 'parts-selector-header ft-ika' },
+          'テキストをにゅうりょく'
+        ),
+        React.createElement(
+          'div',
+          { className: 'parts-selector-items' },
+          React.createElement('input', {
+            className: 'parts-selector-items--text',
+            type: 'text', maxLength: '10',
+            value: settings[partsName],
+            onChange: this.onChangeInput,
+            placeholder: '入力は10文字まで'
+          })
+        ),
+        React.createElement(
+          'p',
+          { className: 'memo' },
+          '※一部の文字種にはイカしたフォントが当たりません'
+        )
+      );
+    }
+  }]);
+
+  return TextForm;
+}(_flumpt.Component);
+
+;
+
+TextForm.propTypes = {
+  settings: React.PropTypes.object.isRequired,
+  partsName: React.PropTypes.string.isRequired
+};
+
+exports.default = TextForm;
+
+},{"flumpt":30,"react":166}],177:[function(require,module,exports){
 'use strict';
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -21701,6 +21801,10 @@ var _parts2 = _interopRequireDefault(_parts);
 var _partsSelector = require('./parts-selector.jsx');
 
 var _partsSelector2 = _interopRequireDefault(_partsSelector);
+
+var _textForm = require('./text-form.jsx');
+
+var _textForm2 = _interopRequireDefault(_textForm);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -21748,13 +21852,20 @@ var ToolPanel = function (_Component) {
           { className: 'tab-body' },
           tabItems.map(function (item, idx) {
             var isSelected = idx === selectedTabIdx;
+            var Selector = undefined;
+            if (item.id === 'text') {
+              Selector = React.createElement(_textForm2.default, { settings: settings, partsName: item.id });
+            } else {
+              Selector = React.createElement(_partsSelector2.default, { settings: settings, partsName: item.id });
+            }
+
             return React.createElement(
               'li',
               {
-                className: '\n                  tab-body__item\n                  tab-body__item--type-' + item.group + '\n                  ' + (isSelected ? '' : 'is-hidden') + '\n                ',
+                className: '\n                  ' + (isSelected ? '' : 'is-hidden') + '\n                ',
                 key: item.order
               },
-              React.createElement(_partsSelector2.default, { settings: settings, partsName: item.id })
+              Selector
             );
           })
         ),
@@ -21795,7 +21906,7 @@ ToolPanel.propTypes = {
 
 exports.default = ToolPanel;
 
-},{"../models/parts":180,"./parts-selector.jsx":170,"flumpt":30,"react":166}],177:[function(require,module,exports){
+},{"../models/parts":181,"./parts-selector.jsx":170,"./text-form.jsx":176,"flumpt":30,"react":166}],178:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -21804,6 +21915,13 @@ Object.defineProperty(exports, "__esModule", {
 var INDEX_URL = exports.INDEX_URL = 'http://ikasu.lealog.net/';
 
 var IMG_SIZE = exports.IMG_SIZE = 600;
+
+var TEXT_STYLES = exports.TEXT_STYLES = {
+  GAP: 16,
+  font: '80px ikamodoki',
+  textAlign: 'right',
+  COLORS: ['#000', '#fff']
+};
 
 var DEFAULT_PARTS_SETTINGS = exports.DEFAULT_PARTS_SETTINGS = {
   girl: {
@@ -21818,7 +21936,8 @@ var DEFAULT_PARTS_SETTINGS = exports.DEFAULT_PARTS_SETTINGS = {
     clothesType: 6,
     hairType: 1,
     hairColor: 10,
-    hatType: 21
+    hatType: 21,
+    text: ''
   },
   boy: {
     bgType: 2,
@@ -21832,14 +21951,15 @@ var DEFAULT_PARTS_SETTINGS = exports.DEFAULT_PARTS_SETTINGS = {
     clothesType: 1,
     hairType: 1,
     hairColor: 2,
-    hatType: 0
+    hatType: 0,
+    text: ''
   }
 };
 
 var SHARE_URL = exports.SHARE_URL = 'https://twitter.com/intent/tweet?text=';
 var SHARE_TEXT = exports.SHARE_TEXT = 'みんなもマイイカのアイコンつくらなイカ？\n' + INDEX_URL + ' #スーパーイカメーカー';
 
-},{}],178:[function(require,module,exports){
+},{}],179:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -21939,6 +22059,18 @@ exports.default = {
         }, {
           "id": 16,
           "path": "./img/ika/girl/hair/1/16.png"
+        }, {
+          "id": 17,
+          "path": "./img/ika/girl/hair/1/17.png"
+        }, {
+          "id": 18,
+          "path": "./img/ika/girl/hair/1/18.png"
+        }, {
+          "id": 19,
+          "path": "./img/ika/girl/hair/1/19.png"
+        }, {
+          "id": 20,
+          "path": "./img/ika/girl/hair/1/20.png"
         }]
       }, {
         "id": 2,
@@ -21990,6 +22122,18 @@ exports.default = {
         }, {
           "id": 16,
           "path": "./img/ika/girl/hair/2/16.png"
+        }, {
+          "id": 17,
+          "path": "./img/ika/girl/hair/2/17.png"
+        }, {
+          "id": 18,
+          "path": "./img/ika/girl/hair/2/18.png"
+        }, {
+          "id": 19,
+          "path": "./img/ika/girl/hair/2/19.png"
+        }, {
+          "id": 20,
+          "path": "./img/ika/girl/hair/2/20.png"
         }]
       }],
       "COLORS": {
@@ -22008,7 +22152,11 @@ exports.default = {
         "13": "95FEE5",
         "14": "C5FEB8",
         "15": "FFFDA1",
-        "16": "53A3FC"
+        "16": "53A3FC",
+        "17": "FFFFFF",
+        "18": "D4D4D4",
+        "19": "DBEDF2",
+        "20": "F9DFEA"
       }
     },
     "brows": {
@@ -22135,7 +22283,11 @@ exports.default = {
         "13": "95FEE5",
         "14": "C5FEB8",
         "15": "FFFDA1",
-        "16": "53A3FC"
+        "16": "53A3FC",
+        "17": "FFFFFF",
+        "18": "D4D4D4",
+        "19": "DBEDF2",
+        "20": "F9DFEA"
       }
     },
     "eyes": {
@@ -22745,6 +22897,18 @@ exports.default = {
         }, {
           "id": 16,
           "path": "./img/ika/boy/hair/1/16.png"
+        }, {
+          "id": 17,
+          "path": "./img/ika/boy/hair/1/17.png"
+        }, {
+          "id": 18,
+          "path": "./img/ika/boy/hair/1/18.png"
+        }, {
+          "id": 19,
+          "path": "./img/ika/boy/hair/1/19.png"
+        }, {
+          "id": 20,
+          "path": "./img/ika/boy/hair/1/20.png"
         }]
       }, {
         "id": 2,
@@ -22796,6 +22960,18 @@ exports.default = {
         }, {
           "id": 16,
           "path": "./img/ika/boy/hair/2/16.png"
+        }, {
+          "id": 17,
+          "path": "./img/ika/boy/hair/2/17.png"
+        }, {
+          "id": 18,
+          "path": "./img/ika/boy/hair/2/18.png"
+        }, {
+          "id": 19,
+          "path": "./img/ika/boy/hair/2/19.png"
+        }, {
+          "id": 20,
+          "path": "./img/ika/boy/hair/2/20.png"
         }]
       }],
       "COLORS": {
@@ -22814,7 +22990,11 @@ exports.default = {
         "13": "95FEE5",
         "14": "C5FEB8",
         "15": "FFFDA1",
-        "16": "53A3FC"
+        "16": "53A3FC",
+        "17": "FFFFFF",
+        "18": "D4D4D4",
+        "19": "DBEDF2",
+        "20": "F9DFEA"
       }
     },
     "brows": {
@@ -22941,7 +23121,11 @@ exports.default = {
         "13": "95FEE5",
         "14": "C5FEB8",
         "15": "FFFDA1",
-        "16": "53A3FC"
+        "16": "53A3FC",
+        "17": "FFFFFF",
+        "18": "D4D4D4",
+        "19": "DBEDF2",
+        "20": "F9DFEA"
       }
     },
     "eyes": {
@@ -23162,8 +23346,104 @@ exports.default = {
         "id": 0,
         "path": "./img/ika/boy/hat/0.png"
       }, {
+        "id": 1,
+        "path": "./img/ika/boy/hat/1.png"
+      }, {
         "id": 2,
         "path": "./img/ika/boy/hat/2.png"
+      }, {
+        "id": 3,
+        "path": "./img/ika/boy/hat/3.png"
+      }, {
+        "id": 4,
+        "path": "./img/ika/boy/hat/4.png"
+      }, {
+        "id": 5,
+        "path": "./img/ika/boy/hat/5.png"
+      }, {
+        "id": 6,
+        "path": "./img/ika/boy/hat/6.png"
+      }, {
+        "id": 7,
+        "path": "./img/ika/boy/hat/7.png"
+      }, {
+        "id": 8,
+        "path": "./img/ika/boy/hat/8.png"
+      }, {
+        "id": 9,
+        "path": "./img/ika/boy/hat/9.png"
+      }, {
+        "id": 10,
+        "path": "./img/ika/boy/hat/10.png"
+      }, {
+        "id": 11,
+        "path": "./img/ika/boy/hat/11.png"
+      }, {
+        "id": 12,
+        "path": "./img/ika/boy/hat/12.png"
+      }, {
+        "id": 13,
+        "path": "./img/ika/boy/hat/13.png"
+      }, {
+        "id": 14,
+        "path": "./img/ika/boy/hat/14.png"
+      }, {
+        "id": 15,
+        "path": "./img/ika/boy/hat/15.png"
+      }, {
+        "id": 16,
+        "path": "./img/ika/boy/hat/16.png"
+      }, {
+        "id": 17,
+        "path": "./img/ika/boy/hat/17.png"
+      }, {
+        "id": 18,
+        "path": "./img/ika/boy/hat/18.png"
+      }, {
+        "id": 19,
+        "path": "./img/ika/boy/hat/19.png"
+      }, {
+        "id": 20,
+        "path": "./img/ika/boy/hat/20.png"
+      }, {
+        "id": 21,
+        "path": "./img/ika/boy/hat/21.png"
+      }, {
+        "id": 22,
+        "path": "./img/ika/boy/hat/22.png"
+      }, {
+        "id": 23,
+        "path": "./img/ika/boy/hat/23.png"
+      }, {
+        "id": 24,
+        "path": "./img/ika/boy/hat/24.png"
+      }, {
+        "id": 25,
+        "path": "./img/ika/boy/hat/25.png"
+      }, {
+        "id": 26,
+        "path": "./img/ika/boy/hat/26.png"
+      }, {
+        "id": 27,
+        "path": "./img/ika/boy/hat/27.png"
+      }, {
+        "id": 28,
+        "path": "./img/ika/boy/hat/28.png"
+      }, {
+        "id": 29,
+        "path": "./img/ika/boy/hat/29.png"
+      }, {
+        "id": 30,
+        "path": "./img/ika/boy/hat/30.png"
+      }, {
+        "id": 31,
+        "path": "./img/ika/boy/hat/31.png"
+      }, {
+        "id": 32,
+        "path": "./img/ika/boy/hat/32.png"
+      }, {
+        "id": 33,
+        "path": "./img/ika/boy/hat/33.png"
       }]
     },
     "clothes": {
@@ -23174,6 +23454,87 @@ exports.default = {
       "items": [{
         "id": 1,
         "path": "./img/ika/boy/clothes/1.png"
+      }, {
+        "id": 2,
+        "path": "./img/ika/boy/clothes/2.png"
+      }, {
+        "id": 3,
+        "path": "./img/ika/boy/clothes/3.png"
+      }, {
+        "id": 4,
+        "path": "./img/ika/boy/clothes/4.png"
+      }, {
+        "id": 5,
+        "path": "./img/ika/boy/clothes/5.png"
+      }, {
+        "id": 6,
+        "path": "./img/ika/boy/clothes/6.png"
+      }, {
+        "id": 7,
+        "path": "./img/ika/boy/clothes/7.png"
+      }, {
+        "id": 8,
+        "path": "./img/ika/boy/clothes/8.png"
+      }, {
+        "id": 9,
+        "path": "./img/ika/boy/clothes/9.png"
+      }, {
+        "id": 10,
+        "path": "./img/ika/boy/clothes/10.png"
+      }, {
+        "id": 11,
+        "path": "./img/ika/boy/clothes/11.png"
+      }, {
+        "id": 12,
+        "path": "./img/ika/boy/clothes/12.png"
+      }, {
+        "id": 13,
+        "path": "./img/ika/boy/clothes/13.png"
+      }, {
+        "id": 14,
+        "path": "./img/ika/boy/clothes/14.png"
+      }, {
+        "id": 15,
+        "path": "./img/ika/boy/clothes/15.png"
+      }, {
+        "id": 16,
+        "path": "./img/ika/boy/clothes/16.png"
+      }, {
+        "id": 17,
+        "path": "./img/ika/boy/clothes/17.png"
+      }, {
+        "id": 18,
+        "path": "./img/ika/boy/clothes/18.png"
+      }, {
+        "id": 19,
+        "path": "./img/ika/boy/clothes/19.png"
+      }, {
+        "id": 20,
+        "path": "./img/ika/boy/clothes/20.png"
+      }, {
+        "id": 21,
+        "path": "./img/ika/boy/clothes/21.png"
+      }, {
+        "id": 22,
+        "path": "./img/ika/boy/clothes/22.png"
+      }, {
+        "id": 23,
+        "path": "./img/ika/boy/clothes/23.png"
+      }, {
+        "id": 24,
+        "path": "./img/ika/boy/clothes/24.png"
+      }, {
+        "id": 25,
+        "path": "./img/ika/boy/clothes/25.png"
+      }, {
+        "id": 26,
+        "path": "./img/ika/boy/clothes/26.png"
+      }, {
+        "id": 27,
+        "path": "./img/ika/boy/clothes/27.png"
+      }, {
+        "id": 28,
+        "path": "./img/ika/boy/clothes/28.png"
       }]
     },
     "bg": {
@@ -23265,7 +23626,7 @@ exports.default = {
   }
 };
 
-},{}],179:[function(require,module,exports){
+},{}],180:[function(require,module,exports){
 (function (global){
 'use strict';
 
@@ -23289,17 +23650,20 @@ var _parts = require('./models/parts');
 
 var _parts2 = _interopRequireDefault(_parts);
 
-var _const = require('./data/const');
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
+// import {INDEX_URL} from './data/const';
+
 // TOPから注意事項に同意してきた人にだけ見せたいので、
 // そうじゃないものは一旦返す
-if (location.hostname !== 'localhost' && document.referrer !== _const.INDEX_URL) {
-  location.replace(_const.INDEX_URL);
-}
+// if (
+//   location.hostname !== 'localhost' &&
+//   document.referrer !== INDEX_URL
+// ) {
+//   location.replace(INDEX_URL);
+// }
 
 // okなら処理開始
 (0, _reactTapEventPlugin2.default)();
@@ -23338,7 +23702,7 @@ global.addEventListener('load', function () {
 }, false);
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"./components/app.jsx":167,"./data/const":177,"./models/parts":180,"object-assign":31,"react-dom":33,"react-tap-event-plugin":37}],180:[function(require,module,exports){
+},{"./components/app.jsx":167,"./models/parts":181,"object-assign":31,"react-dom":33,"react-tap-event-plugin":37}],181:[function(require,module,exports){
 'use strict';
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -23444,6 +23808,26 @@ var PartsModel = function () {
         img && ctx.drawImage(img, 0, 0, _const.IMG_SIZE, _const.IMG_SIZE);
       });
 
+      // 文字は別途書き込む
+      var text = settings.text;
+      if (text.trim().length > 0) {
+        ctx.font = _const.TEXT_STYLES.font;
+        ctx.textAlign = _const.TEXT_STYLES.textAlign;
+
+        // 白いフクに白い文字だと見えないので、
+        ctx.fillStyle = _const.TEXT_STYLES.COLORS[0];
+        ctx.fillText(text, _const.IMG_SIZE - _const.TEXT_STYLES.GAP + 2, // x
+        _const.IMG_SIZE - _const.TEXT_STYLES.GAP + 2, // y
+        _const.IMG_SIZE - _const.TEXT_STYLES.GAP * 2 // maxWidth
+        );
+        // 2重に書いて影をつける
+        ctx.fillStyle = _const.TEXT_STYLES.COLORS[1];
+        ctx.fillText(text, _const.IMG_SIZE - _const.TEXT_STYLES.GAP, // x
+        _const.IMG_SIZE - _const.TEXT_STYLES.GAP, // y
+        _const.IMG_SIZE - _const.TEXT_STYLES.GAP * 2 // maxWidth
+        );
+      }
+
       var src = canvas.toDataURL();
       canvas = null;
       return src;
@@ -23463,6 +23847,14 @@ var PartsModel = function () {
         };
       }).sort(function (a, b) {
         return a.order > b.order ? 1 : -1;
+      });
+
+      // これは画像がないので個別にいれる
+      tabItems.push({
+        id: 'text',
+        order: 99,
+        group: 'OTHERS',
+        name: 'テキスト'
       });
 
       return tabItems;
@@ -23518,4 +23910,4 @@ var PartsModel = function () {
 
 exports.default = new PartsModel();
 
-},{"../data/const":177,"../data/parts":178,"es6-promise":1,"object-assign":31}]},{},[179]);
+},{"../data/const":178,"../data/parts":179,"es6-promise":1,"object-assign":31}]},{},[180]);
