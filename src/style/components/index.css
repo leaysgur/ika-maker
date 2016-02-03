@@ -2,11 +2,6 @@
   margin: 0 auto;
   padding: 32px 16px;
   max-width: 800px;
-
-  a {
-    color: #fff;
-    font-size: .75rem;
-  }
 }
 
 .index-center {
@@ -16,6 +11,11 @@
 .index-table {
   width: 280px;
   margin: 0 auto;
+
+  a {
+    color: #fff;
+    font-size: .75rem;
+  }
 
   img,
   td { vertical-align: middle; }
