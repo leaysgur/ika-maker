@@ -7,14 +7,12 @@ import ColorSelector from './color.jsx';
 class TypeColorSelector extends Component {
   constructor() {
     super();
-    this.state = {
-      selectedTypeId: 1
-    };
+
     this.setPartsType = this.setPartsType.bind(this);
   }
 
   getColorItemsBySelectedTypeId(typeId) {
-    let parts = this.props.parts;
+    let {parts} = this.props;
 
     return parts.items.filter((item) => {
       return item.id === typeId;
@@ -23,17 +21,17 @@ class TypeColorSelector extends Component {
 
   setPartsType({ target, typeId }) {
     let {_setPartsType} = this.props;
-    this.setState({ selectedTypeId: typeId });
     _setPartsType({target, typeId});
   }
 
   render() {
-    let {target, parts, _setPartsColor, selectedTypeId, selectedColorId} = this.props;
-    let colorItems = this.getColorItemsBySelectedTypeId(this.state.selectedTypeId);
+    let {appType, target, parts, _setPartsColor, selectedTypeId, selectedColorId} = this.props;
+    let colorItems = this.getColorItemsBySelectedTypeId(selectedTypeId);
 
     return (
       <div>
         <TypeSelector
+          appType={appType}
           onSelect={this.setPartsType}
           target={target}
           items={parts.items}
@@ -52,6 +50,7 @@ class TypeColorSelector extends Component {
 };
 
 TypeColorSelector.propTypes = {
+  appType:        React.PropTypes.string.isRequired,
   target:          React.PropTypes.string.isRequired,
   parts:           React.PropTypes.object.isRequired,
   _setPartsType:   React.PropTypes.func.isRequired,

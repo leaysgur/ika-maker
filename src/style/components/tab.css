@@ -1,5 +1,5 @@
 .tab-header {
-  overflow: scroll;
+  overflow-x: auto;
   -webkit-overflow-scrolling: touch;
   display: flex;
   align-items: center;

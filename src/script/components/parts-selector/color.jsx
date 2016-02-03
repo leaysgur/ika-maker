@@ -9,13 +9,13 @@ class ColorSelector extends Component {
     return (
       <div>
         <h3 className="parts-selector-header ft-ika">イロをえらぶ</h3>
-        <ul className="parts-selector">
+        <ul className="parts-selector-items">
         {items.map((item, idx) => {
           let style = { backgroundColor: `#${COLORS[item.id]}`};
           let colorId = item.id;
           let isSelected = colorId === selectedColorId;
           return (
-            <li className="parts-selector--item" key={idx}>
+            <li className="parts-selector-items--item" key={idx}>
               <div
                 onTouchTap={() => { onSelect({target, colorId}); }}
                 className={`

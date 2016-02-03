@@ -42,8 +42,15 @@
         Safari等のブラウザアプリからご利用ください。<br>
       </p>
 
-      <div class="button-wrap">
-        <a class="button ft-ika" href="./app.html">わかった！</a>
+      <div class="index-agree">
+        <label class="index-p">
+          <input id="jsAgree" type="checkbox">注意を読んだので
+        </label>
+      </div>
+
+      <div class="button-wrap button-wrap--twins" id="jsExecWrap">
+        <a class="button ft-ika" href="./boy.html">ボーイをつくる</a>
+        <a class="button ft-ika" href="./girl.html">ガールをつくる</a>
       </div>
 
       <hr class="index-spacer">
@@ -84,6 +91,26 @@
     <a class="twitter-timeline" href="https://twitter.com/hashtag/%E3%82%B9%E3%83%BC%E3%83%91%E3%83%BC%E3%82%A4%E3%82%AB%E3%83%A1%E3%83%BC%E3%82%AB%E3%83%BC" data-widget-id="690025272016531457">#スーパーイカメーカー のツイート</a>
   </div>
 
+  <script>
+  (function(global) {
+    var d = global.document;
+    var $a = d.getElementById('jsAgree');
+    var $e = d.getElementById('jsExecWrap');
+
+    _check();
+    $a.addEventListener('change', _check, false);
+
+    function _check() {
+      if ($a.checked) {
+        $e.style.pointerEvents = 'auto';
+        $e.style.opacity = '1';
+      } else {
+        $e.style.pointerEvents = 'none';
+        $e.style.opacity = '.5';
+      }
+    }
+  }(window));
+  </script>
   <script src="//platform.twitter.com/widgets.js"></script>
   <script>
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
