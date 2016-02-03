@@ -3,11 +3,11 @@ import * as React from 'react'; // eslint-disable-line no-unused-vars
 import {Component} from 'flumpt';
 import PartsModel from '../models/parts';
 import PartsSelector from './parts-selector.jsx';
+import TextForm from './text-form.jsx';
 
 class ToolPanel extends Component {
   constructor() {
     super();
-
     this.state = {
       selectedTabIdx: 0
     };
@@ -27,16 +27,21 @@ class ToolPanel extends Component {
         <ul className="tab-body">
           {tabItems.map((item, idx) => {
             let isSelected = idx === selectedTabIdx;
+            let Selector;
+            if (item.id === 'text') {
+              Selector = <TextForm settings={settings} partsName={item.id} />;
+            } else {
+              Selector = <PartsSelector settings={settings} partsName={item.id} />;
+            }
+
             return (
               <li
                 className={`
-                  tab-body__item
-                  tab-body__item--type-${item.group}
                   ${isSelected ? '' :  'is-hidden'}
                 `}
                 key={item.order}
               >
-                <PartsSelector settings={settings} partsName={item.id} />
+                {Selector}
               </li>
             );
           })}

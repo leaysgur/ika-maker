@@ -15,16 +15,25 @@
   margin-bottom: 12px;
 }
 
-.parts-selector {
-  overflow: scroll;
+.parts-selector-items {
+  overflow-x: scroll;
   -webkit-overflow-scrolling: touch;
   display: flex;
   align-items: center;
   margin-bottom: 8px;
 }
 
-.parts-selector--item {
+.parts-selector-items--item {
   min-width: 64px;
+  overflow: hidden;
+}
+
+.parts-selector-items--text {
+  flex: 1 1 auto;
+  margin: 0 32px;
+  font-size: 1.1rem;
+  line-height: 1.5rem;
+  text-align: center;
 }
 
 .type-selector,
@@ -44,30 +53,58 @@
   &.is-selected {
     animation: type-selected .25s 1 alternate;
   }
+}
 
-  &--type-brows > img {
-    transform: scale(5);
-    transform-origin: 16px 10px;
+.parts-selector--app-boy,
+.parts-selector--app-girl {
+  .type-selector {
+    &--type-eyes > img {
+      transform: scale(3);
+      transform-origin: center 15px;
+    }
+
+    &--type-hat > img {
+      transform: scale(1.5);
+      transform-origin: top;
+    }
+
+    &--type-clothes > img {
+      transform: scale(2);
+      transform-origin: bottom;
+    }
   }
+}
 
-  &--type-eyes > img {
-    transform: scale(3);
-    transform-origin: center 15px;
+.parts-selector--app-boy {
+  .type-selector {
+    &--type-brows > img {
+      transform: scale(4);
+      transform-origin: 16px 10px;
+    }
+
+    &--type-mouth > img {
+      transform: scale(6);
+      transform-origin: center;
+    }
+
+    &--type-hair > img {
+      transform: scale(2);
+      transform-origin: top right;
+    }
   }
+}
 
-  &--type-mouth > img {
-    transform: scale(8);
-    transform-origin: center;
-  }
+.parts-selector--app-girl {
+  .type-selector {
+    &--type-brows > img {
+      transform: scale(5);
+      transform-origin: 16px 10px;
+    }
 
-  &--type-hat > img {
-    transform: scale(1.5);
-    transform-origin: top;
-  }
-
-  &--type-clothes > img {
-    transform: scale(2);
-    transform-origin: bottom;
+    &--type-mouth > img {
+      transform: scale(8);
+      transform-origin: center;
+    }
   }
 }
 

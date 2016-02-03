@@ -4,12 +4,12 @@ import {Component} from 'flumpt';
 
 class TypeSelector extends Component {
   render() {
-    let {target, items, onSelect, selectedTypeId} = this.props;
+    let {appType, target, items, onSelect, selectedTypeId} = this.props;
 
     return (
-      <div>
+      <div className={`parts-selector parts-selector--app-${appType}`}>
         <h3 className="parts-selector-header ft-ika">タイプをえらぶ</h3>
-        <ul className="parts-selector">
+        <ul className="parts-selector-items">
         {items.map((item, idx) => {
           let typeId = item.id;
           // TypeColorの場合、Typeの階層ではパスがない
@@ -17,7 +17,7 @@ class TypeSelector extends Component {
           let isSelected = typeId === selectedTypeId;
 
           return (
-            <li className="parts-selector--item" key={idx}>
+            <li className="parts-selector-items--item" key={idx}>
               <div
                 onTouchTap={() => { onSelect({target, typeId}); }}
                 className={`
@@ -38,6 +38,7 @@ class TypeSelector extends Component {
 };
 
 TypeSelector.propTypes = {
+  appType:        React.PropTypes.string.isRequired,
   target:         React.PropTypes.string.isRequired,
   items:          React.PropTypes.array.isRequired,
   onSelect:       React.PropTypes.func.isRequired,
