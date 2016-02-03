@@ -16,7 +16,7 @@
 }
 
 .parts-selector-items {
-  overflow-x: scroll;
+  overflow-x: auto;
   -webkit-overflow-scrolling: touch;
   display: flex;
   align-items: center;
