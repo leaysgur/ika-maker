@@ -5,10 +5,10 @@ export const INDEX_URL = 'http://ikasu.lealog.net/';
 export const IMG_SIZE = 600;
 
 export const TEXT_STYLES = {
-  GAP:       16,
   font:      '80px ikamodoki',
   textAlign: 'right',
-  COLORS: ['#000', '#fff']
+  GAP:       16,
+  COLORS:    ['#000', '#fff']
 };
 
 export const DEFAULT_PARTS_SETTINGS = {

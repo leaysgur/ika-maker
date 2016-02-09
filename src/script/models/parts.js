@@ -8,6 +8,13 @@ import {
   TEXT_STYLES
 } from '../data/const';
 
+/**
+ * Modelとかいう名前になってるがココにはstateは無い。
+ * あるのは定数的なオブジェクトや、アプリ自体の不変な設定だけ。
+ *
+ * stateをもらって何か返すとかはあるが、ただの関数。
+ *
+ */
 class PartsModel {
   constructor() {
     this.cache   = {};
