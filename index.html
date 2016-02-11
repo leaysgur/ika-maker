@@ -44,13 +44,13 @@
 
       <div class="index-agree">
         <label class="index-p">
-          <input id="jsAgree" type="checkbox">注意を読んだので
+          <input id="jsAgree" type="checkbox">注意事項に同意する
         </label>
       </div>
 
-      <div class="button-wrap button-wrap--twins" id="jsExecWrap">
-        <a class="button ft-ika" href="./boy.html">ボーイをつくる</a>
-        <a class="button ft-ika" href="./girl.html">ガールをつくる</a>
+      <div class="button-wrap button-wrap--twins">
+        <a class="button ft-ika jsExecBtn" href="./boy.html">ボーイをつくる</a>
+        <a class="button ft-ika jsExecBtn" href="./girl.html">ガールをつくる</a>
       </div>
 
       <hr class="index-spacer">
@@ -95,18 +95,17 @@
   (function(global) {
     var d = global.document;
     var $a = d.getElementById('jsAgree');
-    var $e = d.getElementById('jsExecWrap');
+    var $e = d.getElementsByClassName('jsExecBtn');
 
-    _check();
-    $a.addEventListener('change', _check, false);
+    [].forEach.call($e, function(el) {
+      el.addEventListener('click', _check, false);
+    });
 
-    function _check() {
-      if ($a.checked) {
-        $e.style.pointerEvents = 'auto';
-        $e.style.opacity = '1';
-      } else {
-        $e.style.pointerEvents = 'none';
-        $e.style.opacity = '.5';
+    function _check(ev) {
+      if ($a.checked === false) {
+        ev.preventDefault();
+        alert('注意事項を読んで、その内容への同意が必要です。');
+        return;
       }
     }
   }(window));

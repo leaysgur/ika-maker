@@ -5,10 +5,10 @@ export const INDEX_URL = 'http://ikasu.lealog.net/';
 export const IMG_SIZE = 600;
 
 export const TEXT_STYLES = {
-  GAP:       16,
   font:      '80px ikamodoki',
   textAlign: 'right',
-  COLORS: ['#000', '#fff']
+  GAP:       16,
+  COLORS:    ['#000', '#fff']
 };
 
 export const DEFAULT_PARTS_SETTINGS = {
@@ -25,6 +25,7 @@ export const DEFAULT_PARTS_SETTINGS = {
     hairType:    1,
     hairColor:   10,
     hatType:     21,
+    itemType:    0,
     text:        ''
   },
   boy: {
@@ -40,6 +41,7 @@ export const DEFAULT_PARTS_SETTINGS = {
     hairType:    1,
     hairColor:   2,
     hatType:     0,
+    itemType:    0,
     text:        ''
   }
 };

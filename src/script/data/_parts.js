@@ -61,7 +61,8 @@ const BG_COLORS = {
   8:  'FD9126',
   9:  'FD89C1',
   10: 'CD0814',
-  11: 'ffffff'
+  11: 'ffffff',
+  12: 'F82287'
 };
 
 module.exports = {
@@ -125,9 +126,17 @@ module.exports = {
     items: []
   },
 
+  item: {
+    tabName: 'アイテム',
+    tabOrder: 9,
+    tabGroup: 'GEAR',
+    selectType: 'TYPE',
+    items: []
+  },
+
   bg: {
     tabName: 'ハイケイ',
-    tabOrder: 9,
+    tabOrder: 10,
     tabGroup: 'OTHERS',
     selectType: 'TYPE_COLOR',
     items: [],
