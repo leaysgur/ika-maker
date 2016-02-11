@@ -70,6 +70,9 @@ class PartsModel {
     if (partsName === 'hat' && type === 0) {
       return null;
     }
+    if (partsName === 'item' && type === 0) {
+      return null;
+    }
 
     return this.cache[path];
   }
@@ -89,6 +92,7 @@ class PartsModel {
       this._getImgRef('hair', settings.hairType, settings.hairColor),
 
       this._getImgRef('hat', settings.hatType),
+      this._getImgRef('item', settings.itemType),
     ];
 
     let canvas = document.createElement('canvas');

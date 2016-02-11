@@ -25,6 +25,7 @@ export const DEFAULT_PARTS_SETTINGS = {
     hairType:    1,
     hairColor:   10,
     hatType:     21,
+    itemType:    0,
     text:        ''
   },
   boy: {
@@ -40,6 +41,7 @@ export const DEFAULT_PARTS_SETTINGS = {
     hairType:    1,
     hairColor:   2,
     hatType:     0,
+    itemType:    0,
     text:        ''
   }
 };

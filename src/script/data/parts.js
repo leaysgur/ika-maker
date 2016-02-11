@@ -843,6 +843,10 @@ export default {
         {
           "id": 35,
           "path": "./img/ika/girl/hat/35.png"
+        },
+        {
+          "id": 36,
+          "path": "./img/ika/girl/hat/36.png"
         }
       ]
     },
@@ -979,12 +983,64 @@ export default {
         {
           "id": 32,
           "path": "./img/ika/girl/clothes/32.png"
+        },
+        {
+          "id": 33,
+          "path": "./img/ika/girl/clothes/33.png"
+        }
+      ]
+    },
+    "item": {
+      "tabName": "アイテム",
+      "tabOrder": 9,
+      "tabGroup": "GEAR",
+      "selectType": "TYPE",
+      "items": [
+        {
+          "id": 0,
+          "path": "./img/ika/cmn/item/0.png"
+        },
+        {
+          "id": 1,
+          "path": "./img/ika/cmn/item/1.png"
+        },
+        {
+          "id": 2,
+          "path": "./img/ika/cmn/item/2.png"
+        },
+        {
+          "id": 3,
+          "path": "./img/ika/cmn/item/3.png"
+        },
+        {
+          "id": 4,
+          "path": "./img/ika/cmn/item/4.png"
+        },
+        {
+          "id": 5,
+          "path": "./img/ika/cmn/item/5.png"
+        },
+        {
+          "id": 6,
+          "path": "./img/ika/cmn/item/6.png"
+        },
+        {
+          "id": 7,
+          "path": "./img/ika/cmn/item/7.png"
+        },
+        {
+          "id": 8,
+          "path": "./img/ika/cmn/item/8.png"
+        },
+        {
+          "id": 9,
+          "path": "./img/ika/cmn/item/9.png"
         }
       ]
     },
     "bg": {
       "tabName": "ハイケイ",
-      "tabOrder": 9,
+      "tabOrder": 10,
       "tabGroup": "OTHERS",
       "selectType": "TYPE_COLOR",
       "items": [
@@ -1065,16 +1121,61 @@ export default {
               "path": "./img/ika/cmn/bg/2/7.png"
             },
             {
-              "id": 8,
-              "path": "./img/ika/cmn/bg/2/8.png"
-            },
-            {
               "id": 9,
               "path": "./img/ika/cmn/bg/2/9.png"
             },
             {
               "id": 10,
               "path": "./img/ika/cmn/bg/2/10.png"
+            },
+            {
+              "id": 12,
+              "path": "./img/ika/cmn/bg/2/12.png"
+            }
+          ]
+        },
+        {
+          "id": 3,
+          "items": [
+            {
+              "id": 1,
+              "path": "./img/ika/cmn/bg/3/1.png"
+            },
+            {
+              "id": 3,
+              "path": "./img/ika/cmn/bg/3/3.png"
+            },
+            {
+              "id": 4,
+              "path": "./img/ika/cmn/bg/3/4.png"
+            },
+            {
+              "id": 5,
+              "path": "./img/ika/cmn/bg/3/5.png"
+            },
+            {
+              "id": 6,
+              "path": "./img/ika/cmn/bg/3/6.png"
+            },
+            {
+              "id": 7,
+              "path": "./img/ika/cmn/bg/3/7.png"
+            },
+            {
+              "id": 8,
+              "path": "./img/ika/cmn/bg/3/8.png"
+            },
+            {
+              "id": 9,
+              "path": "./img/ika/cmn/bg/3/9.png"
+            },
+            {
+              "id": 10,
+              "path": "./img/ika/cmn/bg/3/10.png"
+            },
+            {
+              "id": 12,
+              "path": "./img/ika/cmn/bg/3/12.png"
             }
           ]
         }
@@ -1090,7 +1191,8 @@ export default {
         "8": "FD9126",
         "9": "FD89C1",
         "10": "CD0814",
-        "11": "ffffff"
+        "11": "ffffff",
+        "12": "F82287"
       }
     }
   },
@@ -1930,6 +2032,10 @@ export default {
         {
           "id": 33,
           "path": "./img/ika/boy/hat/33.png"
+        },
+        {
+          "id": 34,
+          "path": "./img/ika/boy/hat/34.png"
         }
       ]
     },
@@ -2050,12 +2156,64 @@ export default {
         {
           "id": 28,
           "path": "./img/ika/boy/clothes/28.png"
+        },
+        {
+          "id": 29,
+          "path": "./img/ika/boy/clothes/29.png"
+        }
+      ]
+    },
+    "item": {
+      "tabName": "アイテム",
+      "tabOrder": 9,
+      "tabGroup": "GEAR",
+      "selectType": "TYPE",
+      "items": [
+        {
+          "id": 0,
+          "path": "./img/ika/cmn/item/0.png"
+        },
+        {
+          "id": 1,
+          "path": "./img/ika/cmn/item/1.png"
+        },
+        {
+          "id": 2,
+          "path": "./img/ika/cmn/item/2.png"
+        },
+        {
+          "id": 3,
+          "path": "./img/ika/cmn/item/3.png"
+        },
+        {
+          "id": 4,
+          "path": "./img/ika/cmn/item/4.png"
+        },
+        {
+          "id": 5,
+          "path": "./img/ika/cmn/item/5.png"
+        },
+        {
+          "id": 6,
+          "path": "./img/ika/cmn/item/6.png"
+        },
+        {
+          "id": 7,
+          "path": "./img/ika/cmn/item/7.png"
+        },
+        {
+          "id": 8,
+          "path": "./img/ika/cmn/item/8.png"
+        },
+        {
+          "id": 9,
+          "path": "./img/ika/cmn/item/9.png"
         }
       ]
     },
     "bg": {
       "tabName": "ハイケイ",
-      "tabOrder": 9,
+      "tabOrder": 10,
       "tabGroup": "OTHERS",
       "selectType": "TYPE_COLOR",
       "items": [
@@ -2136,16 +2294,61 @@ export default {
               "path": "./img/ika/cmn/bg/2/7.png"
             },
             {
-              "id": 8,
-              "path": "./img/ika/cmn/bg/2/8.png"
-            },
-            {
               "id": 9,
               "path": "./img/ika/cmn/bg/2/9.png"
             },
             {
               "id": 10,
               "path": "./img/ika/cmn/bg/2/10.png"
+            },
+            {
+              "id": 12,
+              "path": "./img/ika/cmn/bg/2/12.png"
+            }
+          ]
+        },
+        {
+          "id": 3,
+          "items": [
+            {
+              "id": 1,
+              "path": "./img/ika/cmn/bg/3/1.png"
+            },
+            {
+              "id": 3,
+              "path": "./img/ika/cmn/bg/3/3.png"
+            },
+            {
+              "id": 4,
+              "path": "./img/ika/cmn/bg/3/4.png"
+            },
+            {
+              "id": 5,
+              "path": "./img/ika/cmn/bg/3/5.png"
+            },
+            {
+              "id": 6,
+              "path": "./img/ika/cmn/bg/3/6.png"
+            },
+            {
+              "id": 7,
+              "path": "./img/ika/cmn/bg/3/7.png"
+            },
+            {
+              "id": 8,
+              "path": "./img/ika/cmn/bg/3/8.png"
+            },
+            {
+              "id": 9,
+              "path": "./img/ika/cmn/bg/3/9.png"
+            },
+            {
+              "id": 10,
+              "path": "./img/ika/cmn/bg/3/10.png"
+            },
+            {
+              "id": 12,
+              "path": "./img/ika/cmn/bg/3/12.png"
             }
           ]
         }
@@ -2161,7 +2364,8 @@ export default {
         "8": "FD9126",
         "9": "FD89C1",
         "10": "CD0814",
-        "11": "ffffff"
+        "11": "ffffff",
+        "12": "F82287"
       }
     }
   }
