@@ -22820,23 +22820,20 @@ exports.default = {
           "id": 7,
           "path": "./img/ika/cmn/bg/2/7.png"
         }, {
-          "id": 8,
-          "path": "./img/ika/cmn/bg/2/8.png"
-        }, {
           "id": 9,
           "path": "./img/ika/cmn/bg/2/9.png"
         }, {
           "id": 10,
           "path": "./img/ika/cmn/bg/2/10.png"
+        }, {
+          "id": 12,
+          "path": "./img/ika/cmn/bg/2/12.png"
         }]
       }, {
         "id": 3,
         "items": [{
           "id": 1,
           "path": "./img/ika/cmn/bg/3/1.png"
-        }, {
-          "id": 2,
-          "path": "./img/ika/cmn/bg/3/2.png"
         }, {
           "id": 3,
           "path": "./img/ika/cmn/bg/3/3.png"
@@ -22861,6 +22858,9 @@ exports.default = {
         }, {
           "id": 10,
           "path": "./img/ika/cmn/bg/3/10.png"
+        }, {
+          "id": 12,
+          "path": "./img/ika/cmn/bg/3/12.png"
         }]
       }],
       "COLORS": {
@@ -22874,7 +22874,8 @@ exports.default = {
         "8": "FD9126",
         "9": "FD89C1",
         "10": "CD0814",
-        "11": "ffffff"
+        "11": "ffffff",
+        "12": "F82287"
       }
     }
   },
@@ -23716,23 +23717,20 @@ exports.default = {
           "id": 7,
           "path": "./img/ika/cmn/bg/2/7.png"
         }, {
-          "id": 8,
-          "path": "./img/ika/cmn/bg/2/8.png"
-        }, {
           "id": 9,
           "path": "./img/ika/cmn/bg/2/9.png"
         }, {
           "id": 10,
           "path": "./img/ika/cmn/bg/2/10.png"
+        }, {
+          "id": 12,
+          "path": "./img/ika/cmn/bg/2/12.png"
         }]
       }, {
         "id": 3,
         "items": [{
           "id": 1,
           "path": "./img/ika/cmn/bg/3/1.png"
-        }, {
-          "id": 2,
-          "path": "./img/ika/cmn/bg/3/2.png"
         }, {
           "id": 3,
           "path": "./img/ika/cmn/bg/3/3.png"
@@ -23757,6 +23755,9 @@ exports.default = {
         }, {
           "id": 10,
           "path": "./img/ika/cmn/bg/3/10.png"
+        }, {
+          "id": 12,
+          "path": "./img/ika/cmn/bg/3/12.png"
         }]
       }],
       "COLORS": {
@@ -23770,7 +23771,8 @@ exports.default = {
         "8": "FD9126",
         "9": "FD89C1",
         "10": "CD0814",
-        "11": "ffffff"
+        "11": "ffffff",
+        "12": "F82287"
       }
     }
   }
