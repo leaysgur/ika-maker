@@ -20,7 +20,7 @@ console.log(`Generate ${SCHEME_DIST_DIR}.js`);
  *
  */
 const PARTS_SCHEME = require(path.resolve(BASE_DIR, SCHEME_SRC_DIR));
-const cmnItemMap = { bg: 1, eyes: 1 };
+const cmnItemMap = { bg: 1, eyes: 1, item: 1 };
 
 let data = {
   girl: _getPartsSchemebyAppType('girl'),

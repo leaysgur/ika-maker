@@ -125,9 +125,17 @@ module.exports = {
     items: []
   },
 
+  item: {
+    tabName: 'アイテム',
+    tabOrder: 9,
+    tabGroup: 'GEAR',
+    selectType: 'TYPE',
+    items: []
+  },
+
   bg: {
     tabName: 'ハイケイ',
-    tabOrder: 9,
+    tabOrder: 10,
     tabGroup: 'OTHERS',
     selectType: 'TYPE_COLOR',
     items: [],
