@@ -987,6 +987,10 @@ export default {
         {
           "id": 33,
           "path": "./img/ika/girl/clothes/33.png"
+        },
+        {
+          "id": 34,
+          "path": "./img/ika/girl/clothes/34.png"
         }
       ]
     },
@@ -2160,6 +2164,18 @@ export default {
         {
           "id": 29,
           "path": "./img/ika/boy/clothes/29.png"
+        },
+        {
+          "id": 30,
+          "path": "./img/ika/boy/clothes/30.png"
+        },
+        {
+          "id": 31,
+          "path": "./img/ika/boy/clothes/31.png"
+        },
+        {
+          "id": 32,
+          "path": "./img/ika/boy/clothes/32.png"
         }
       ]
     },
