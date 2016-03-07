@@ -857,6 +857,10 @@ export default {
       "selectType": "TYPE",
       "items": [
         {
+          "id": 0,
+          "path": "./img/ika/girl/clothes/.DS_Store"
+        },
+        {
           "id": 1,
           "path": "./img/ika/girl/clothes/1.png"
         },
@@ -987,10 +991,6 @@ export default {
         {
           "id": 33,
           "path": "./img/ika/girl/clothes/33.png"
-        },
-        {
-          "id": 34,
-          "path": "./img/ika/girl/clothes/34.png"
         }
       ]
     },
@@ -2050,6 +2050,10 @@ export default {
       "selectType": "TYPE",
       "items": [
         {
+          "id": 0,
+          "path": "./img/ika/boy/clothes/.DS_Store"
+        },
+        {
           "id": 1,
           "path": "./img/ika/boy/clothes/1.png"
         },
@@ -2172,10 +2176,6 @@ export default {
         {
           "id": 31,
           "path": "./img/ika/boy/clothes/31.png"
-        },
-        {
-          "id": 32,
-          "path": "./img/ika/boy/clothes/32.png"
         }
       ]
     },
