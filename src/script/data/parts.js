@@ -857,10 +857,6 @@ export default {
       "selectType": "TYPE",
       "items": [
         {
-          "id": 0,
-          "path": "./img/ika/girl/clothes/.DS_Store"
-        },
-        {
           "id": 1,
           "path": "./img/ika/girl/clothes/1.png"
         },
@@ -2049,10 +2045,6 @@ export default {
       "tabGroup": "GEAR",
       "selectType": "TYPE",
       "items": [
-        {
-          "id": 0,
-          "path": "./img/ika/boy/clothes/.DS_Store"
-        },
         {
           "id": 1,
           "path": "./img/ika/boy/clothes/1.png"
