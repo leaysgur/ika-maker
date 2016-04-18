@@ -1035,6 +1035,34 @@ export default {
         {
           "id": 9,
           "path": "./img/ika/cmn/item/9.png"
+        },
+        {
+          "id": 10,
+          "path": "./img/ika/cmn/item/10.png"
+        },
+        {
+          "id": 11,
+          "path": "./img/ika/cmn/item/11.png"
+        },
+        {
+          "id": 12,
+          "path": "./img/ika/cmn/item/12.png"
+        },
+        {
+          "id": 13,
+          "path": "./img/ika/cmn/item/13.png"
+        },
+        {
+          "id": 14,
+          "path": "./img/ika/cmn/item/14.png"
+        },
+        {
+          "id": 15,
+          "path": "./img/ika/cmn/item/15.png"
+        },
+        {
+          "id": 16,
+          "path": "./img/ika/cmn/item/16.png"
         }
       ]
     },
@@ -2216,6 +2244,34 @@ export default {
         {
           "id": 9,
           "path": "./img/ika/cmn/item/9.png"
+        },
+        {
+          "id": 10,
+          "path": "./img/ika/cmn/item/10.png"
+        },
+        {
+          "id": 11,
+          "path": "./img/ika/cmn/item/11.png"
+        },
+        {
+          "id": 12,
+          "path": "./img/ika/cmn/item/12.png"
+        },
+        {
+          "id": 13,
+          "path": "./img/ika/cmn/item/13.png"
+        },
+        {
+          "id": 14,
+          "path": "./img/ika/cmn/item/14.png"
+        },
+        {
+          "id": 15,
+          "path": "./img/ika/cmn/item/15.png"
+        },
+        {
+          "id": 16,
+          "path": "./img/ika/cmn/item/16.png"
         }
       ]
     },
