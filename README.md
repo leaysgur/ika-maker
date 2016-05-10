@@ -31,3 +31,8 @@
 - ES2015
 - React x flumpt
 - postcss
+
+## 更新手順
+- 画像を追加(`.DS_Store`など入ったら消す)
+- `node sh/make-parts_data.js`
+- `npm run build-js`
