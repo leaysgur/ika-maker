@@ -847,6 +847,10 @@ export default {
         {
           "id": 36,
           "path": "./img/ika/girl/hat/36.png"
+        },
+        {
+          "id": 37,
+          "path": "./img/ika/girl/hat/37.png"
         }
       ]
     },
@@ -987,6 +991,14 @@ export default {
         {
           "id": 33,
           "path": "./img/ika/girl/clothes/33.png"
+        },
+        {
+          "id": 34,
+          "path": "./img/ika/girl/clothes/34.png"
+        },
+        {
+          "id": 35,
+          "path": "./img/ika/girl/clothes/35.png"
         }
       ]
     },
@@ -2064,6 +2076,10 @@ export default {
         {
           "id": 34,
           "path": "./img/ika/boy/hat/34.png"
+        },
+        {
+          "id": 35,
+          "path": "./img/ika/boy/hat/35.png"
         }
       ]
     },
@@ -2196,6 +2212,14 @@ export default {
         {
           "id": 31,
           "path": "./img/ika/boy/clothes/31.png"
+        },
+        {
+          "id": 32,
+          "path": "./img/ika/boy/clothes/32.png"
+        },
+        {
+          "id": 33,
+          "path": "./img/ika/boy/clothes/33.png"
         }
       ]
     },
