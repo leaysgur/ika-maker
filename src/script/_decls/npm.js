@@ -9,3 +9,8 @@ declare module 'object-assign' {
 declare module 'es6-promise' {
   declare var exports: any;
 }
+
+declare module 'flumpt' {
+  declare var Component: any;
+  declare var Flux: any;
+}

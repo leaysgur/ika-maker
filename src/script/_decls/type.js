@@ -37,3 +37,18 @@ type TabItem = {
   group: string,
   name:  string,
 };
+
+type SetColorAction = {
+  target:  string,
+  colorId: number,
+};
+
+type SetTypeAction = {
+  target: string,
+  typeId: number,
+};
+
+type SetTextAction = {
+  target: string,
+  text:   string,
+};

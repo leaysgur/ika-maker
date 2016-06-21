@@ -1,3 +1,4 @@
+// @flow
 'use strict';
 const React = require('react'); // eslint-disable-line no-unused-vars
 const { Flux } = require('flumpt');
@@ -8,48 +9,48 @@ const ToolPanel = require('./tool-panel.jsx');
 const FixModal = require('./fix-modal.jsx');
 const PartsModel = require('../models/parts');
 
-module.exports =  class extends Flux {
-  subscribe() {
-    this.on('set:color', ({target, colorId}) => {
-      this.update((state) => {
+class App extends Flux {
+  subscribe(): void {
+    this.on('set:color', ({ target, colorId }: SetColorAction): void => {
+      this.update((state: AppState): AppState => {
         state.settings[`${target}Color`] = colorId;
         state.fixImgSrc = PartsModel.getFixImgSrcBySettings(state.settings);
         return objectAssign({}, state);
       });
     });
 
-    this.on('set:type', ({target, typeId}) => {
-      this.update((state) => {
+    this.on('set:type', ({ target, typeId }: SetTypeAction): void => {
+      this.update((state: AppState): AppState => {
         state.settings[`${target}Type`] = typeId;
         state.fixImgSrc = PartsModel.getFixImgSrcBySettings(state.settings);
         return objectAssign({}, state);
       });
     });
 
-    this.on('set:text', ({target, text}) => {
-      this.update((state) => {
+    this.on('set:text', ({ target, text }: SetTextAction): void => {
+      this.update((state: AppState): AppState => {
         state.settings[`${target}`] = text;
         state.fixImgSrc = PartsModel.getFixImgSrcBySettings(state.settings);
         return objectAssign({}, state);
       });
     });
 
-    this.on('show:fixModal', () => {
-      this.update((state) => {
+    this.on('show:fixModal', (): void => {
+      this.update((state: AppState): AppState => {
         state.showFixModal = true;
         return objectAssign({}, state);
       });
     });
 
-    this.on('hide:fixModal', () => {
-      this.update((state) => {
+    this.on('hide:fixModal', (): void => {
+      this.update((state: AppState): AppState => {
         state.showFixModal = false;
         return objectAssign({}, state);
       });
     });
   }
 
-  render(state) {
+  render(state: AppState): React$Element {
     return (
       <div>
         <Header />
@@ -59,4 +60,6 @@ module.exports =  class extends Flux {
       </div>
     );
   }
-};
+}
+
+module.exports = App;
