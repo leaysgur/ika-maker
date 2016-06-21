@@ -17,35 +17,35 @@ const {
  *
  */
 class PartsModel {
-  cache: Object;
-  scheme: Object;
-  appType: ?string;
+  cache:   Object;
+  scheme:  Object;
+  appType: string;
 
   constructor() {
     this.cache   = {};
     this.scheme  = {};
-    this.appType = null;
+    this.appType = '';
   }
 
-  init(type) {
+  init(type: string): PartsModel {
     this.appType = type;
     this.scheme = objectAssign({}, PartsScheme[type]);
     return this;
   }
 
-  getAppType() {
+  getAppType(): string {
     return this.appType;
   }
 
-  getDefaultSettings() {
+  getDefaultSettings(): Parts {
     return objectAssign({}, DEFAULT_PARTS_SETTINGS[this.appType]);
   }
 
-  getParts(partsName) {
+  getParts(partsName: PartsName) {
     return objectAssign({}, this.scheme[partsName]);
   }
 
-  _getImgRef(partsName, type, color) {
+  _getImgRef(partsName: PartsName, type: number, color: ?number): ?HTMLImageElement {
     let parts = this.scheme[partsName];
     let path = '';
     let types = [], colors = [];
@@ -82,7 +82,7 @@ class PartsModel {
     return this.cache[path];
   }
 
-  getFixImgSrcBySettings(settings) {
+  getFixImgSrcBySettings(settings: Parts) {
     let imgRefArr = [
       this._getImgRef('bg', settings.bgType, settings.bgColor),
 
@@ -100,9 +100,10 @@ class PartsModel {
       this._getImgRef('item', settings.itemType),
     ];
 
-    let canvas = document.createElement('canvas');
-    let ctx = canvas.getContext('2d');
-    canvas.width = canvas.height = IMG_SIZE;
+    let canvas: ?HTMLCanvasElement = document.createElement('canvas');
+    // flow-disable-line
+    const ctx: CanvasRenderingContext2D = canvas.getContext('2d');
+    canvas && (canvas.width = canvas.height = IMG_SIZE);
 
     imgRefArr.forEach((img) => {
       // new Imageして呼ぶと、たまに間に合わないやつが出る
@@ -111,7 +112,7 @@ class PartsModel {
     });
 
     // 文字は別途書き込む
-    let text = settings.text;
+    const text: string = settings.text;
     if (text.trim().length > 0) {
       ctx.font = TEXT_STYLES.font;
       ctx.textAlign = TEXT_STYLES.textAlign;
@@ -122,7 +123,7 @@ class PartsModel {
         text,
         IMG_SIZE - TEXT_STYLES.GAP + 2,  // x
         IMG_SIZE - TEXT_STYLES.GAP + 2,  // y
-        IMG_SIZE - TEXT_STYLES.GAP*2     // maxWidth
+        IMG_SIZE - TEXT_STYLES.GAP * 2   // maxWidth
       );
       // 2重に書いて影をつける
       ctx.fillStyle = TEXT_STYLES.COLORS[1];
@@ -134,12 +135,12 @@ class PartsModel {
       );
     }
 
-    let src = canvas.toDataURL();
+    const src: string = canvas ? canvas.toDataURL() : '';
     canvas = null;
     return src;
   }
 
-  getTabItems() {
+  getTabItems(): TabItem[] {
     let tabItems = Object.keys(this.scheme).map((partsName) => {
       let parts = this.scheme[partsName];
       return {
@@ -163,8 +164,9 @@ class PartsModel {
     return tabItems;
   }
 
-  getAllImgPath() {
-    let imgPathArr = [];
+  getAllImgPath(): string[] {
+    const imgPathArr: string[] = [];
+
     Object.keys(this.scheme).forEach((parts) => {
       this.scheme[parts].items.forEach((item) => {
         if ('path' in item) {
@@ -180,12 +182,13 @@ class PartsModel {
     return imgPathArr;
   }
 
-  fetchAll() {
+  fetchAll(): Promise {
     let cache = this.cache;
-    return Promise.all(this.getAllImgPath().map((path) => {
+
+    return Promise.all(this.getAllImgPath().map((path): Promise[] => {
       cache[path] = null;
-      return new Promise((resolve) => {
-        let img = new Image();
+      return new Promise((resolve): void => {
+        const img = new Image();
         img.src = path;
         img.onload = () => {
           cache[path] = img;

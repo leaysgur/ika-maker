@@ -20,3 +20,20 @@ type Parts = {
   itemType:    number,
   text:        string,
 };
+
+type PartsName = | 'body'
+                 | 'hair'
+                 | 'brows'
+                 | 'eyes'
+                 | 'mouth'
+                 | 'hat'
+                 | 'clothes'
+                 | 'item'
+                 | 'bg';
+
+type TabItem = {
+  id:    string,
+  order: number,
+  group: string,
+  name:  string,
+};
