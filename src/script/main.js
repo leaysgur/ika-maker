@@ -23,31 +23,33 @@ global.addEventListener('error', () => {
   location.href = '/sorry.html';
 }, false);
 
-const appEl = document.getElementById('jsApp');
-const appType = appEl.getAttribute('data-app-type');
+const appEl: HTMLElement = document.getElementById('jsApp');
+const appType: string = appEl.getAttribute('data-app-type');
 
 if (appType !== 'boy' && appType !== 'girl') {
   throw new Error(`Undefined appType: ${appType}`);
 }
 
-const app = new App({
-  renderer: (el) => {
+const initialState: AppState = {
+  settings: {},
+  showFixModal: false,
+  fixImgSrc: ''
+};
+
+const app: App = new App({
+  renderer: (el): void => {
     ReactDOM.render(el, appEl);
   },
 
-  initialState: {
-    settings: {},
-    showFixModal: false,
-    fixImgSrc: ''
-  }
+  initialState,
 });
 
 global.addEventListener('load', () => {
   PartsModel
     .init(appType)
     .fetchAll()
-    .then(() => {
-      app.update((state) => {
+    .then((): void => {
+      app.update((state: AppState): AppState => {
         state.settings  = PartsModel.getDefaultSettings();
         state.fixImgSrc = PartsModel.getFixImgSrcBySettings(state.settings);
         return objectAssign({}, state);
