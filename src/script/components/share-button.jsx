@@ -1,7 +1,7 @@
 'use strict';
-import * as React from 'react'; // eslint-disable-line no-unused-vars
-import {Component} from 'flumpt';
-import {SHARE_URL, SHARE_TEXT} from '../data/const';
+const React = require('react'); // eslint-disable-line no-unused-vars
+const { Component } = require('flumpt');
+const { SHARE_URL, SHARE_TEXT } = require('../data/const');
 
 class ShareButton extends Component {
   render() {
@@ -13,4 +13,4 @@ class ShareButton extends Component {
   }
 };
 
-export default ShareButton;
+module.exports = ShareButton;

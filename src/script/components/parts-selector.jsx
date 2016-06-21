@@ -1,10 +1,10 @@
 'use strict';
-import * as React from 'react'; // eslint-disable-line no-unused-vars
-import {Component} from 'flumpt';
-import PartsModel from '../models/parts';
-import TypeSelector from './parts-selector/type.jsx';
-import ColorSelector from './parts-selector/color.jsx';
-import TypeColorSelector from './parts-selector/type_color.jsx';
+const React = require('react'); // eslint-disable-line no-unused-vars
+const { Component } = require('flumpt');
+const PartsModel = require('../models/parts');
+const TypeSelector = require('./parts-selector/type.jsx');
+const ColorSelector = require('./parts-selector/color.jsx');
+const TypeColorSelector = require('./parts-selector/type_color.jsx');
 
 class PartsSelector extends Component {
   constructor() {
@@ -65,4 +65,4 @@ PartsSelector.propTypes = {
   settings:  React.PropTypes.object.isRequired
 };
 
-export default PartsSelector;
+module.exports = PartsSelector;

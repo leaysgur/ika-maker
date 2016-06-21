@@ -1,6 +1,6 @@
 'use strict';
-import * as React from 'react'; // eslint-disable-line no-unused-vars
-import {Component} from 'flumpt';
+const React = require('react'); // eslint-disable-line no-unused-vars
+const { Component } = require('flumpt');
 
 class ColorSelector extends Component {
   render() {
@@ -41,4 +41,4 @@ ColorSelector.propTypes = {
   selectedColorId: React.PropTypes.number.isRequired
 };
 
-export default ColorSelector;
+module.exports = ColorSelector;

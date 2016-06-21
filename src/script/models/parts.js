@@ -1,12 +1,13 @@
+// @flow
 'use strict';
-import objectAssign from 'object-assign';
-import {Promise} from 'es6-promise';
-import PartsScheme from '../data/parts';
-import {
+const objectAssign = require('object-assign');
+const { Promise } = require('es6-promise');
+const PartsScheme = require('../data/parts');
+const {
   DEFAULT_PARTS_SETTINGS,
   IMG_SIZE,
   TEXT_STYLES
-} from '../data/const';
+} = require('../data/const');
 
 /**
  * Modelとかいう名前になってるがココにはstateは無い。
@@ -16,6 +17,10 @@ import {
  *
  */
 class PartsModel {
+  cache: Object;
+  scheme: Object;
+  appType: ?string;
+
   constructor() {
     this.cache   = {};
     this.scheme  = {};
@@ -197,4 +202,4 @@ class PartsModel {
   }
 };
 
-export default (new PartsModel());
+module.exports = (new PartsModel());

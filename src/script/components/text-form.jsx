@@ -1,6 +1,6 @@
 'use strict';
-import * as React from 'react'; // eslint-disable-line no-unused-vars
-import {Component} from 'flumpt';
+const React = require('react'); // eslint-disable-line no-unused-vars
+const { Component } = require('flumpt');
 
 class TextForm extends Component {
   constructor() {
@@ -43,4 +43,4 @@ TextForm.propTypes = {
   partsName: React.PropTypes.string.isRequired
 };
 
-export default TextForm;
+module.exports = TextForm;

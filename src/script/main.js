@@ -1,11 +1,11 @@
 // @flow
 'use strict';
-import * as ReactDOM from 'react-dom';
-import injectTapEventPlugin from 'react-tap-event-plugin';
-import objectAssign from 'object-assign';
-import App from './components/app.jsx';
-import PartsModel from './models/parts';
-import {INDEX_URL} from './data/const';
+const ReactDOM = require('react-dom');
+const injectTapEventPlugin = require('react-tap-event-plugin');
+const objectAssign = require('object-assign');
+const App = require('./components/app.jsx');
+const PartsModel = require('./models/parts');
+const { INDEX_URL } = require('./data/const');
 
 // TOPから注意事項に同意してきた人にだけ見せたいので、
 // そうじゃないものは一旦返す

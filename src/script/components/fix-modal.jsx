@@ -1,8 +1,8 @@
 'use strict';
-import * as React from 'react'; // eslint-disable-line no-unused-vars
-import {Component} from 'flumpt';
-import Preview from './preview.jsx';
-import ShareButton from './share-button.jsx';
+const React = require('react'); // eslint-disable-line no-unused-vars
+const { Component } = require('flumpt');
+const Preview = require('./preview.jsx');
+const ShareButton = require('./share-button.jsx');
 
 class FixModal extends Component {
   constructor() {
@@ -45,4 +45,4 @@ FixModal.propTypes = {
   fixImgSrc: React.PropTypes.string.isRequired
 };
 
-export default FixModal;
+module.exports = FixModal;

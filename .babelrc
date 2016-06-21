@@ -1,10 +1,10 @@
 {
-  "presets": [
+  passPerPreset: true,
+  presets: [
+    {
+      "plugins": [ "babel-plugin-transform-flow-strip-types" ]
+    },
     "es2015",
     "react"
-  ],
-  "plugins": [
-    "babel-plugin-transform-flow-strip-types",
-    "transform-es2015-modules-commonjs"
   ]
 }

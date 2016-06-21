@@ -1,14 +1,14 @@
 'use strict';
-import * as React from 'react'; // eslint-disable-line no-unused-vars
-import {Flux} from 'flumpt';
-import objectAssign from 'object-assign';
-import Header from './header.jsx';
-import Preview from './preview.jsx';
-import ToolPanel from './tool-panel.jsx';
-import FixModal from './fix-modal.jsx';
-import PartsModel from '../models/parts';
+const React = require('react'); // eslint-disable-line no-unused-vars
+const { Flux } = require('flumpt');
+const objectAssign = require('object-assign');
+const Header = require('./header.jsx');
+const Preview = require('./preview.jsx');
+const ToolPanel = require('./tool-panel.jsx');
+const FixModal = require('./fix-modal.jsx');
+const PartsModel = require('../models/parts');
 
-export default class extends Flux {
+module.exports =  class extends Flux {
   subscribe() {
     this.on('set:color', ({target, colorId}) => {
       this.update((state) => {

@@ -1,6 +1,6 @@
 'use strict';
-import * as React from 'react'; // eslint-disable-line no-unused-vars
-import {Component} from 'flumpt';
+const React = require('react'); // eslint-disable-line no-unused-vars
+const { Component } = require('flumpt');
 
 class TypeSelector extends Component {
   render() {
@@ -45,4 +45,4 @@ TypeSelector.propTypes = {
   selectedTypeId: React.PropTypes.number.isRequired
 };
 
-export default TypeSelector;
+module.exports = TypeSelector;

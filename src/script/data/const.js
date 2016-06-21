@@ -1,11 +1,11 @@
 // @flow
 'use strict';
 
-export const INDEX_URL: string = 'http://ikasu.lealog.net/';
+const INDEX_URL: string = 'http://ikasu.lealog.net/';
 
-export const IMG_SIZE: number = 600;
+const IMG_SIZE: number = 600;
 
-export const TEXT_STYLES: {
+const TEXT_STYLES: {
   font:      string;
   textAlign: string;
   GAP:       number;
@@ -17,7 +17,7 @@ export const TEXT_STYLES: {
   COLORS:    ['#000', '#fff']
 };
 
-export const DEFAULT_PARTS_SETTINGS: {
+const DEFAULT_PARTS_SETTINGS: {
   girl: Parts;
   boy:  Parts;
 } = {
@@ -55,5 +55,14 @@ export const DEFAULT_PARTS_SETTINGS: {
   }
 };
 
-export const SHARE_URL: string = 'https://twitter.com/intent/tweet?text=';
-export const SHARE_TEXT: string = `みんなもマイイカのアイコンつくらなイカ？\n${INDEX_URL} #スーパーイカメーカー`;
+const SHARE_URL: string = 'https://twitter.com/intent/tweet?text=';
+const SHARE_TEXT: string = `みんなもマイイカのアイコンつくらなイカ？\n${INDEX_URL} #スーパーイカメーカー`;
+
+module.exports = {
+  INDEX_URL,
+  IMG_SIZE,
+  TEXT_STYLES,
+  DEFAULT_PARTS_SETTINGS,
+  SHARE_URL,
+  SHARE_TEXT,
+};

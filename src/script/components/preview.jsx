@@ -1,6 +1,6 @@
 'use strict';
-import * as React from 'react'; // eslint-disable-line no-unused-vars
-import {Component} from 'flumpt';
+const React = require('react'); // eslint-disable-line no-unused-vars
+const { Component } = require('flumpt');
 
 class Preview extends Component {
   handleTouchMove(ev) {
@@ -22,4 +22,4 @@ Preview.propTypes = {
   fixImgSrc: React.PropTypes.string.isRequired
 };
 
-export default Preview;
+module.exports = Preview;

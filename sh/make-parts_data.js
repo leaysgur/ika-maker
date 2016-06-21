@@ -26,7 +26,7 @@ let data = {
   girl: _getPartsSchemebyAppType('girl'),
   boy:  _getPartsSchemebyAppType('boy'),
 };
-data = `export default ${JSON.stringify(data, null, 2)};`;
+data = `module.exports = ${JSON.stringify(data, null, 2)};`;
 
 fs.writeFileSync(`${path.resolve(BASE_DIR, SCHEME_DIST_DIR)}.js`, data);
 console.log('Done!');

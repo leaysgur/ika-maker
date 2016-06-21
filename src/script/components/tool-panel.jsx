@@ -1,9 +1,9 @@
 'use strict';
-import * as React from 'react'; // eslint-disable-line no-unused-vars
-import {Component} from 'flumpt';
-import PartsModel from '../models/parts';
-import PartsSelector from './parts-selector.jsx';
-import TextForm from './text-form.jsx';
+const React = require('react'); // eslint-disable-line no-unused-vars
+const { Component } = require('flumpt');
+const PartsModel = require('../models/parts');
+const PartsSelector = require('./parts-selector.jsx');
+const TextForm = require('./text-form.jsx');
 
 class ToolPanel extends Component {
   constructor() {
@@ -75,4 +75,4 @@ ToolPanel.propTypes = {
   settings: React.PropTypes.object.isRequired
 };
 
-export default ToolPanel;
+module.exports = ToolPanel;

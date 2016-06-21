@@ -1,4 +1,4 @@
-export default {
+module.exports = {
   "girl": {
     "body": {
       "tabName": "カラダ",
