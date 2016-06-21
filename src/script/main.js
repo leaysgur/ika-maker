@@ -1,3 +1,4 @@
+// @flow
 'use strict';
 import * as ReactDOM from 'react-dom';
 import injectTapEventPlugin from 'react-tap-event-plugin';
