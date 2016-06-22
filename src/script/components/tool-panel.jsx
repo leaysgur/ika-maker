@@ -27,7 +27,7 @@ class ToolPanel extends Component {
   }
 
   render(): React$Element {
-    const tabItems: TabItem[] = PartsModel.getTabItems();
+    const tabItems: TabItems = PartsModel.getTabItems();
     const { settings } = this.props;
     const { selectedTabIdx } = this.state;
 

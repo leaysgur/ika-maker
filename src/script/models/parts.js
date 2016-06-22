@@ -140,7 +140,7 @@ class PartsModel {
     return src;
   }
 
-  getTabItems(): TabItem[] {
+  getTabItems(): TabItems {
     let tabItems = Object.keys(this.scheme).map((partsName) => {
       let parts = this.scheme[partsName];
       return {

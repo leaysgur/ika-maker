@@ -39,17 +39,19 @@ type TabItem = {
   name:  string,
 };
 
+type TabItems = TabItem[];
+
 type SetColorAction = {
-  target:  string,
+  target:  PartsName,
   colorId: number,
 };
 
 type SetTypeAction = {
-  target: string,
+  target: PartsName,
   typeId: number,
 };
 
 type SetTextAction = {
-  target: string,
+  target: PartsName,
   text:   string,
 };
