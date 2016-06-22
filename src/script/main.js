@@ -44,7 +44,7 @@ const app: App = new App({
   initialState,
 });
 
-global.addEventListener('load', () => {
+global.addEventListener('load', (): void => {
   PartsModel
     .init(appType)
     .fetchAll()
