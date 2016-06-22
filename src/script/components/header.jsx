@@ -1,6 +1,7 @@
+// @flow
 'use strict';
 const React = require('react'); // eslint-disable-line no-unused-vars
-const {Component} = require('flumpt');
+const { Component } = require('flumpt');
 
 class Header extends Component {
   constructor() {
@@ -8,11 +9,11 @@ class Header extends Component {
     this.onClickSave = this.onClickSave.bind(this);
   }
 
-  onClickSave() {
+  onClickSave(): void {
     this.dispatch('show:fixModal');
   }
 
-  render() {
+  render(): React$Element {
     return (
       <div className="header">
         <a className="button button--negative ft-ika" href="./index.html">モドル</a>

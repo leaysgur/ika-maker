@@ -1,3 +1,4 @@
+// @flow
 'use strict';
 const React = require('react'); // eslint-disable-line no-unused-vars
 const { Component } = require('flumpt');
@@ -5,28 +6,36 @@ const TypeSelector = require('./type.jsx');
 const ColorSelector = require('./color.jsx');
 
 class TypeColorSelector extends Component {
+  props: {
+    appType:         string,
+    target:          PartsName,
+    parts:           Object,
+    _setPartsType:   Function,
+    _setPartsColor:  Function,
+    selectedTypeId:  number,
+    selectedColorId: number,
+  };
+
   constructor() {
     super();
 
     this.setPartsType = this.setPartsType.bind(this);
   }
 
-  getColorItemsBySelectedTypeId(typeId) {
-    let {parts} = this.props;
-
-    return parts.items.filter((item) => {
-      return item.id === typeId;
-    })[0].items;
+  setPartsType({ target, typeId }: SetTypeAction): void {
+    const { _setPartsType } = this.props;
+    _setPartsType({ target, typeId });
   }
 
-  setPartsType({ target, typeId }) {
-    let {_setPartsType} = this.props;
-    _setPartsType({target, typeId});
-  }
-
-  render() {
-    let {appType, target, parts, _setPartsColor, selectedTypeId, selectedColorId} = this.props;
-    let colorItems = this.getColorItemsBySelectedTypeId(selectedTypeId);
+  render(): React$Element {
+    const {
+      appType,
+      target,
+      parts,
+      _setPartsColor,
+      selectedTypeId, selectedColorId,
+    } = this.props;
+    const colorItems = this._getColorItemsBySelectedTypeId(selectedTypeId);
 
     return (
       <div>
@@ -47,16 +56,14 @@ class TypeColorSelector extends Component {
       </div>
     );
   }
-};
 
-TypeColorSelector.propTypes = {
-  appType:        React.PropTypes.string.isRequired,
-  target:          React.PropTypes.string.isRequired,
-  parts:           React.PropTypes.object.isRequired,
-  _setPartsType:   React.PropTypes.func.isRequired,
-  _setPartsColor:  React.PropTypes.func.isRequired,
-  selectedTypeId:  React.PropTypes.number.isRequired,
-  selectedColorId: React.PropTypes.number.isRequired
+  _getColorItemsBySelectedTypeId(typeId: number) {
+    const { parts } = this.props;
+
+    return parts.items.filter((item) => {
+      return item.id === typeId;
+    })[0].items;
+  }
 };
 
 module.exports = TypeColorSelector;

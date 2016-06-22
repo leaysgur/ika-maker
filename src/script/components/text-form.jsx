@@ -1,22 +1,35 @@
+// @flow
 'use strict';
 const React = require('react'); // eslint-disable-line no-unused-vars
 const { Component } = require('flumpt');
 
 class TextForm extends Component {
+  props: {
+    partsName: 'text',
+    settings:  Parts,
+  };
+
   constructor() {
     super();
 
     this.onChangeInput = this.onChangeInput.bind(this);
   }
 
-  onChangeInput(ev) {
-    let text = ev.target.value;
-    let target = this.props.partsName;
-    this.dispatch('set:text', {target, text});
+  onChangeInput(ev: Event): void {
+    if (ev.target instanceof HTMLInputElement) {
+      const action: SetTextAction = {
+        target: this.props.partsName,
+        text:   ev.target.value
+      };
+      this.dispatch('set:text', action);
+    }
   }
 
-  render() {
-    let {partsName, settings} = this.props;
+  render(): React$Element {
+    const {
+      partsName,
+      settings
+    } = this.props;
 
     return (
       <div className="parts-selector">
@@ -36,11 +49,6 @@ class TextForm extends Component {
       </div>
     );
   }
-};
-
-TextForm.propTypes = {
-  settings:  React.PropTypes.object.isRequired,
-  partsName: React.PropTypes.string.isRequired
 };
 
 module.exports = TextForm;

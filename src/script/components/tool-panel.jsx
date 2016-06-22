@@ -1,3 +1,4 @@
+// @flow
 'use strict';
 const React = require('react'); // eslint-disable-line no-unused-vars
 const { Component } = require('flumpt');
@@ -6,30 +7,38 @@ const PartsSelector = require('./parts-selector.jsx');
 const TextForm = require('./text-form.jsx');
 
 class ToolPanel extends Component {
+  props: {
+    settings: Parts,
+  };
+  state: {
+    selectedTabIdx: number,
+  };
+
   constructor() {
     super();
+
     this.state = {
       selectedTabIdx: 0
     };
   }
 
-  onClickTab(idx) {
+  onClickTab(idx: number): void {
     this.setState({ selectedTabIdx: idx });
   }
 
-  render() {
-    let tabItems = PartsModel.getTabItems();
-    let {settings} = this.props;
-    let {selectedTabIdx} = this.state;
+  render(): React$Element {
+    const tabItems: TabItem[] = PartsModel.getTabItems();
+    const { settings } = this.props;
+    const { selectedTabIdx } = this.state;
 
     return (
       <div className="tool-panel">
         <ul className="tab-body">
-          {tabItems.map((item, idx) => {
-            let isSelected = idx === selectedTabIdx;
-            let Selector;
+          {tabItems.map((item, idx): React$Element => {
+            const isSelected: boolean = idx === selectedTabIdx;
+            let Selector: React$Element;
             if (item.id === 'text') {
-              Selector = <TextForm settings={settings} partsName={item.id} />;
+              Selector = <TextForm settings={settings} partsName="text" />;
             } else {
               Selector = <PartsSelector settings={settings} partsName={item.id} />;
             }
@@ -49,7 +58,7 @@ class ToolPanel extends Component {
 
         <ul className="tab-header">
           {tabItems.map((item, idx) => {
-            let isSelected = idx === selectedTabIdx;
+            const isSelected = idx === selectedTabIdx;
             return (
               <li
                 className={`
@@ -69,10 +78,6 @@ class ToolPanel extends Component {
       </div>
     );
   }
-};
-
-ToolPanel.propTypes = {
-  settings: React.PropTypes.object.isRequired
 };
 
 module.exports = ToolPanel;

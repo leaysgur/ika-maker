@@ -29,7 +29,8 @@ type PartsName = | 'body'
                  | 'hat'
                  | 'clothes'
                  | 'item'
-                 | 'bg';
+                 | 'bg'
+                 | 'text';
 
 type TabItem = {
   id:    string,
