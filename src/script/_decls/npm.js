@@ -1,13 +1,13 @@
 declare module 'react-tap-event-plugin' {
-  declare function exports(): Function;
+  declare function exports(): void;
 }
 
 declare module 'object-assign' {
-  declare function exports<A, B>(a: A, b: B): A & B;
+  declare var exports: Object$Assign;
 }
 
 declare module 'es6-promise' {
-  declare var exports: any;
+  declare class Promise extends Promise {}
 }
 
 declare module 'flumpt' {

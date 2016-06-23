@@ -185,7 +185,7 @@ class PartsModel {
   fetchAll(): Promise {
     let cache = this.cache;
 
-    return Promise.all(this.getAllImgPath().map((path): Promise[] => {
+    return Promise.all(this.getAllImgPath().map((path): Promise => {
       cache[path] = null;
       return new Promise((resolve): void => {
         const img = new Image();
