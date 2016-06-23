@@ -1,9 +1,8 @@
 // @flow
 'use strict';
 const React = require('react'); // eslint-disable-line no-unused-vars
-const { Component } = require('flumpt');
 
-class Preview extends Component {
+class Preview extends React.Component {
   props: {
     fixImgSrc: string,
   };

@@ -1,12 +1,11 @@
 // @flow
 'use strict';
 const React = require('react'); // eslint-disable-line no-unused-vars
-const { Component } = require('flumpt');
 const PartsModel = require('../models/parts');
 const PartsSelector = require('./parts-selector.jsx');
 const TextForm = require('./text-form.jsx');
 
-class ToolPanel extends Component {
+class ToolPanel extends React.Component {
   props: {
     settings: Parts,
   };

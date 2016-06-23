@@ -1,11 +1,10 @@
 // @flow
 'use strict';
 const React = require('react'); // eslint-disable-line no-unused-vars
-const { Component } = require('flumpt');
 const TypeSelector = require('./type.jsx');
 const ColorSelector = require('./color.jsx');
 
-class TypeColorSelector extends Component {
+class TypeColorSelector extends React.Component {
   props: {
     appType:         string,
     target:          PartsName,
@@ -16,13 +15,15 @@ class TypeColorSelector extends Component {
     selectedColorId: number,
   };
 
+  _setPartsType: () => void;
+
   constructor() {
     super();
 
-    this.setPartsType = this.setPartsType.bind(this);
+    this._setPartsType = this._setPartsType.bind(this);
   }
 
-  setPartsType({ target, typeId }: SetTypeAction): void {
+  _setPartsType({ target, typeId }: SetTypeAction): void {
     const { _setPartsType } = this.props;
     _setPartsType({ target, typeId });
   }
@@ -41,7 +42,7 @@ class TypeColorSelector extends Component {
       <div>
         <TypeSelector
           appType={appType}
-          onSelect={this.setPartsType}
+          onSelect={this._setPartsType}
           target={target}
           items={parts.items}
           selectedTypeId={selectedTypeId}
