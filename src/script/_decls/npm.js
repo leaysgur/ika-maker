@@ -7,7 +7,7 @@ declare module 'object-assign' {
 }
 
 declare module 'es6-promise' {
-  declare class Promise extends Promise {}
+  declare var Promise: any;
 }
 
 declare module 'flumpt' {

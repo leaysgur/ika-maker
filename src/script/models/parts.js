@@ -1,7 +1,7 @@
 // @flow
 'use strict';
 const objectAssign = require('object-assign');
-const { Promise } = require('es6-promise');
+const ES6Promise = require('es6-promise').Promise;
 const PartsScheme = require('../data/parts');
 const {
   DEFAULT_PARTS_SETTINGS,
@@ -10,14 +10,14 @@ const {
 } = require('../data/const');
 
 /**
- * Modelとかいう名前になってるがココにはstateは無い。
- * あるのは定数的なオブジェクトや、アプリ自体の不変な設定だけ。
+ * 最初に初期化され、後はスキーマデータを抱える役
  *
  * stateをもらって何か返すとかはあるが、ただの関数。
- *
  */
 class PartsModel {
-  cache:   Object;
+  cache:   {
+    [path: string]: ?HTMLImageElement
+  };
   scheme:  Object;
   appType: string;
 
@@ -46,7 +46,8 @@ class PartsModel {
   }
 
   _getImgRef(partsName: PartsName, type: number, color: ?number): ?HTMLImageElement {
-    let parts = this.scheme[partsName];
+    const parts: Object = this.scheme[partsName];
+
     let path = '';
     let types = [], colors = [];
 
@@ -82,8 +83,8 @@ class PartsModel {
     return this.cache[path];
   }
 
-  getFixImgSrcBySettings(settings: Parts) {
-    let imgRefArr = [
+  getFixImgSrcBySettings(settings: Parts): string {
+    const imgRefArr: Array<?HTMLImageElement> = [
       this._getImgRef('bg', settings.bgType, settings.bgColor),
 
       this._getImgRef('body', settings.bodyColor),
@@ -105,7 +106,7 @@ class PartsModel {
     const ctx: CanvasRenderingContext2D = canvas.getContext('2d');
     canvas && (canvas.width = canvas.height = IMG_SIZE);
 
-    imgRefArr.forEach((img) => {
+    imgRefArr.forEach((img: ?HTMLImageElement) => {
       // new Imageして呼ぶと、たまに間に合わないやつが出る
       // なのでキャッシュから確実に取る
       img && ctx.drawImage(img, 0, 0, IMG_SIZE, IMG_SIZE);
@@ -137,12 +138,13 @@ class PartsModel {
 
     const src: string = canvas ? canvas.toDataURL() : '';
     canvas = null;
+
     return src;
   }
 
   getTabItems(): TabItems {
-    let tabItems = Object.keys(this.scheme).map((partsName) => {
-      let parts = this.scheme[partsName];
+    const tabItems = Object.keys(this.scheme).map((partsName) => {
+      const parts = this.scheme[partsName];
       return {
         id:    partsName,
         order: parts.tabOrder,
@@ -185,9 +187,9 @@ class PartsModel {
   fetchAll(): Promise {
     let cache = this.cache;
 
-    return Promise.all(this.getAllImgPath().map((path): Promise => {
+    return ES6Promise.all(this.getAllImgPath().map((path): Promise => {
       cache[path] = null;
-      return new Promise((resolve): void => {
+      return new ES6Promise((resolve): void => {
         const img = new Image();
         img.src = path;
         img.onload = () => {
