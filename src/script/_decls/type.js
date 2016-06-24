@@ -1,9 +1,11 @@
+// アプリの核となるstate
 type AppState = {
-  settings:     Object,
+  settings:     Parts,
   showFixModal: boolean,
   fixImgSrc:    string,
 };
 
+// 現在セットされてるパーツ
 type Parts = {
   bgType:      number,
   bgColor:     number,
@@ -21,6 +23,7 @@ type Parts = {
   text:        string,
 };
 
+// パーツの種類
 type PartsName = | 'body'
                  | 'hair'
                  | 'brows'
@@ -32,6 +35,7 @@ type PartsName = | 'body'
                  | 'bg'
                  | 'text';
 
+// パーツの分類となるタブ
 type TabItem = {
   id:    string,
   order: number,
@@ -41,6 +45,7 @@ type TabItem = {
 
 type TabItems = TabItem[];
 
+// Fluxで使うAction
 type SetColorAction = {
   target:  PartsName,
   colorId: number,

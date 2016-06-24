@@ -30,27 +30,20 @@ if (appType !== 'boy' && appType !== 'girl') {
   throw new Error(`Undefined appType: ${appType}`);
 }
 
-const initialState: AppState = {
-  settings: {},
-  showFixModal: false,
-  fixImgSrc: ''
-};
-
 const app: App = new App({
   renderer: (el): void => {
     ReactDOM.render(el, appEl);
-  },
-
-  initialState,
+  }
 });
 
 global.addEventListener('load', (): void => {
   PartsModel
     .init(appType)
     .fetchAll()
-    .then((): void => {
+    .then(() => {
       app.update((state: AppState): AppState => {
         state.settings  = PartsModel.getDefaultSettings();
+        state.showFixModal = false;
         state.fixImgSrc = PartsModel.getFixImgSrcBySettings(state.settings);
         return objectAssign({}, state);
       });
