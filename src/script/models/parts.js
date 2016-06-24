@@ -102,19 +102,18 @@ class PartsModel {
     ];
 
     let canvas: ?HTMLCanvasElement = document.createElement('canvas');
-    // flow-disable-line
-    const ctx: CanvasRenderingContext2D = canvas.getContext('2d');
+    const ctx: ?CanvasRenderingContext2D = canvas && canvas.getContext('2d');
     canvas && (canvas.width = canvas.height = IMG_SIZE);
 
     imgRefArr.forEach((img: ?HTMLImageElement) => {
       // new Imageして呼ぶと、たまに間に合わないやつが出る
       // なのでキャッシュから確実に取る
-      img && ctx.drawImage(img, 0, 0, IMG_SIZE, IMG_SIZE);
+      img && ctx && ctx.drawImage(img, 0, 0, IMG_SIZE, IMG_SIZE);
     });
 
     // 文字は別途書き込む
     const text: string = settings.text;
-    if (text.trim().length > 0) {
+    if (ctx && text.trim().length > 0) {
       ctx.font = TEXT_STYLES.font;
       ctx.textAlign = TEXT_STYLES.textAlign;
 
