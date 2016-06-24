@@ -1,16 +1,23 @@
+// @flow
 'use strict';
-import * as React from 'react'; // eslint-disable-line no-unused-vars
-import {Component} from 'flumpt';
-import Preview from './preview.jsx';
-import ShareButton from './share-button.jsx';
+const React = require('react'); // eslint-disable-line no-unused-vars
+const { Component } = require('flumpt');
+const Preview = require('./preview.jsx');
+const ShareButton = require('./share-button.jsx');
 
 class FixModal extends Component {
+  props: {
+    isShow:    boolean,
+    fixImgSrc: string,
+  };
+  onClickCancel: () => void;
+
   constructor() {
     super();
     this.onClickCancel = this.onClickCancel.bind(this);
   }
 
-  onClickCancel(ev) {
+  onClickCancel(ev: Event) {
     ev.preventDefault();
     ev.stopPropagation();
 
@@ -18,7 +25,10 @@ class FixModal extends Component {
   }
 
   render() {
-    let {isShow, fixImgSrc} = this.props;
+    const {
+      isShow,
+      fixImgSrc,
+    } = this.props;
 
     return (
       <div className={`
@@ -34,15 +44,9 @@ class FixModal extends Component {
           <ShareButton />
           <a className="button button--negative ft-ika" onTouchTap={this.onClickCancel}>てなおしする</a>
         </div>
-
       </div>
     );
   }
 };
 
-FixModal.propTypes = {
-  isShow:    React.PropTypes.bool.isRequired,
-  fixImgSrc: React.PropTypes.string.isRequired
-};
-
-export default FixModal;
+module.exports = FixModal;

@@ -1,32 +1,46 @@
+// @flow
 'use strict';
-import * as React from 'react'; // eslint-disable-line no-unused-vars
-import {Component} from 'flumpt';
-import PartsModel from '../models/parts';
-import TypeSelector from './parts-selector/type.jsx';
-import ColorSelector from './parts-selector/color.jsx';
-import TypeColorSelector from './parts-selector/type_color.jsx';
+const React = require('react'); // eslint-disable-line no-unused-vars
+const { Component } = require('flumpt');
+const PartsModel = require('../models/parts');
+const TypeSelector = require('./parts-selector/type.jsx');
+const ColorSelector = require('./parts-selector/color.jsx');
+const TypeColorSelector = require('./parts-selector/type_color.jsx');
 
 class PartsSelector extends Component {
+  props: {
+    partsName: PartsName,
+    settings:  Parts,
+  };
+  appType: string;
+  setPartsType: () => void;
+  setPartsColor: () => void;
+
+
   constructor() {
     super();
+
     this.appType = PartsModel.getAppType();
     this.setPartsType  = this.setPartsType.bind(this);
     this.setPartsColor = this.setPartsColor.bind(this);
   }
 
-  setPartsType({ target, typeId }) {
+  setPartsType({ target, typeId }: SetTypeAction) {
     this.dispatch('set:type', {target, typeId});
   }
 
-  setPartsColor({ target, colorId }) {
+  setPartsColor({ target, colorId }: SetColorAction) {
     this.dispatch('set:color', {target, colorId});
   }
 
   render() {
-    let {partsName, settings} = this.props;
-    let parts = PartsModel.getParts(partsName);
-    let selectedTypeId  = settings[`${partsName}Type`];
-    let selectedColorId = settings[`${partsName}Color`];
+    const {
+      partsName,
+      settings,
+    } = this.props;
+    const parts = PartsModel.getParts(partsName);
+    const selectedTypeId: number  = settings[`${partsName}Type`];
+    const selectedColorId: number = settings[`${partsName}Color`];
 
     if (parts.selectType === 'TYPE') {
       return <TypeSelector
@@ -57,12 +71,9 @@ class PartsSelector extends Component {
                _setPartsColor={this.setPartsColor}
              />;
     }
+
+    return null;
   }
 };
 
-PartsSelector.propTypes = {
-  partsName: React.PropTypes.string.isRequired,
-  settings:  React.PropTypes.object.isRequired
-};
-
-export default PartsSelector;
+module.exports = PartsSelector;

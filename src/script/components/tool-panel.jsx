@@ -1,35 +1,46 @@
+// @flow
 'use strict';
-import * as React from 'react'; // eslint-disable-line no-unused-vars
-import {Component} from 'flumpt';
-import PartsModel from '../models/parts';
-import PartsSelector from './parts-selector.jsx';
-import TextForm from './text-form.jsx';
+const React = require('react');
+const PartsModel = require('../models/parts');
+const PartsSelector = require('./parts-selector.jsx');
+const TextForm = require('./text-form.jsx');
 
-class ToolPanel extends Component {
+class ToolPanel extends React.Component {
+  props: {
+    settings: Parts,
+  };
+  state: {
+    selectedTabIdx: number,
+  };
+  onClickTab: () => void;
+
   constructor() {
     super();
+
     this.state = {
       selectedTabIdx: 0
     };
+
+    this.onClickTab = this.onClickTab.bind(this);
   }
 
-  onClickTab(idx) {
+  onClickTab(idx: number) {
     this.setState({ selectedTabIdx: idx });
   }
 
   render() {
-    let tabItems = PartsModel.getTabItems();
-    let {settings} = this.props;
-    let {selectedTabIdx} = this.state;
+    const tabItems: TabItems = PartsModel.getTabItems();
+    const { settings } = this.props;
+    const { selectedTabIdx } = this.state;
 
     return (
       <div className="tool-panel">
         <ul className="tab-body">
-          {tabItems.map((item, idx) => {
-            let isSelected = idx === selectedTabIdx;
-            let Selector;
+          {tabItems.map((item, idx): React$Element => {
+            const isSelected: boolean = idx === selectedTabIdx;
+            let Selector: React$Element;
             if (item.id === 'text') {
-              Selector = <TextForm settings={settings} partsName={item.id} />;
+              Selector = <TextForm settings={settings} partsName="text" />;
             } else {
               Selector = <PartsSelector settings={settings} partsName={item.id} />;
             }
@@ -49,7 +60,7 @@ class ToolPanel extends Component {
 
         <ul className="tab-header">
           {tabItems.map((item, idx) => {
-            let isSelected = idx === selectedTabIdx;
+            const isSelected = idx === selectedTabIdx;
             return (
               <li
                 className={`
@@ -71,8 +82,4 @@ class ToolPanel extends Component {
   }
 };
 
-ToolPanel.propTypes = {
-  settings: React.PropTypes.object.isRequired
-};
-
-export default ToolPanel;
+module.exports = ToolPanel;

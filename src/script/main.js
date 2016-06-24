@@ -1,10 +1,11 @@
+// @flow
 'use strict';
-import * as ReactDOM from 'react-dom';
-import injectTapEventPlugin from 'react-tap-event-plugin';
-import objectAssign from 'object-assign';
-import App from './components/app.jsx';
-import PartsModel from './models/parts';
-import {INDEX_URL} from './data/const';
+const ReactDOM = require('react-dom');
+const injectTapEventPlugin = require('react-tap-event-plugin');
+const objectAssign = require('object-assign');
+const App = require('./components/app.jsx');
+const PartsModel = require('./models/parts');
+const { INDEX_URL } = require('./data/const');
 
 // TOPから注意事項に同意してきた人にだけ見せたいので、
 // そうじゃないものは一旦返す
@@ -22,32 +23,27 @@ global.addEventListener('error', () => {
   location.href = '/sorry.html';
 }, false);
 
-const appEl = document.getElementById('jsApp');
-const appType = appEl.getAttribute('data-app-type');
+const appEl: HTMLElement = document.getElementById('jsApp');
+const appType: string = appEl.getAttribute('data-app-type');
 
 if (appType !== 'boy' && appType !== 'girl') {
   throw new Error(`Undefined appType: ${appType}`);
 }
 
-const app = new App({
-  renderer: (el) => {
+const app: App = new App({
+  renderer: (el): void => {
     ReactDOM.render(el, appEl);
-  },
-
-  initialState: {
-    settings: {},
-    showFixModal: false,
-    fixImgSrc: ''
   }
 });
 
-global.addEventListener('load', () => {
+global.addEventListener('load', (): void => {
   PartsModel
     .init(appType)
     .fetchAll()
     .then(() => {
-      app.update((state) => {
+      app.update((state: AppState): AppState => {
         state.settings  = PartsModel.getDefaultSettings();
+        state.showFixModal = false;
         state.fixImgSrc = PartsModel.getFixImgSrcBySettings(state.settings);
         return objectAssign({}, state);
       });

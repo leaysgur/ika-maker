@@ -1,47 +1,53 @@
+// @flow
 'use strict';
-import objectAssign from 'object-assign';
-import {Promise} from 'es6-promise';
-import PartsScheme from '../data/parts';
-import {
+const objectAssign = require('object-assign');
+const ES6Promise = require('es6-promise').Promise;
+const PartsScheme = require('../data/parts');
+const {
   DEFAULT_PARTS_SETTINGS,
   IMG_SIZE,
   TEXT_STYLES
-} from '../data/const';
+} = require('../data/const');
 
 /**
- * Modelとかいう名前になってるがココにはstateは無い。
- * あるのは定数的なオブジェクトや、アプリ自体の不変な設定だけ。
+ * 最初に初期化され、後はスキーマデータを抱える役
  *
  * stateをもらって何か返すとかはあるが、ただの関数。
- *
  */
 class PartsModel {
+  cache:   {
+    [path: string]: ?HTMLImageElement
+  };
+  scheme:  Object;
+  appType: string;
+
   constructor() {
     this.cache   = {};
     this.scheme  = {};
-    this.appType = null;
+    this.appType = '';
   }
 
-  init(type) {
+  init(type: string): PartsModel {
     this.appType = type;
     this.scheme = objectAssign({}, PartsScheme[type]);
     return this;
   }
 
-  getAppType() {
+  getAppType(): string {
     return this.appType;
   }
 
-  getDefaultSettings() {
+  getDefaultSettings(): Parts {
     return objectAssign({}, DEFAULT_PARTS_SETTINGS[this.appType]);
   }
 
-  getParts(partsName) {
+  getParts(partsName: PartsName) {
     return objectAssign({}, this.scheme[partsName]);
   }
 
-  _getImgRef(partsName, type, color) {
-    let parts = this.scheme[partsName];
+  _getImgRef(partsName: PartsName, type: number, color: ?number): ?HTMLImageElement {
+    const parts: Object = this.scheme[partsName];
+
     let path = '';
     let types = [], colors = [];
 
@@ -77,8 +83,8 @@ class PartsModel {
     return this.cache[path];
   }
 
-  getFixImgSrcBySettings(settings) {
-    let imgRefArr = [
+  getFixImgSrcBySettings(settings: Parts): string {
+    const imgRefArr: Array<?HTMLImageElement> = [
       this._getImgRef('bg', settings.bgType, settings.bgColor),
 
       this._getImgRef('body', settings.bodyColor),
@@ -95,19 +101,19 @@ class PartsModel {
       this._getImgRef('item', settings.itemType),
     ];
 
-    let canvas = document.createElement('canvas');
-    let ctx = canvas.getContext('2d');
-    canvas.width = canvas.height = IMG_SIZE;
+    let canvas: ?HTMLCanvasElement = document.createElement('canvas');
+    const ctx: ?CanvasRenderingContext2D = canvas && canvas.getContext('2d');
+    canvas && (canvas.width = canvas.height = IMG_SIZE);
 
-    imgRefArr.forEach((img) => {
+    imgRefArr.forEach((img: ?HTMLImageElement) => {
       // new Imageして呼ぶと、たまに間に合わないやつが出る
       // なのでキャッシュから確実に取る
-      img && ctx.drawImage(img, 0, 0, IMG_SIZE, IMG_SIZE);
+      img && ctx && ctx.drawImage(img, 0, 0, IMG_SIZE, IMG_SIZE);
     });
 
     // 文字は別途書き込む
-    let text = settings.text;
-    if (text.trim().length > 0) {
+    const text: string = settings.text;
+    if (ctx && text.trim().length > 0) {
       ctx.font = TEXT_STYLES.font;
       ctx.textAlign = TEXT_STYLES.textAlign;
 
@@ -117,7 +123,7 @@ class PartsModel {
         text,
         IMG_SIZE - TEXT_STYLES.GAP + 2,  // x
         IMG_SIZE - TEXT_STYLES.GAP + 2,  // y
-        IMG_SIZE - TEXT_STYLES.GAP*2     // maxWidth
+        IMG_SIZE - TEXT_STYLES.GAP * 2   // maxWidth
       );
       // 2重に書いて影をつける
       ctx.fillStyle = TEXT_STYLES.COLORS[1];
@@ -129,14 +135,15 @@ class PartsModel {
       );
     }
 
-    let src = canvas.toDataURL();
+    const src: string = canvas ? canvas.toDataURL() : '';
     canvas = null;
+
     return src;
   }
 
-  getTabItems() {
-    let tabItems = Object.keys(this.scheme).map((partsName) => {
-      let parts = this.scheme[partsName];
+  getTabItems(): TabItems {
+    const tabItems = Object.keys(this.scheme).map((partsName) => {
+      const parts = this.scheme[partsName];
       return {
         id:    partsName,
         order: parts.tabOrder,
@@ -158,8 +165,9 @@ class PartsModel {
     return tabItems;
   }
 
-  getAllImgPath() {
-    let imgPathArr = [];
+  getAllImgPath(): string[] {
+    const imgPathArr: string[] = [];
+
     Object.keys(this.scheme).forEach((parts) => {
       this.scheme[parts].items.forEach((item) => {
         if ('path' in item) {
@@ -175,12 +183,13 @@ class PartsModel {
     return imgPathArr;
   }
 
-  fetchAll() {
+  fetchAll(): Promise {
     let cache = this.cache;
-    return Promise.all(this.getAllImgPath().map((path) => {
+
+    return ES6Promise.all(this.getAllImgPath().map((path): Promise => {
       cache[path] = null;
-      return new Promise((resolve) => {
-        let img = new Image();
+      return new ES6Promise((resolve): void => {
+        const img = new Image();
         img.src = path;
         img.onload = () => {
           cache[path] = img;
@@ -197,4 +206,4 @@ class PartsModel {
   }
 };
 
-export default (new PartsModel());
+module.exports = (new PartsModel());

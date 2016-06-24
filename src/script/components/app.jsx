@@ -1,55 +1,56 @@
+// @flow
 'use strict';
-import * as React from 'react'; // eslint-disable-line no-unused-vars
-import {Flux} from 'flumpt';
-import objectAssign from 'object-assign';
-import Header from './header.jsx';
-import Preview from './preview.jsx';
-import ToolPanel from './tool-panel.jsx';
-import FixModal from './fix-modal.jsx';
-import PartsModel from '../models/parts';
+const React = require('react'); // eslint-disable-line no-unused-vars
+const { Flux } = require('flumpt');
+const objectAssign = require('object-assign');
+const Header = require('./header.jsx');
+const Preview = require('./preview.jsx');
+const ToolPanel = require('./tool-panel.jsx');
+const FixModal = require('./fix-modal.jsx');
+const PartsModel = require('../models/parts');
 
-export default class extends Flux {
-  subscribe() {
-    this.on('set:color', ({target, colorId}) => {
-      this.update((state) => {
+class App extends Flux {
+  subscribe(): void {
+    this.on('set:color', ({ target, colorId }: SetColorAction): void => {
+      this.update((state: AppState): AppState => {
         state.settings[`${target}Color`] = colorId;
         state.fixImgSrc = PartsModel.getFixImgSrcBySettings(state.settings);
         return objectAssign({}, state);
       });
     });
 
-    this.on('set:type', ({target, typeId}) => {
-      this.update((state) => {
+    this.on('set:type', ({ target, typeId }: SetTypeAction): void => {
+      this.update((state: AppState): AppState => {
         state.settings[`${target}Type`] = typeId;
         state.fixImgSrc = PartsModel.getFixImgSrcBySettings(state.settings);
         return objectAssign({}, state);
       });
     });
 
-    this.on('set:text', ({target, text}) => {
-      this.update((state) => {
+    this.on('set:text', ({ target, text }: SetTextAction): void => {
+      this.update((state: AppState): AppState => {
         state.settings[`${target}`] = text;
         state.fixImgSrc = PartsModel.getFixImgSrcBySettings(state.settings);
         return objectAssign({}, state);
       });
     });
 
-    this.on('show:fixModal', () => {
-      this.update((state) => {
+    this.on('show:fixModal', (): void => {
+      this.update((state: AppState): AppState => {
         state.showFixModal = true;
         return objectAssign({}, state);
       });
     });
 
-    this.on('hide:fixModal', () => {
-      this.update((state) => {
+    this.on('hide:fixModal', (): void => {
+      this.update((state: AppState): AppState => {
         state.showFixModal = false;
         return objectAssign({}, state);
       });
     });
   }
 
-  render(state) {
+  render(state: AppState): React$Element {
     return (
       <div>
         <Header />
@@ -59,4 +60,6 @@ export default class extends Flux {
       </div>
     );
   }
-};
+}
+
+module.exports = App;

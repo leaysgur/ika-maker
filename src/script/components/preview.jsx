@@ -1,14 +1,19 @@
+// @flow
 'use strict';
-import * as React from 'react'; // eslint-disable-line no-unused-vars
-import {Component} from 'flumpt';
+const React = require('react');
 
-class Preview extends Component {
-  handleTouchMove(ev) {
+class Preview extends React.Component {
+  props: {
+    fixImgSrc: string,
+  };
+  handleTouchMove: () => void;
+
+  handleTouchMove(ev: Event) {
     ev.preventDefault();
   }
 
   render() {
-    let {fixImgSrc} = this.props;
+    const { fixImgSrc } = this.props;
 
     return (
       <div className="ika" onTouchMove={this.handleTouchMove}>
@@ -18,8 +23,4 @@ class Preview extends Component {
   }
 };
 
-Preview.propTypes = {
-  fixImgSrc: React.PropTypes.string.isRequired
-};
-
-export default Preview;
+module.exports = Preview;

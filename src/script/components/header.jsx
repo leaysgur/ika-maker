@@ -1,8 +1,11 @@
+// @flow
 'use strict';
-import * as React from 'react'; // eslint-disable-line no-unused-vars
-import {Component} from 'flumpt';
+const React = require('react'); // eslint-disable-line no-unused-vars
+const { Component } = require('flumpt');
 
 class Header extends Component {
+  onClickSave: () => void;
+
   constructor() {
     super();
     this.onClickSave = this.onClickSave.bind(this);
@@ -23,4 +26,4 @@ class Header extends Component {
   }
 };
 
-export default Header;
+module.exports = Header;
