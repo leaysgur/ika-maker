@@ -11,7 +11,7 @@ declare module 'es6-promise' {
 }
 
 declare module 'flumpt' {
-  declare class Component<Props, State, Ctx> extends React$Component<Props, State, Ctx> {
+  declare class Component extends React$Component {
     dispatch: (eventName: string, ...args: any[]) => boolean;
   }
   declare var Flux: any;
