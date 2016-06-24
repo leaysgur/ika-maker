@@ -8,6 +8,7 @@ class TextForm extends Component {
     partsName: 'text',
     settings:  Parts,
   };
+  onChangeInput: () => void;
 
   constructor() {
     super();

@@ -4,6 +4,8 @@ const React = require('react'); // eslint-disable-line no-unused-vars
 const { Component } = require('flumpt');
 
 class Header extends Component {
+  onClickSave: () => void;
+
   constructor() {
     super();
     this.onClickSave = this.onClickSave.bind(this);

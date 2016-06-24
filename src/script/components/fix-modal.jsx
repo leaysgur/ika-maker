@@ -10,6 +10,7 @@ class FixModal extends Component {
     isShow:    boolean,
     fixImgSrc: string,
   };
+  onClickCancel: () => void;
 
   constructor() {
     super();

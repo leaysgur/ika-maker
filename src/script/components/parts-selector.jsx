@@ -12,6 +12,10 @@ class PartsSelector extends Component {
     partsName: PartsName,
     settings:  Parts,
   };
+  appType: string;
+  setPartsType: () => void;
+  setPartsColor: () => void;
+
 
   constructor() {
     super();
