@@ -11,11 +11,11 @@ class Header extends Component {
     this.onClickSave = this.onClickSave.bind(this);
   }
 
-  onClickSave(): void {
+  onClickSave() {
     this.dispatch('show:fixModal');
   }
 
-  render(): React$Element {
+  render() {
     return (
       <div className="header">
         <a className="button button--negative ft-ika" href="./index.html">モドル</a>

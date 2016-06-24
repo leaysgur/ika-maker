@@ -1,6 +1,6 @@
 // @flow
 'use strict';
-const React = require('react'); // eslint-disable-line no-unused-vars
+const React = require('react');
 const PartsModel = require('../models/parts');
 const PartsSelector = require('./parts-selector.jsx');
 const TextForm = require('./text-form.jsx');

@@ -17,14 +17,14 @@ class FixModal extends Component {
     this.onClickCancel = this.onClickCancel.bind(this);
   }
 
-  onClickCancel(ev: Event): void {
+  onClickCancel(ev: Event) {
     ev.preventDefault();
     ev.stopPropagation();
 
     this.dispatch('hide:fixModal');
   }
 
-  render(): React$Element {
+  render() {
     const {
       isShow,
       fixImgSrc,

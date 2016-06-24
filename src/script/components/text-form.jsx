@@ -16,7 +16,7 @@ class TextForm extends Component {
     this.onChangeInput = this.onChangeInput.bind(this);
   }
 
-  onChangeInput(ev: Event): void {
+  onChangeInput(ev: Event) {
     if (ev.target instanceof HTMLInputElement) {
       const action: SetTextAction = {
         target: this.props.partsName,
@@ -26,7 +26,7 @@ class TextForm extends Component {
     }
   }
 
-  render(): React$Element {
+  render() {
     const {
       partsName,
       settings

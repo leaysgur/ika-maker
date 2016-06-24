@@ -1,6 +1,6 @@
 // @flow
 'use strict';
-const React = require('react'); // eslint-disable-line no-unused-vars
+const React = require('react');
 const TypeSelector = require('./type.jsx');
 const ColorSelector = require('./color.jsx');
 
@@ -15,7 +15,7 @@ class TypeColorSelector extends React.Component {
     selectedColorId: number,
   };
   _setPartsType: () => void;
-  _getColorItemsBySelectedTypeId: () => void;
+  _getColorItemsBySelectedTypeId: () => Object[];
 
   constructor() {
     super();

@@ -25,15 +25,15 @@ class PartsSelector extends Component {
     this.setPartsColor = this.setPartsColor.bind(this);
   }
 
-  setPartsType({ target, typeId }: SetTypeAction): void {
+  setPartsType({ target, typeId }: SetTypeAction) {
     this.dispatch('set:type', {target, typeId});
   }
 
-  setPartsColor({ target, colorId }: SetColorAction): void {
+  setPartsColor({ target, colorId }: SetColorAction) {
     this.dispatch('set:color', {target, colorId});
   }
 
-  render(): ?React$Element {
+  render() {
     const {
       partsName,
       settings,
