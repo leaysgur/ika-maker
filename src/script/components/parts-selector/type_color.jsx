@@ -14,8 +14,8 @@ class TypeColorSelector extends React.Component {
     selectedTypeId:  number,
     selectedColorId: number,
   };
-
   _setPartsType: () => void;
+  _getColorItemsBySelectedTypeId: () => void;
 
   constructor() {
     super();
@@ -23,12 +23,7 @@ class TypeColorSelector extends React.Component {
     this._setPartsType = this._setPartsType.bind(this);
   }
 
-  _setPartsType({ target, typeId }: SetTypeAction): void {
-    const { _setPartsType } = this.props;
-    _setPartsType({ target, typeId });
-  }
-
-  render(): React$Element {
+  render() {
     const {
       appType,
       target,
@@ -56,6 +51,11 @@ class TypeColorSelector extends React.Component {
         />
       </div>
     );
+  }
+
+  _setPartsType({ target, typeId }: SetTypeAction) {
+    const { _setPartsType } = this.props;
+    _setPartsType({ target, typeId });
   }
 
   _getColorItemsBySelectedTypeId(typeId: number) {

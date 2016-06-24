@@ -12,6 +12,7 @@ class ToolPanel extends React.Component {
   state: {
     selectedTabIdx: number,
   };
+  onClickTab: () => void;
 
   constructor() {
     super();
@@ -19,13 +20,15 @@ class ToolPanel extends React.Component {
     this.state = {
       selectedTabIdx: 0
     };
+
+    this.onClickTab = this.onClickTab.bind(this);
   }
 
-  onClickTab(idx: number): void {
+  onClickTab(idx: number) {
     this.setState({ selectedTabIdx: idx });
   }
 
-  render(): React$Element {
+  render() {
     const tabItems: TabItems = PartsModel.getTabItems();
     const { settings } = this.props;
     const { selectedTabIdx } = this.state;

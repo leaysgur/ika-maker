@@ -6,12 +6,13 @@ class Preview extends React.Component {
   props: {
     fixImgSrc: string,
   };
+  handleTouchMove: () => void;
 
-  handleTouchMove(ev: Event): void {
+  handleTouchMove(ev: Event) {
     ev.preventDefault();
   }
 
-  render(): React$Element {
+  render() {
     const { fixImgSrc } = this.props;
 
     return (
