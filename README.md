@@ -30,7 +30,8 @@
 ## Tech
 - ES2015
 - React x flumpt
-- postcss
+- Flow
+- PostCSS
 
 ## 更新手順
 - 画像を追加(`.DS_Store`など入ったら消す)
