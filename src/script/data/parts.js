@@ -993,12 +993,64 @@ module.exports = {
           "path": "./img/ika/girl/clothes/33.png"
         },
         {
-          "id": 34,
-          "path": "./img/ika/girl/clothes/34.png"
+          "id": 101,
+          "path": "./img/ika/girl/clothes/101.png"
         },
         {
-          "id": 35,
-          "path": "./img/ika/girl/clothes/35.png"
+          "id": 102,
+          "path": "./img/ika/girl/clothes/102.png"
+        },
+        {
+          "id": 103,
+          "path": "./img/ika/girl/clothes/103.png"
+        },
+        {
+          "id": 104,
+          "path": "./img/ika/girl/clothes/104.png"
+        },
+        {
+          "id": 105,
+          "path": "./img/ika/girl/clothes/105.png"
+        },
+        {
+          "id": 106,
+          "path": "./img/ika/girl/clothes/106.png"
+        },
+        {
+          "id": 107,
+          "path": "./img/ika/girl/clothes/107.png"
+        },
+        {
+          "id": 108,
+          "path": "./img/ika/girl/clothes/108.png"
+        },
+        {
+          "id": 109,
+          "path": "./img/ika/girl/clothes/109.png"
+        },
+        {
+          "id": 110,
+          "path": "./img/ika/girl/clothes/110.png"
+        },
+        {
+          "id": 111,
+          "path": "./img/ika/girl/clothes/111.png"
+        },
+        {
+          "id": 112,
+          "path": "./img/ika/girl/clothes/112.png"
+        },
+        {
+          "id": 113,
+          "path": "./img/ika/girl/clothes/113.png"
+        },
+        {
+          "id": 114,
+          "path": "./img/ika/girl/clothes/114.png"
+        },
+        {
+          "id": 115,
+          "path": "./img/ika/girl/clothes/115.png"
         }
       ]
     },
@@ -2214,12 +2266,64 @@ module.exports = {
           "path": "./img/ika/boy/clothes/31.png"
         },
         {
-          "id": 32,
-          "path": "./img/ika/boy/clothes/32.png"
+          "id": 101,
+          "path": "./img/ika/boy/clothes/101.png"
         },
         {
-          "id": 33,
-          "path": "./img/ika/boy/clothes/33.png"
+          "id": 102,
+          "path": "./img/ika/boy/clothes/102.png"
+        },
+        {
+          "id": 103,
+          "path": "./img/ika/boy/clothes/103.png"
+        },
+        {
+          "id": 104,
+          "path": "./img/ika/boy/clothes/104.png"
+        },
+        {
+          "id": 105,
+          "path": "./img/ika/boy/clothes/105.png"
+        },
+        {
+          "id": 106,
+          "path": "./img/ika/boy/clothes/106.png"
+        },
+        {
+          "id": 107,
+          "path": "./img/ika/boy/clothes/107.png"
+        },
+        {
+          "id": 108,
+          "path": "./img/ika/boy/clothes/108.png"
+        },
+        {
+          "id": 109,
+          "path": "./img/ika/boy/clothes/109.png"
+        },
+        {
+          "id": 110,
+          "path": "./img/ika/boy/clothes/110.png"
+        },
+        {
+          "id": 111,
+          "path": "./img/ika/boy/clothes/111.png"
+        },
+        {
+          "id": 112,
+          "path": "./img/ika/boy/clothes/112.png"
+        },
+        {
+          "id": 113,
+          "path": "./img/ika/boy/clothes/113.png"
+        },
+        {
+          "id": 114,
+          "path": "./img/ika/boy/clothes/114.png"
+        },
+        {
+          "id": 115,
+          "path": "./img/ika/boy/clothes/115.png"
         }
       ]
     },
