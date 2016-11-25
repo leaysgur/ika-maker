@@ -1,7 +1,7 @@
 // @flow
 'use strict';
 
-const INDEX_URL: string = 'http://ikasu.lealog.net/';
+const INDEX_URL: string = 'https://ikasu.lealog.net/';
 
 const IMG_SIZE: number = 600;
 
