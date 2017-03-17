@@ -8,6 +8,10 @@
   vertical-align: text-bottom;
 }
 
+.ft-en {
+  font-family: Helvetica, Arial, sans-serif;
+}
+
 .ft-warn {
   color: #FED430;
 }

@@ -25,9 +25,18 @@
 .index-p,
 .index-list {
   font-size: .8rem;
+  margin-bottom: 8px;
 }
 
 .index-spacer {
   border: none;
   height: 16px;
+}
+
+.index-link {
+  color: #FF6E00;
+}
+
+.index-img {
+  outline: 2px solid #FF6E00;
 }
