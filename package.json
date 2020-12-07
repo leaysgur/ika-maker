@@ -4,8 +4,10 @@
   "private": true,
   "description": "IKA-kawaii",
   "scripts": {
-    "build": "rollup -c",
-    "dev": "rollup -c -w",
+    "dev-css": "postcss -w ./src/style/style.css -o ./dist/style.css",
+    "build-css": "postcss ./src/style/style.css -o ./dist/style.css",
+    "build-js": "rollup -c",
+    "dev-js": "rollup -c -w",
     "start": "sirv ."
   },
   "repository": {
@@ -22,8 +24,12 @@
   "devDependencies": {
     "@rollup/plugin-commonjs": "^16.0.0",
     "@rollup/plugin-node-resolve": "^10.0.0",
+    "cssnano": "^4.1.10",
+    "postcss": "^8.1.14",
+    "postcss-cli": "^8.3.0",
+    "postcss-import": "^13.0.0",
+    "postcss-nested": "^5.0.2",
     "rollup": "^2.3.4",
-    "rollup-plugin-css-only": "^3.0.0",
     "rollup-plugin-livereload": "^2.0.0",
     "rollup-plugin-svelte": "^7.0.0",
     "rollup-plugin-terser": "^7.0.0",
