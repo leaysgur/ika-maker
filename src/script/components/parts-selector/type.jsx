@@ -28,7 +28,7 @@ const TypeSelector: Function = ({
         return (
           <li className="parts-selector-items--item" key={idx}>
             <div
-              onTouchTap={(): void => { onSelect({ target, typeId }); }}
+              onClick={(): void => { onSelect({ target, typeId }); }}
               className={`
                 type-selector
                 type-selector--type-${target}

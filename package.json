@@ -20,12 +20,10 @@
   },
   "homepage": "https://github.com/leader22/ika-maker#readme",
   "dependencies": {
-    "es6-promise": "^3.2.1",
     "flumpt": "^0.2.0",
     "object-assign": "^4.1.0",
     "react": "^15.1.0",
-    "react-dom": "^15.1.0",
-    "react-tap-event-plugin": "^1.0.0"
+    "react-dom": "^15.1.0"
   },
   "devDependencies": {
     "autoprefixer": "^6.3.6",

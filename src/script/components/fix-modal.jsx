@@ -42,7 +42,7 @@ class FixModal extends Component {
         </p>
         <div className="button-wrap">
           <ShareButton />
-          <a className="button button--negative ft-ika" onTouchTap={this.onClickCancel}>てなおしする</a>
+          <a className="button button--negative ft-ika" onClick={this.onClickCancel}>てなおしする</a>
         </div>
       </div>
     );

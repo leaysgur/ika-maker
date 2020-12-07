@@ -1,7 +1,6 @@
 // @flow
 'use strict';
 const ReactDOM = require('react-dom');
-const injectTapEventPlugin = require('react-tap-event-plugin');
 const objectAssign = require('object-assign');
 const App = require('./components/app.jsx');
 const PartsModel = require('./models/parts');
@@ -17,7 +16,6 @@ if (
 }
 
 // okなら処理開始
-injectTapEventPlugin();
 
 global.addEventListener('error', () => {
   location.href = '/sorry.html';

@@ -1,7 +1,6 @@
 // @flow
 'use strict';
 const objectAssign = require('object-assign');
-const ES6Promise = require('es6-promise').Promise;
 const PartsScheme = require('../data/parts');
 const {
   DEFAULT_PARTS_SETTINGS,
@@ -186,9 +185,9 @@ class PartsModel {
   fetchAll(): Promise {
     let cache = this.cache;
 
-    return ES6Promise.all(this.getAllImgPath().map((path): Promise => {
+    return Promise.all(this.getAllImgPath().map((path): Promise => {
       cache[path] = null;
-      return new ES6Promise((resolve): void => {
+      return new Promise((resolve): void => {
         const img = new Image();
         img.src = path;
         img.onload = () => {

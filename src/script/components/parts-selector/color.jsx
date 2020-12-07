@@ -27,7 +27,7 @@ const ColorSelector: Function = ({
         return (
           <li className="parts-selector-items--item" key={idx}>
             <div
-              onTouchTap={(): void => { onSelect({ target, colorId }); }}
+              onClick={(): void => { onSelect({ target, colorId }); }}
               className={`
                 color-selector
                 ${isSelected ? 'is-selected' : ''}
