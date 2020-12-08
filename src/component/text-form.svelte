@@ -13,7 +13,7 @@
       class="parts-selector-items--text"
       type="text" maxLength="10"
       value={settings.text}
-      on:input={(ev) => dispatch("set:text", { target: "text", text: ev.currentTarget.value })}
+      on:input={(ev) => dispatch("set:text", { value: ev.currentTarget.value })}
       placeholder="入力は10文字まで"
     />
   </div>

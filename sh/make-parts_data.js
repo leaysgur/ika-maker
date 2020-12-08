@@ -5,8 +5,8 @@ const path = require('path');
 
 const BASE_DIR  = process.cwd();
 const PARTS_DIR = './img/ika';
-const SCHEME_SRC_DIR  = './src/script/data/_parts';
-const SCHEME_DIST_DIR = './src/script/data/parts';
+const SCHEME_SRC_DIR  = './src/data/_parts';
+const SCHEME_DIST_DIR = './src/data/parts';
 
 if (path.basename(BASE_DIR) !== 'ika-maker') {
   console.log('Execute from project root!');
