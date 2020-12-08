@@ -4,6 +4,7 @@
   import ToolPanel from "./tool-panel.svelte";
   import FixModal from "./fix-modal.svelte";
   import data from "../data/parts.js";
+  import { TITLE_TEXT } from "../data/const.js";
   import {
     getDefaultSettings,
     generateFixImgSrcBySettings,
@@ -11,9 +12,7 @@
   export let appType;
 
   const scheme = data[appType];
-  const title = appType === "boy"
-    ? "ボーイをつくる | "
-    : appType === "girl" ? "ガールをつくる | " : "";
+  const title = TITLE_TEXT[appType];
 
   let showFixModal = false;
   const toggleFixModal = () => (showFixModal = !showFixModal);

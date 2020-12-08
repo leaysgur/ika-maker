@@ -44,5 +44,10 @@ export const DEFAULT_PARTS_SETTINGS = {
   }
 };
 
+export const TITLE_TEXT = {
+  girl: "イカガールをつくる | ",
+  boy: "イカボーイをつくる | ",
+};
+
 export const SHARE_URL = "https://twitter.com/intent/tweet?text=";
 export const SHARE_TEXT = `みんなもマイイカのアイコンつくらなイカ？\n${INDEX_URL} #スーパーイカメーカー`;
