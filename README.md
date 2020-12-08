@@ -28,9 +28,9 @@
 - テキスト(オプション)
 
 ## Tech
-- ES2015
-- React x flumpt
-- Flow
+- ES2017
+- ~~React x flumpt~~ -> Svelte
+- ~~Flow~~
 - PostCSS
 
 ## 更新手順
