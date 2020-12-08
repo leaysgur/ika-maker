@@ -60,7 +60,7 @@ const getImgPath = (scheme, partsId, type, color) => {
   if (partsId === "item" && type === 0)
     return null;
 
-  return path;
+  return [partsId, path];
 }
 
 const $canvas = document.createElement("canvas");
@@ -85,11 +85,16 @@ export const generateFixImgSrcBySettings = async (scheme, settings) => {
     getImgPath(scheme, "item", settings.itemType),
   ].filter(Boolean);
 
-  const imgRefArr = await Promise.all(imgPathArr.map((path) => {
+  // 必要なすべてを読み込む
+  const imgRefs = {};
+  await Promise.all(imgPathArr.map(([partsId, path]) => {
     return new Promise((resolve, reject) => {
       const img = new Image();
       img.src = path;
-      img.onload = () => resolve(img);
+      img.onload = () => {
+        imgRefs[partsId] = img;
+        resolve();
+      };
       img.onerror = img.onabort = reject;
     });
   }));
@@ -98,8 +103,19 @@ export const generateFixImgSrcBySettings = async (scheme, settings) => {
   ctx.clearRect(0, 0, IMG_SIZE, IMG_SIZE);
 
   // 順番に書き込む
-  for (const img of imgRefArr) {
-    ctx.drawImage(img, 0, 0, IMG_SIZE, IMG_SIZE);
+  for (const partsId of [
+    "bg",
+    "body",
+    "mouth",
+    "brows",
+    "eyes",
+    "clothes",
+    "hair",
+    "hat",
+    "item",
+  ]) {
+    const layer = imgRefs[partsId];
+    layer && ctx.drawImage(layer, 0, 0, IMG_SIZE, IMG_SIZE);
   }
 
   // 文字は別途書き込む
@@ -112,17 +128,17 @@ export const generateFixImgSrcBySettings = async (scheme, settings) => {
     ctx.fillStyle = TEXT_STYLES.COLORS[0];
     ctx.fillText(
       text,
-      IMG_SIZE - TEXT_STYLES.GAP + 2,  // x
-      IMG_SIZE - TEXT_STYLES.GAP + 2,  // y
-      IMG_SIZE - TEXT_STYLES.GAP * 2   // maxWidth
+      IMG_SIZE - TEXT_STYLES.GAP + 2, // x
+      IMG_SIZE - TEXT_STYLES.GAP + 2, // y
+      IMG_SIZE - TEXT_STYLES.GAP * 2 // maxWidth
     );
     // 2重に書いて影をつける
     ctx.fillStyle = TEXT_STYLES.COLORS[1];
     ctx.fillText(
       text,
-      IMG_SIZE - TEXT_STYLES.GAP,  // x
-      IMG_SIZE - TEXT_STYLES.GAP,  // y
-      IMG_SIZE - TEXT_STYLES.GAP*2 // maxWidth
+      IMG_SIZE - TEXT_STYLES.GAP, // x
+      IMG_SIZE - TEXT_STYLES.GAP, // y
+      IMG_SIZE - TEXT_STYLES.GAP * 2 // maxWidth
     );
   }
 
