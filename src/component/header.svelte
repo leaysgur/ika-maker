@@ -9,7 +9,7 @@
   <h1 class="header__title ft-ika">スーパーイカメーカー</h1>
   <a
     class="button ft-ika"
-    href="#"
+    href="."
     on:click|preventDefault={() => dispatch("show:fixModal")}
   >カンセイ</a>
 </div>

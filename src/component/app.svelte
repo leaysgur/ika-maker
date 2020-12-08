@@ -20,16 +20,14 @@
   const settings = getDefaultSettings(appType);
   const onUpdateSettings = ({ detail }) => {
     const { value, target } = detail;
-    console.log({ value, target });
     settings[target] = value;
   };
 
-  // TODO: while loading...
   let fixImgSrc = "";
   $: {
     generateFixImgSrcBySettings(scheme, settings)
       .then((src) => (fixImgSrc = src))
-      .catch(console.error);
+      .catch(console.error)
   }
 </script>
 
