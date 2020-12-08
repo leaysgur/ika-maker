@@ -67,6 +67,8 @@ const $canvas = document.createElement("canvas");
 $canvas.width = $canvas.height = IMG_SIZE;
 const ctx = $canvas.getContext("2d");
 
+const imgCache = {};
+
 export const generateFixImgSrcBySettings = async (scheme, settings) => {
   const imgPathArr = [
     getImgPath(scheme, "bg", settings.bgType, settings.bgColor),
@@ -89,10 +91,16 @@ export const generateFixImgSrcBySettings = async (scheme, settings) => {
   const imgRefs = {};
   await Promise.all(imgPathArr.map(([partsId, path]) => {
     return new Promise((resolve, reject) => {
+      if (imgCache[path]) {
+        imgRefs[partsId] = imgCache[path];
+        return resolve();
+      }
+
       const img = new Image();
       img.src = path;
       img.onload = () => {
         imgRefs[partsId] = img;
+        imgCache[path] = img;
         resolve();
       };
       img.onerror = img.onabort = reject;
