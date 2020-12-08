@@ -5,9 +5,9 @@
   export let partsId;
   export let settings;
 
-  const typeTarget = `${partsId}Type`;
-  const colorTarget = `${partsId}Color`;
   const dispatch = createEventDispatcher();
+  $: typeTarget = partsId + "Type";
+  $: colorTarget = partsId + "Color";
   $: colors = parts.items.find((item) => item.id === settings[typeTarget]).items;
 </script>
 

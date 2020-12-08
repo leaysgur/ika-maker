@@ -20,6 +20,7 @@
   const settings = getDefaultSettings(appType);
   const onUpdateSettings = ({ detail }) => {
     const { value, target } = detail;
+    console.log({ value, target });
     settings[target] = value;
   };
 

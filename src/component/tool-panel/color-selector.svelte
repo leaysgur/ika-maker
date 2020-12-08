@@ -3,10 +3,9 @@
   export let parts;
   export let partsId;
   export let settings;
-  console.log(parts);
 
-  const target = `${partsId}Color`;
   const dispatch = createEventDispatcher();
+  $: target = partsId + "Color";
 </script>
 
 <div>

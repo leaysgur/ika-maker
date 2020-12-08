@@ -5,8 +5,8 @@
   export let partsId;
   export let settings;
 
-  const target = `${partsId}Type`;
   const dispatch = createEventDispatcher();
+  $: target = partsId + "Type";
 </script>
 
 <div class="parts-selector parts-selector--app-{appType}">
