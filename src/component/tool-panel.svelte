@@ -1,11 +1,17 @@
 <script>
+  import ColorSelector from "./color-selector.svelte";
+  import TypeSelector from "./type-selector.svelte";
   import TextForm from "./text-form.svelte";
-  import PartsSelector from "./parts-selector.svelte";
+  import { getTabItems } from "../domain/core.js";
   export let settings;
-  export let tabItems;
+  export let scheme;
+  export let appType;
+
+  const tabItems = getTabItems(scheme);
 
   let selectedTabIdx = 0;
   $: activePartsId = tabItems[selectedTabIdx].id;
+  $: parts = scheme[activePartsId];
 </script>
 
 <div class="tool-panel">
@@ -13,13 +19,29 @@
     {#if activePartsId === "text"}
     <TextForm
       {settings}
-      on:set:text
+      on:update:settings
     />
     {:else}
-    <PartsSelector
-      partsId={activePartsId}
+    {#if parts.selectType === "TYPE"}
+    <TypeSelector
       {settings}
+      {parts}
+      partsId={activePartsId}
+      {appType}
+      on:update:settings
     />
+    {/if}
+    {#if parts.selectType === "COLOR"}
+    <ColorSelector
+      {settings}
+      {parts}
+      partsId={activePartsId}
+      on:update:settings
+    />
+    {/if}
+    {#if parts.selectType === "TYPE_COLOR"}
+      type_color
+    {/if}
     {/if}
   </div>
 

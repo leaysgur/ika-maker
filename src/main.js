@@ -1,6 +1,5 @@
 import App from "./component/app.svelte";
 import data from "./data/parts.js";
-import { getTabItems } from "./domain/core.js";
 
 window.addEventListener("error", (err) => {
   // TODO: もどす
@@ -23,7 +22,6 @@ new App({
   props: {
     appType,
     scheme,
-    tabItems: getTabItems(scheme),
   },
 });
 

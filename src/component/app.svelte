@@ -6,7 +6,6 @@
   import { getDefaultSettings } from "../domain/core.js";
   export let appType;
   export let scheme;
-  export let tabItems;
 
   const title = appType === "boy"
     ? "ボーイをつくる | "
@@ -17,10 +16,11 @@
   let fixImgSrc = "http://localhost:5000/img/loading.gif";
   $: console.log(settings);
 
-  function onSetText({ detail }) {
-    const { value } = detail;
-    settings["text"] = value;
-  }
+
+  const onUpdateSettings = ({ detail }) => {
+    const { value, target } = detail;
+    settings[target] = value;
+  };
 </script>
 
 <svelte:head>
@@ -31,8 +31,9 @@
 <Preview {fixImgSrc} />
 <ToolPanel
   settings={settings}
-  {tabItems}
-  on:set:text={onSetText}
+  {scheme}
+  {appType}
+  on:update:settings={onUpdateSettings}
 />
 <FixModal isShow={showFixModal} on:hide:fixModal={() => (showFixModal = false)}>
   <Preview {fixImgSrc} />
