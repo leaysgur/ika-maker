@@ -1,8 +1,7 @@
 import App from "./component/app.svelte";
 
-window.addEventListener("error", (err) => {
-  // TODO: もどす
-  // location.href = "/sorry.html";
+window.addEventListener("error", () => {
+  location.href = "/sorry.html";
 }, false);
 
 const $app = document.getElementById("jsApp");
@@ -13,12 +12,9 @@ if (appType !== "boy" && appType !== "girl") {
 }
 
 $app.innerHTML = "";
-
 new App({
   target: $app,
-  props: {
-    appType,
-  },
+  props: { appType },
 });
 
 // TODO: ServiceWorker

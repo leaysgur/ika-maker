@@ -29,9 +29,7 @@
   $: {
     generateFixImgSrcBySettings(scheme, settings)
       .then((src) => (fixImgSrc = src))
-      .catch((err) => {
-        console.error(err);
-      });
+      .catch(console.error);
   }
 </script>
 
