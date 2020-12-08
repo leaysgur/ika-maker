@@ -3,10 +3,11 @@
   import Preview from "./preview.svelte";
   import ToolPanel from "./tool-panel.svelte";
   import FixModal from "./fix-modal.svelte";
+  import data from "../data/parts.js";
   import { getDefaultSettings } from "../domain/core.js";
   export let appType;
-  export let scheme;
 
+  const scheme = data[appType];
   const title = appType === "boy"
     ? "ボーイをつくる | "
     : appType === "girl" ? "ガールをつくる | " : "";

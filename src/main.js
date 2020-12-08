@@ -1,5 +1,4 @@
 import App from "./component/app.svelte";
-import data from "./data/parts.js";
 
 window.addEventListener("error", (err) => {
   // TODO: もどす
@@ -13,15 +12,12 @@ if (appType !== "boy" && appType !== "girl") {
   throw new Error(`Undefined appType: ${appType}`);
 }
 
-const scheme = data[appType];
-
 $app.innerHTML = "";
 
 new App({
   target: $app,
   props: {
     appType,
-    scheme,
   },
 });
 
