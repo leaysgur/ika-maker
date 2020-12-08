@@ -14,7 +14,7 @@
   let showFixModal = false;
   const settings = getDefaultSettings(appType);
   let fixImgSrc = "http://localhost:5000/img/loading.gif";
-  $: console.log(settings);
+  $: console.log(JSON.stringify(settings, null, 2));
 
   const onUpdateSettings = ({ detail }) => {
     const { value, target } = detail;

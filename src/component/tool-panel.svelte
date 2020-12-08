@@ -1,6 +1,7 @@
 <script>
   import ColorSelector from "./tool-panel/color-selector.svelte";
   import TypeSelector from "./tool-panel/type-selector.svelte";
+  import TypeColorSelector from "./tool-panel/type-color-selector.svelte";
   import TextForm from "./tool-panel/text-form.svelte";
   import { getTabItems } from "../domain/core.js";
   export let settings;
@@ -40,7 +41,13 @@
     />
     {/if}
     {#if parts.selectType === "TYPE_COLOR"}
-      type_color
+    <TypeColorSelector
+      {settings}
+      {parts}
+      partsId={activePartsId}
+      {appType}
+      on:update:settings
+    />
     {/if}
     {/if}
   </div>
