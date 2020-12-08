@@ -9,7 +9,7 @@
   const dispatch = createEventDispatcher();
 </script>
 
-<div class={`parts-selector parts-selector--app-${appType}`}>
+<div class="parts-selector parts-selector--app-{appType}">
   <h3 class="parts-selector-header ft-ika">タイプをえらぶ</h3>
   <ul class="parts-selector-items">
     {#each parts.items as item, idx (idx)}
@@ -24,6 +24,7 @@
           alt=""
           width="40"
           height="40"
+          loading="lazy"
         />
       </div>
     </li>

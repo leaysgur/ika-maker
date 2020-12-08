@@ -48,7 +48,7 @@
   <ul class="tab-header">
     {#each tabItems as item, idx (item.order)}
     <li
-      class={`ft-ika tab-header__item tab-header__item--type-${item.group}`}
+      class="ft-ika tab-header__item tab-header__item--type-{item.group}"
       class:is-selected={idx === selectedTabIdx}
       on:click={() => (selectedTabIdx = idx)}
     >
