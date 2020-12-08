@@ -16,7 +16,6 @@
   let fixImgSrc = "http://localhost:5000/img/loading.gif";
   $: console.log(settings);
 
-
   const onUpdateSettings = ({ detail }) => {
     const { value, target } = detail;
     settings[target] = value;

@@ -1,7 +1,7 @@
 <script>
-  import ColorSelector from "./color-selector.svelte";
-  import TypeSelector from "./type-selector.svelte";
-  import TextForm from "./text-form.svelte";
+  import ColorSelector from "./tool-panel/color-selector.svelte";
+  import TypeSelector from "./tool-panel/type-selector.svelte";
+  import TextForm from "./tool-panel/text-form.svelte";
   import { getTabItems } from "../domain/core.js";
   export let settings;
   export let scheme;

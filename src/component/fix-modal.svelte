@@ -1,5 +1,5 @@
 <script>
-  import ShareButton from "./share-button.svelte";
+  import ShareButton from "./fix-modal/share-button.svelte";
   import { createEventDispatcher } from "svelte";
   export let isShow;
 
