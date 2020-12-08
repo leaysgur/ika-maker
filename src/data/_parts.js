@@ -4,7 +4,7 @@
  * node sh/make-parts-list.js すると、
  * この内容をベースに存在する画像ファイルでitemsを補完。
  *
- * そして、models/parts.js ができる！
+ * そして、parts.js ができる！
  *
  */
 const BODY_COLORS = {
