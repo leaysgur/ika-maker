@@ -4,7 +4,10 @@
   import ToolPanel from "./tool-panel.svelte";
   import FixModal from "./fix-modal.svelte";
   import data from "../data/parts.js";
-  import { getDefaultSettings } from "../domain/core.js";
+  import {
+    getDefaultSettings,
+    generateFixImgSrcBySettings,
+  } from "../domain/core.js";
   export let appType;
 
   const scheme = data[appType];
@@ -13,21 +16,30 @@
     : appType === "girl" ? "ガールをつくる | " : "";
 
   let showFixModal = false;
-  const settings = getDefaultSettings(appType);
-  let fixImgSrc = "http://localhost:5000/img/loading.gif";
-  $: console.log(JSON.stringify(settings, null, 2));
+  const toggleFixModal = () => (showFixModal = !showFixModal);
 
+  const settings = getDefaultSettings(appType);
   const onUpdateSettings = ({ detail }) => {
     const { value, target } = detail;
     settings[target] = value;
   };
+
+  // TODO: while loading...
+  let fixImgSrc = "";
+  $: {
+    generateFixImgSrcBySettings(scheme, settings)
+      .then((src) => (fixImgSrc = src))
+      .catch((err) => {
+        console.error(err);
+      });
+  }
 </script>
 
 <svelte:head>
   <title>{title}スーパーイカメーカー</title>
 </svelte:head>
 
-<Header on:show:fixModal={() => (showFixModal = true)} />
+<Header on:show:fixModal={toggleFixModal} />
 <Preview {fixImgSrc} />
 <ToolPanel
   settings={settings}
@@ -35,6 +47,6 @@
   {appType}
   on:update:settings={onUpdateSettings}
 />
-<FixModal isShow={showFixModal} on:hide:fixModal={() => (showFixModal = false)}>
+<FixModal isShow={showFixModal} on:hide:fixModal={toggleFixModal}>
   <Preview {fixImgSrc} />
 </FixModal>
