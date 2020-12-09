@@ -15,6 +15,7 @@
   <meta name="twitter:site" content="@leader22">
   <meta name="application-name" content="スーパーイカメーカー"/>
   <title>スーパーイカメーカー</title>
+  <link rel="canonical" href="https://leader22.github.io/ika-maker/" />
   <link rel="apple-touch-icon" sizes="180x180" href="./img/icon.png">
   <link rel="apple-touch-icon-precomposed" href="./img/icon.png">
   <link rel="shortcut icon" href="./img/icon.png">
@@ -91,5 +92,10 @@
     </div>
   </div>
   <script src="./dist/entry-script.js"></script>
+  <script>
+    if (navigator.serviceWorker) {
+      navigator.serviceWorker.register("/ika-maker/service-worker.js", { scope: "/ika-maker/" });
+    }
+  </script>
 </body>
 </html>

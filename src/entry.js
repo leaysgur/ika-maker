@@ -1,5 +1,4 @@
 (async () => {
-  // UI
   const $agree = document.getElementById('jsAgree');
   const $btns = document.getElementsByClassName('jsExecBtn');
 
@@ -15,10 +14,5 @@
 
   for (const $el of $btns) {
     $el.onclick = onClickBtn;
-  }
-
-  // SW
-  if ("serviceWorker" in navigator) {
-    navigator.serviceWorker.register("/service-worker.js");
   }
 })();

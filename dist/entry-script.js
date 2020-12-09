@@ -1,1 +1,1 @@
-!function(){"use strict";(async()=>{const e=document.getElementById("jsAgree"),r=document.getElementsByClassName("jsExecBtn"),t=r=>{if(!e.checked)return r.preventDefault(),void alert("注意事項に同意してね")};for(const e of r)e.onclick=t;"serviceWorker"in navigator&&navigator.serviceWorker.register("/service-worker.js")})()}();
+!function(){"use strict";(async()=>{const e=document.getElementById("jsAgree"),t=document.getElementsByClassName("jsExecBtn"),n=t=>{if(!e.checked)return t.preventDefault(),void alert("注意事項に同意してね")};for(const e of t)e.onclick=n})()}();
