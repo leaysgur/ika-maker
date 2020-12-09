@@ -1,6 +1,7 @@
 import svelte from "rollup-plugin-svelte";
 import commonjs from "@rollup/plugin-commonjs";
 import resolve from "@rollup/plugin-node-resolve";
+import replace from "@rollup/plugin-replace";
 import livereload from "rollup-plugin-livereload";
 import { terser } from "rollup-plugin-terser";
 
@@ -83,9 +84,13 @@ export default [{
   output: {
     format: "iife",
     name: "sw",
-    file: "dist/sw.js"
+    file: "service-worker.js"
   },
   plugins: [
+    resolve(),
+    replace({
+      "process.env.NODE_ENV": production ? "'production'" : "''",
+    }),
     production && terser()
   ],
 }];
