@@ -90,25 +90,6 @@
 
     </div>
   </div>
-
-  <script>
-  (function(global) {
-    var d = global.document;
-    var $a = d.getElementById('jsAgree');
-    var $e = d.getElementsByClassName('jsExecBtn');
-
-    [].forEach.call($e, function(el) {
-      el.addEventListener('click', _check, false);
-    });
-
-    function _check(ev) {
-      if ($a.checked === false) {
-        ev.preventDefault();
-        alert('注意事項を読んで、その内容への同意が必要です。');
-        return;
-      }
-    }
-  }(window));
-  </script>
+  <script src="./dist/entry-script.js"></script>
 </body>
 </html>

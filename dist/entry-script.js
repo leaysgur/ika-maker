@@ -1,0 +1,1 @@
+!function(){"use strict";(async()=>{const e=document.getElementById("jsAgree"),t=document.getElementsByClassName("jsExecBtn"),n=t=>{if(!e.checked)return t.preventDefault(),void alert("注意事項に同意してね")};for(const e of t)e.onclick=n})()}();

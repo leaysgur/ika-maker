@@ -1,8 +1,8 @@
-import svelte from 'rollup-plugin-svelte';
-import commonjs from '@rollup/plugin-commonjs';
-import resolve from '@rollup/plugin-node-resolve';
-import livereload from 'rollup-plugin-livereload';
-import { terser } from 'rollup-plugin-terser';
+import svelte from "rollup-plugin-svelte";
+import commonjs from "@rollup/plugin-commonjs";
+import resolve from "@rollup/plugin-node-resolve";
+import livereload from "rollup-plugin-livereload";
+import { terser } from "rollup-plugin-terser";
 
 const production = !process.env.ROLLUP_WATCH;
 
@@ -16,24 +16,24 @@ function serve() {
   return {
     writeBundle() {
       if (server) return;
-      server = require('child_process').spawn('npm', ['run', 'start', '--', '--dev'], {
-        stdio: ['ignore', 'inherit', 'inherit'],
+      server = require("child_process").spawn("npm", ["run", "start", "--", "--dev"], {
+        stdio: ["ignore", "inherit", "inherit"],
         shell: true
       });
 
-      process.on('SIGTERM', toExit);
-      process.on('exit', toExit);
+      process.on("SIGTERM", toExit);
+      process.on("exit", toExit);
     }
   };
 }
 
-export default {
-  input: 'src/main.js',
+export default [{
+  input: "src/app/main.js",
   output: {
     sourcemap: true,
-    format: 'iife',
-    name: 'app',
-    file: 'dist/script.js'
+    format: "iife",
+    name: "app",
+    file: "dist/app-script.js"
   },
   plugins: [
     svelte({
@@ -43,13 +43,13 @@ export default {
       }
     }),
     // If you have external dependencies installed from
-    // npm, you'll most likely need these plugins. In
-    // some cases you'll need additional configuration -
+    // npm, you"ll most likely need these plugins. In
+    // some cases you"ll need additional configuration -
     // consult the documentation for details:
     // https://github.com/rollup/plugins/tree/master/packages/commonjs
     resolve({
       browser: true,
-      dedupe: ['svelte']
+      dedupe: ["svelte"]
     }),
     commonjs(),
 
@@ -59,13 +59,33 @@ export default {
 
     // Watch the `public` directory and refresh the
     // browser on changes when not in production
-    !production && livereload('dist'),
+    !production && livereload("dist"),
 
-    // If we're building for production (npm run build
+    // If we"re building for production (npm run build
     // instead of npm run dev), minify
     production && terser()
   ],
   watch: {
     clearScreen: false
   }
-};
+}, {
+  input: "src/entry.js",
+  output: {
+    format: "iife",
+    name: "entry",
+    file: "dist/entry-script.js"
+  },
+  plugins: [
+    production && terser()
+  ],
+}, {
+  input: "src/sw.js",
+  output: {
+    format: "iife",
+    name: "sw",
+    file: "dist/sw.js"
+  },
+  plugins: [
+    production && terser()
+  ],
+}];
