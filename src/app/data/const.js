@@ -1,5 +1,5 @@
 // export const INDEX_URL = location.origin;
-export const INDEX_URL = "https://leader22.github.io/ika-maker/";
+export const INDEX_URL = "https://leaysgur.github.io/ika-maker/";
 
 export const IMG_SIZE = 600;
 

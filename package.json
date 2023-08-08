@@ -12,14 +12,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/leader22/ika-maker.git"
+    "url": "git+https://github.com/leaysgur/ika-maker.git"
   },
-  "author": "leader22",
+  "author": "leaysgur",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/leader22/ika-maker/issues"
+    "url": "https://github.com/leaysgur/ika-maker/issues"
   },
-  "homepage": "https://github.com/leader22/ika-maker#readme",
+  "homepage": "https://github.com/leaysgur/ika-maker#readme",
   "dependencies": {
     "workbox-cacheable-response": "^6.0.2",
     "workbox-expiration": "^6.0.2",
