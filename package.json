@@ -35,7 +35,7 @@
     "postcss-cli": "^8.3.0",
     "postcss-import": "^13.0.0",
     "postcss-nested": "^5.0.2",
-    "rollup": "^2.3.4",
+    "rollup": "^3.29.5",
     "rollup-plugin-livereload": "^2.0.0",
     "rollup-plugin-svelte": "^7.0.0",
     "rollup-plugin-terser": "^7.0.0",
